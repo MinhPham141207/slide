@@ -774,6 +774,299 @@ body.idle #toolbar{opacity:.18}
   *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
   .deco-f,.bt-edge.hot,.term-out .cur{animation:none!important}
 }
+
+/* =====================================================================
+   PHẦN MỚI — bìa, bài toán, ý tưởng, định nghĩa, walkthrough, delete, đánh đổi, tổng kết
+   ===================================================================== */
+
+/* ---------- Bìa ---------- */
+.cover-tree{position:absolute;left:250px;top:46px;width:1100px;height:360px;overflow:visible}
+
+/* ---------- 2. Bài toán ---------- */
+.prob2{display:grid;grid-template-columns:660px 1fr;gap:44px;align-items:center}
+.prob2 .facts{gap:22px}
+.prob2 .facts li{grid-template-columns:104px 1fr}
+.prob2 .facts p{font-size:22px;line-height:1.48}
+.p2-r{margin:0;padding:26px 30px 24px;display:flex;flex-direction:column;gap:20px}
+.p2-cap{margin:0;font-size:17px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.reads{display:grid;grid-template-columns:1fr auto;gap:6px 20px;align-items:center}
+.reads h4{margin:0;grid-column:1/-1;font-size:22px;font-weight:700}
+.reads h4 small{font-size:17px;font-weight:500;color:var(--muted);margin-left:8px}
+.sq-grid{display:flex;flex-wrap:wrap;gap:6px;max-width:520px}
+.sq-grid i{width:28px;height:28px;border-radius:8px;background:var(--coral);opacity:0}
+.sq-grid.blue i{background:var(--blue);width:54px;height:28px}
+.slide.active .sq-grid i{animation:sqpop .35s var(--ease) both;animation-delay:calc(var(--i) * 45ms + 500ms)}
+@keyframes sqpop{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:none}}
+.reads .num{font:800 54px/1 var(--mono);color:var(--coral-d);text-align:right;min-width:90px}
+.reads .num.b{color:var(--blue-d)}
+.reads .num small{display:block;font:600 14px var(--font);color:var(--muted);letter-spacing:.04em}
+.lat{width:100%;border-collapse:separate;border-spacing:0;font-size:19px;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff}
+.lat th,.lat td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--line)}
+.lat tr:last-child th,.lat tr:last-child td{border-bottom:none}
+.lat thead th{text-transform:none!important;letter-spacing:.02em!important;background:#F5F7FC;font-size:13.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.lat tbody th{font-weight:700}
+.lat td{font:700 20px var(--mono)}
+.lat td.bad{color:var(--red-d)}.lat td.good{color:var(--green-d)}
+.p2-note{margin:0;font-size:16px;color:var(--muted);line-height:1.45}
+
+/* ---------- 3. Ý tưởng (4 bước) ---------- */
+.idea{display:grid;grid-template-columns:520px 1fr;gap:44px}
+.id-left{display:flex;flex-direction:column;min-height:0}
+.id-prog{display:flex;gap:10px;margin-bottom:22px}
+.id-prog button{flex:1;height:44px;border-radius:12px;border:1px solid var(--line-2);background:#fff;font:700 16px var(--mono);color:var(--muted);transition:background .3s,color .3s,border-color .3s}
+.id-prog button.on{background:var(--blue);border-color:var(--blue);color:#fff}
+.id-prog button.done{background:var(--blue-t);border-color:var(--blue-t2);color:var(--blue-d)}
+.id-txt{position:relative;flex:1;min-height:0}
+.id-t{position:absolute;inset:0;display:flex;flex-direction:column;gap:14px;opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .4s,transform .4s var(--ease),visibility 0s .4s}
+.id-t.on{opacity:1;visibility:inherit;transform:none;transition:opacity .45s .12s,transform .5s var(--ease) .12s,visibility 0s}
+.id-t .ey{font:700 15px var(--font);letter-spacing:.1em;text-transform:uppercase;color:var(--coral-d)}
+.id-t h3{margin:0;font-size:36px;font-weight:800;line-height:1.22;letter-spacing:-.02em;text-wrap:balance}
+.id-t p{margin:0;font-size:22px;line-height:1.55;color:var(--ink-2)}
+.id-t .big{margin-top:6px;padding:14px 20px;border-radius:16px;background:var(--coral-t);border:1px solid rgba(255,122,89,.28);font-size:21px;font-weight:600;line-height:1.45;color:var(--ink)}
+.id-vis{position:relative;min-height:0}
+.id-sc{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .4s,visibility 0s .4s;display:flex;flex-direction:column;gap:14px}
+.id-sc.on{opacity:1;visibility:inherit;transition:opacity .45s .1s,visibility 0s}
+/* trang đĩa */
+.pg-card{flex:1;min-height:0;padding:22px 26px 18px;display:flex;flex-direction:column;gap:14px}
+.pg-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px}
+.pg-head b{font-size:24px}
+.pg-head span{font:600 16px var(--font);color:var(--muted)}
+.pg{flex:1;min-height:0;display:grid;grid-template-columns:repeat(24,1fr);grid-auto-rows:1fr;gap:4px;padding:14px;border-radius:16px;background:#F5F7FC;border:2px solid var(--line-2)}
+.pg i{border-radius:4px;background:rgba(26,29,41,.07);transition:background .35s,transform .35s var(--ease)}
+.pg i.use{background:var(--coral)}
+.pg.full i{background:var(--blue);transform:scale(.92)}
+.pg.full i.alt{background:var(--blue-t2)}
+.pg-foot{margin:0;min-height:56px;font-size:21px;font-weight:600;line-height:1.4;color:var(--ink-2)}
+.pg-foot em{font-style:normal;font-weight:800;color:var(--coral-d)}
+.pg-foot em.b{color:var(--blue-d)}
+/* hai cây so sánh */
+.cmp-card{flex:1;min-height:0;margin:0;padding:12px 18px 10px;display:flex;flex-direction:column}
+.cmp-head{display:flex;align-items:center;justify-content:space-between;gap:14px}
+.cmp-head b{font-size:21px}
+.cmp-head b small{font-size:16px;font-weight:500;color:var(--muted);margin-left:8px}
+.cmp-reads{display:inline-flex;align-items:center;gap:8px;font-size:16px;color:var(--muted);padding:5px 12px;border-radius:999px;background:var(--coral-t)}
+.cmp-reads b{font:800 22px var(--mono);color:var(--coral-d);min-width:20px;text-align:center}
+.cmp-card.bt .cmp-reads{background:var(--blue-t)}
+.cmp-card.bt .cmp-reads b{color:var(--blue-d)}
+/* mong muốn → luật */
+.rl4{flex:1;display:flex;flex-direction:column;justify-content:center;gap:16px}
+.rl{display:grid;grid-template-columns:1fr 46px 1fr;align-items:center;gap:6px}
+.rl .w,.rl .r{padding:16px 20px;border-radius:16px;font-size:21px;line-height:1.35}
+.rl .w{background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);font-weight:600;color:var(--ink-2)}
+.rl .r{background:var(--blue-t);border:1px solid var(--blue-t2);font:700 20px/1.35 var(--mono);color:var(--blue-d)}
+.rl .ar{text-align:center;font-size:28px;color:var(--coral)}
+
+/* ---------- 4. Định nghĩa (2 pane) ---------- */
+.panes{position:relative}
+.pane{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .4s,visibility 0s .4s}
+.pane.on{opacity:1;visibility:inherit;transition:opacity .45s .1s,visibility 0s}
+.def .rules li{font-size:23px}
+.def .rules li small{display:block;margin-top:2px;font-size:18px;color:var(--muted)}
+.def-fig .tree-svg{height:360px;flex:none}
+.legend{display:flex;flex-wrap:wrap;gap:18px;margin-top:6px;font-size:16px;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.legend i{width:16px;height:16px;border-radius:5px;display:inline-block}
+.lv-pane{display:grid;grid-template-columns:560px 1fr;gap:44px;align-items:center}
+.lv-pane h3{margin:0 0 14px;font-size:34px;font-weight:800;letter-spacing:-.02em;line-height:1.25}
+.lv-pane p{margin:0 0 14px;font-size:22px;line-height:1.55;color:var(--ink-2)}
+.formula{display:inline-block;padding:12px 22px;border-radius:14px;background:#fff;border:1px solid var(--line-2);box-shadow:var(--shadow);font:600 28px var(--mono);color:var(--blue-d)}
+.formula sub,.formula sup{font-size:.62em}
+.concl{margin-top:16px;padding:16px 20px;border-radius:16px;background:var(--green-t);border:1px solid rgba(43,182,115,.35);font-size:21px;font-weight:600;line-height:1.45;color:var(--ink)}
+
+/* ---------- Walkthrough (insert / delete) ---------- */
+.walk{display:grid;grid-template-columns:520px 1fr;gap:36px}
+.walk-l{display:flex;flex-direction:column;gap:16px;min-height:0;justify-content:center}
+.walk-tabs{display:flex;flex-wrap:wrap;gap:6px;padding:5px;background:rgba(26,29,41,.05);border-radius:14px}
+.walk-tabs button{flex:1 1 auto;height:42px;padding:0 12px;border-radius:10px;border:1px solid transparent;background:transparent;font:700 17px var(--mono);color:var(--muted);white-space:nowrap;transition:background .25s,color .25s}
+.walk-tabs button:hover{color:var(--blue)}
+.walk-tabs button.on{background:#fff;border-color:var(--line-2);color:var(--blue-d);box-shadow:0 1px 2px rgba(26,29,41,.08)}
+.rule{padding:22px 24px 20px;display:flex;flex-direction:column;gap:12px}
+.rule-h{display:flex;align-items:center;gap:12px}
+.rule-h .tag{font-family:var(--mono)}
+.rule h3{margin:0;font-size:28px;font-weight:800;letter-spacing:-.02em;line-height:1.2}
+.rule dl{margin:0;display:grid;grid-template-columns:78px 1fr;gap:10px 14px;align-items:baseline}
+.rule dt{font:700 13.5px var(--font);letter-spacing:.08em;text-transform:uppercase;color:var(--coral-d)}
+.rule dd{margin:0;font-size:20px;line-height:1.45;color:var(--ink-2)}
+.rule dd code{font-size:.9em}
+.walk-ctrl{display:flex;align-items:center;gap:14px}
+.walk-dots{flex:1;display:flex;gap:6px;flex-wrap:wrap}
+.walk-dots i{flex:1;min-width:10px;height:7px;border-radius:4px;background:rgba(26,29,41,.1);transition:background .3s}
+.walk-dots i.done{background:var(--blue)}
+.walk-dots i.cur{background:var(--coral)}
+.walk-r{margin:0;display:flex;flex-direction:column;padding:14px 18px 16px;min-height:0}
+.walk-step{display:flex;align-items:center;justify-content:space-between;font:700 14px var(--font);letter-spacing:.08em;text-transform:uppercase;color:var(--coral-d)}
+.walk-step span:last-child{color:var(--muted)}
+.walk-msg{margin:0;min-height:104px;padding-top:10px;font-size:22px;line-height:1.5;font-weight:500;color:var(--ink);text-align:center;display:flex;align-items:center;justify-content:center;text-wrap:balance}
+.walk-msg b{color:var(--blue-d)}
+.walk-msg .r{color:var(--red-d);font-weight:700}
+.walk-msg .g{color:var(--green-d);font-weight:700}
+.walk-r .tree-svg{flex:1}
+.walk-ins .walk-l{justify-content:flex-start;padding-top:10px}
+
+/* ---------- 7. Bản đồ delete ---------- */
+.dmap{display:flex;flex-direction:column;gap:18px}
+.dmap-rule{display:flex;align-items:center;gap:22px;padding:18px 26px;border-radius:20px;background:var(--coral-t);border:1px solid rgba(255,122,89,.32)}
+.dmap-rule .big{flex:none;font:800 40px/1 var(--mono);color:var(--coral-d)}
+.dmap-rule p{margin:0;font-size:23px;line-height:1.45;color:var(--ink)}
+.dmap-rule p b{color:var(--coral-d)}
+.dgrid{flex:1;min-height:0;display:grid;grid-template-columns:repeat(4,1fr);grid-template-rows:1fr 1fr;gap:18px}
+.dc{position:relative;display:flex;flex-direction:column;gap:7px;padding:18px 20px 16px;border-radius:20px;background:var(--card-a);border:1px solid var(--line);box-shadow:var(--shadow);text-align:left;cursor:pointer;transition:transform .25s var(--ease),border-color .25s,box-shadow .25s}
+.dc:hover{transform:translateY(-3px);border-color:var(--blue);box-shadow:var(--shadow-lg)}
+.dc-h{display:flex;align-items:center;gap:10px}
+.dc-n{font:700 15px var(--mono);padding:4px 9px;border-radius:8px;background:var(--blue-t);color:var(--blue-d)}
+.dc.g2 .dc-n{background:var(--coral-t);color:var(--coral-d)}
+.dc.g3 .dc-n{background:var(--red-t);color:var(--red-d)}
+.dc h3{margin:0;font-size:22px;font-weight:800;letter-spacing:-.015em;line-height:1.2}
+.dc dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:3px 10px;align-items:baseline}
+.dc dt{font:700 12.5px var(--font);letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+.dc dd{margin:0;font-size:17.5px;line-height:1.38;color:var(--ink-2)}
+.dc .go{margin-top:auto;font:700 14px var(--mono);color:var(--blue);letter-spacing:.04em}
+.dc-mem{display:flex;flex-direction:column;justify-content:center;gap:8px;padding:18px 22px;border-radius:20px;background:var(--blue-t);border:1px solid var(--blue-t2)}
+.dc-mem h4{margin:0;font:700 14px var(--font);letter-spacing:.1em;text-transform:uppercase;color:var(--blue-d)}
+.dc-mem p{margin:0;font-size:19px;line-height:1.5;color:var(--ink)}
+
+/* ---------- 13. Độ phức tạp (thời gian + không gian) ---------- */
+.cxs .cx-table{font-size:19px}
+.cxs .cx-table th,.cxs .cx-table td{padding:11px 18px}
+.cxs .cx-table td small{font-size:15.5px;margin-top:2px}
+.cxs .cx-table tbody th{font-size:21px;width:130px}
+.sp3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.sp3 > div{padding:14px 18px;border-radius:16px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow)}
+.sp3 span{display:block;font:700 13.5px var(--font);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.sp3 b{display:block;margin:2px 0;font:700 25px var(--mono);color:var(--blue-d)}
+.sp3 small{display:block;font-size:16.5px;line-height:1.4;color:var(--ink-2)}
+.cxs{display:flex;flex-direction:column;gap:16px}
+.cxs-h{margin:0;font:700 14px var(--font);letter-spacing:.1em;text-transform:uppercase;color:var(--coral-d)}
+
+/* ---------- 14. Đánh đổi ---------- */
+.to2{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.to-col{padding:24px 28px 22px;display:flex;flex-direction:column;gap:14px;border-radius:22px;background:var(--card-a);border:1px solid var(--line);box-shadow:var(--shadow)}
+.to-col h3{margin:0;display:flex;align-items:center;gap:12px;font-size:30px;font-weight:800;letter-spacing:-.02em}
+.to-col h3 i{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;font:800 24px var(--mono);font-style:normal}
+.to-col.up h3 i{background:var(--green-t);color:var(--green-d)}
+.to-col.dn h3 i{background:var(--red-t);color:var(--red-d)}
+.to-col ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:14px}
+.to-col li{font-size:21px;line-height:1.45;color:var(--ink-2)}
+.to-col li b{display:block;font-size:22px;color:var(--ink)}
+.to-col li small{display:block;font-size:17px;color:var(--muted);margin-top:1px}
+.pick .cx-table{font-size:20px}
+.pick .cx-table th,.pick .cx-table td{padding:13px 20px}
+.pick .cx-table tbody th{font:700 20px var(--font);width:auto;color:var(--ink)}
+.pick .cx-table td b{font-family:var(--font);white-space:normal}
+.pick .cx-table td.win b{color:var(--blue-d)}
+.pick-note{margin:14px 0 0;font-size:19px;color:var(--ink-2)}
+
+/* ---------- 16. Tổng kết & hỏi đáp ---------- */
+.fin{display:grid;grid-template-columns:1fr 1fr;gap:36px}
+.fin h3{margin:0 0 14px;font:700 14px var(--font);letter-spacing:.1em;text-transform:uppercase;color:var(--coral-d)}
+.fin .takeaways{gap:12px}
+.fin .takeaways li{grid-template-columns:48px 1fr;padding:14px 20px;gap:2px 16px}
+.fin .takeaways .ic{width:48px;height:48px;border-radius:14px;font:800 22px var(--mono);color:var(--blue)}
+.fin .takeaways b{font-size:23px}
+.fin .takeaways span{font-size:18.5px}
+.qa{display:flex;flex-direction:column;gap:10px}
+.qa details{border-radius:16px;background:var(--card-a);border:1px solid var(--line);box-shadow:var(--shadow);padding:0}
+.qa summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:12px;padding:13px 18px;font-size:20px;font-weight:700}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::before{content:"?";flex:none;width:30px;height:30px;border-radius:9px;display:grid;place-items:center;font:700 17px var(--mono);background:var(--coral-t);color:var(--coral-d)}
+.qa details[open] summary::before{content:"A";background:var(--blue);color:#fff}
+.qa details p{margin:0;padding:0 18px 14px 60px;font-size:18.5px;line-height:1.5;color:var(--ink-2)}
+.fin-foot{position:absolute;left:0;right:0;bottom:-6px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.apps-row{display:flex;flex-wrap:wrap;gap:8px}
+.apps-row .chip{height:32px;font-size:14.5px}
+
+/* hiện lần lượt các hàng "mong muốn → luật" */
+.id-sc.on .rl{animation:rise .55s var(--ease) both}
+.id-sc.on .rl:nth-child(2){animation-delay:.12s}.id-sc.on .rl:nth-child(3){animation-delay:.24s}.id-sc.on .rl:nth-child(4){animation-delay:.36s}
+@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+/* bìa */
+/* ---------- Slide 1: bìa ---------- */
+.sl-cover .title-block{position:absolute;left:96px;right:96px;top:436px;text-align:center;display:flex;flex-direction:column;align-items:center}
+.kicker{margin:0 0 14px;display:inline-flex;align-items:center;gap:10px;font-size:17px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
+.kicker::before,.kicker::after{content:"";width:34px;height:2px;background:currentColor;opacity:.35}
+.hero-title{margin:0;font-size:60px;font-weight:800;line-height:1.16;letter-spacing:-.03em;text-wrap:balance}
+.hero-title .ht-b{color:var(--blue)}
+.hero-sub{margin:14px 0 0;font-size:24px;color:var(--muted)}
+.members{margin-top:40px;display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+.members div{display:flex;align-items:baseline;gap:10px;padding:12px 18px;border-radius:14px;background:rgba(255,255,255,.82);border:1px solid var(--line)}
+.members span{font-size:14px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.members b{font-size:20px;font-weight:600}
+
+
+/* ---- tinh chỉnh kích thước ---- */
+.cx-table td b.vn{font-family:var(--font)}
+.cxs .cx-table{font-size:22px}
+.cxs .cx-table th,.cxs .cx-table td{padding:15px 22px}
+.cxs .cx-table td small{font-size:17.5px;margin-top:3px}
+.cxs .cx-table tbody th{font-size:24px;width:140px}
+.cxs{gap:22px}
+.cxs-h{font:700 19px var(--font);text-transform:none;letter-spacing:.005em;margin-bottom:10px}
+.cxs-h sub{font-size:.7em}
+.sp3 > div{padding:18px 22px}
+.sp3 b{font-size:32px;margin:4px 0}
+.sp3 small{font-size:19px;line-height:1.45}
+.sp3 span{font-size:15px}
+.to-col{padding:30px 36px}
+.to-col ul{gap:22px}
+.to-col li{font-size:23px}
+.to-col li b{font-size:27px;margin-bottom:2px}
+.to-col li small{font-size:21px;line-height:1.45}
+.pick .cx-table{font-size:23px}
+.pick .cx-table th,.pick .cx-table td{padding:20px 26px}
+.pick .cx-table td small{font-size:18.5px}
+.pick .cx-table tbody th{font-size:23px}
+.pick-note{font-size:22px;margin-top:20px}
+
+/* ---- bản rút gọn ---- */
+.id-t h3 em{font-style:normal;color:var(--blue)}
+.id-t h3{font-size:38px}
+.id-t .big{font-size:24px;padding:16px 22px}
+.id-t p{font-size:24px}
+.lvs{display:flex;flex-direction:column;gap:14px}
+.lv{display:grid;grid-template-columns:110px 1fr auto;align-items:baseline;gap:14px;padding:16px 24px;border-radius:18px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow)}
+.lv span{font:700 16px var(--font);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.lv b{font:800 38px var(--font);color:var(--blue-d);letter-spacing:-.02em}
+.lv small{font-size:20px;color:var(--muted)}
+.lv.hot{background:var(--red-t);border-color:rgba(229,72,77,.4)}
+.lv.hot b{color:var(--red-d)}
+.lvs .concl{margin:6px 0 0;font-size:24px}
+.lv-pane p{font-size:26px}
+.def .rules{gap:26px}
+.def .rules li{font-size:27px}
+.def .rules li small{display:inline;margin-left:8px;font-size:20px}
+.p2-note{font-size:22px;color:var(--ink-2)}
+.to-col{justify-content:center}
+.to-col li b{font-size:30px}
+.to-col li small{font-size:23px}
+
+/* ---- Hạn chế & ứng dụng (gộp) ---- */
+.walk-tabs button{padding:0 8px}
+.limapp{display:grid;grid-template-columns:1fr 520px;gap:36px;align-items:start;padding-top:6px}
+.hl-h,.hl-use h3,.hl-good h3{font:800 22px var(--font);margin:0 0 12px;color:var(--ink)}
+.hl-row{display:grid;grid-template-columns:44px 1fr 250px;gap:16px;align-items:center;background:#fff;border:1px solid var(--line-2);border-radius:16px;padding:14px 18px;margin-bottom:12px;box-shadow:0 1px 3px rgba(26,29,41,.05)}
+.hl-row .n{width:36px;height:36px;border-radius:10px;background:var(--blue-t);color:var(--blue-d);display:grid;place-items:center;font:800 18px var(--font)}
+.hl-row h4{margin:0 0 3px;font:800 22px var(--font);color:var(--ink)}
+.hl-row p{margin:0;font:400 18px/1.4 var(--font);color:var(--muted)}
+.hl-row p b{color:var(--ink)}
+.hl-row .alt{background:#E8F7EF;border-radius:12px;padding:8px 12px;display:flex;flex-direction:column;gap:1px}
+.hl-row .alt span{font:700 12px var(--font);letter-spacing:.08em;text-transform:uppercase;color:#1E8E5A}
+.hl-row .alt b{font:800 18px var(--font);color:var(--ink)}
+.hl-row .alt small{font:400 14px var(--font);color:var(--muted)}
+.hl-good{padding:20px 24px;margin-bottom:18px}
+.hl-good ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.hl-good li{display:flex;flex-direction:column;font:700 20px var(--font);color:var(--ink)}
+.hl-good li small{font:400 16px var(--font);color:var(--muted)}
+.hl-use h4{margin:10px 0 8px;font:700 13px var(--font);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.hl-chips{display:flex;flex-wrap:wrap;gap:8px}
+.hl-chips span{background:#fff;border:1px solid var(--line-2);border-radius:999px;padding:7px 14px;font:700 16px var(--font);color:var(--blue-d)}
+.hl-chips.fs span{color:#1E8E5A}
+/* ---- Độ phức tạp: dải không gian ---- */
+.cx-space{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
+.cx-space>div{background:#fff;border:1px solid var(--line-2);border-radius:14px;padding:12px 16px}
+.cx-space span{display:block;font:700 12px var(--font);letter-spacing:.08em;text-transform:uppercase;color:var(--coral-d,#C4492A);margin-bottom:4px}
+.cx-space p{margin:0;font:400 18px/1.4 var(--font);color:var(--ink)}
+
 </style>
 </head>
 <body>
@@ -786,7 +1079,6 @@ body.idle #toolbar{opacity:.18}
   <div id="deco" aria-hidden="true"></div>
   <main id="deck" aria-roledescription="bài trình chiếu" aria-label="B-Tree: cấu trúc, cải tiến và ứng dụng">
 
-<!-- ============================ 1. BÌA ============================ -->
 <section class="slide sl-cover" data-title="B-Tree — Cấu trúc, cải tiến &amp; ứng dụng" data-section="Mở đầu" data-particles="btree" data-glyph="title">
   <div class="pt-anchor" style="left:250px;top:62px;width:1100px;height:350px"></div>
   <div class="title-block">
@@ -799,122 +1091,102 @@ body.idle #toolbar{opacity:.18}
   </div>
 </section>
 
-<!-- ============================ 2. MỤC LỤC ============================ -->
-<section class="slide" data-title="Mục lục" data-section="Mục lục" data-glyph="list">
-  <h2 class="s-title st">Mục lục: <em>8 chặng</em> đi qua B-tree</h2>
-  <div class="roadmap">
-    <svg class="road-path" viewBox="0 0 1408 556" aria-hidden="true"><path d="M161 115 H1247 C1400 115 1400 441 1247 441 H161"/></svg>
-    <button class="road st" data-go="3" style="grid-area:1/1"><span class="r-n">01</span><b>Bài toán</b><small>Dữ liệu trên đĩa — vì sao cây phải thấp</small><i>slide 3</i></button>
-    <button class="road st" data-go="4" style="grid-area:1/2"><span class="r-n">02</span><b>Ý tưởng</b><small>Định nghĩa &amp; nguyên lý “node béo”</small><i>slide 4–5</i></button>
-    <button class="road st" data-go="6" style="grid-area:1/3"><span class="r-n">03</span><b>Minh họa</b><small>Search · Insert · Delete · Trace · Visualizer</small><i>slide 6–11</i></button>
-    <button class="road st" data-go="12" style="grid-area:1/4"><span class="r-n">04</span><b>Code</b><small>Cài đặt Python &amp; chạy thử</small><i>slide 12–13</i></button>
-    <button class="road st" data-go="14" style="grid-area:2/4"><span class="r-n">05</span><b>Độ phức tạp</b><small>Thời gian · không gian · hạn chế</small><i>slide 14–16</i></button>
-    <button class="road st" data-go="17" style="grid-area:2/3"><span class="r-n">06</span><b>Cải tiến &amp; Ứng dụng</b><small>B+, B*, B-link, Bε · DB &amp; FS</small><i>slide 17–18</i></button>
-    <button class="road st" data-go="19" style="grid-area:2/2"><span class="r-n">07</span><b>Leaderboard</b><small>Bảng xếp hạng người chơi trong game</small><i>slide 19</i></button>
-    <button class="road st" data-go="20" style="grid-area:2/1"><span class="r-n">08</span><b>Cảm ơn</b><small>Lời cảm ơn · Hỏi đáp</small><i>slide 20</i></button>
-  </div>
-</section>
-
-<!-- ============================ 3. BÀI TOÁN ============================ -->
-<section class="slide" data-title="Bài toán: dữ liệu nằm trên đĩa" data-section="Bài toán" data-particles="disk" data-ctrl="problem" data-glyph="disk">
-  <h2 class="s-title st">Bài toán: dữ liệu <em>nằm trên đĩa</em></h2>
-  <div class="pt-anchor" style="left:1080px;top:30px;width:420px;height:250px"></div>
-  <div class="s-body prob">
+<section class="slide" data-title="Bài toán: tìm nhanh trong dữ liệu trên đĩa" data-section="Bài toán" data-ctrl="problem" data-glyph="disk">
+  <h2 class="s-title st">Bài toán: tìm nhanh trong dữ liệu <em>nằm trên đĩa</em></h2>
+  <div class="s-body prob2">
     <ul class="facts">
-      <li class="st"><span class="tag t-red">Vấn đề</span><p>Đọc đĩa chậm hơn RAM <b>hàng nghìn – hàng triệu lần</b>. BST/AVL cao ≈ log₂n ⇒ <b>1 tỷ khóa ≈ 30 lần đọc đĩa</b>.</p></li>
-      <li class="st"><span class="tag">Đầu vào</span><p>Tập khóa có thứ tự + thao tác <code>search</code> · <code>insert</code> · <code>delete</code> · <code>range</code>.</p></li>
-      <li class="st"><span class="tag">Đầu ra</span><p>Vị trí khóa <code>(node, index)</code> hoặc <code>null</code>; cây luôn cân bằng.</p></li>
-      <li class="st"><span class="tag t-green">Mục tiêu</span><p>Giảm chiều cao cây ⇒ <b>giảm số lần đọc đĩa</b>.</p></li>
+      <li class="st"><span class="tag">Đầu vào</span><p>Rất nhiều khóa (số) lưu trên đĩa + lệnh <code>search</code> · <code>insert</code> · <code>delete</code>.</p></li>
+      <li class="st"><span class="tag t-green">Đầu ra</span><p>Có tìm thấy không (ở đâu); dữ liệu vẫn xếp đúng thứ tự.</p></li>
+      <li class="st"><span class="tag t-red">Vấn đề</span><p>Đọc đĩa chậm hơn RAM hàng nghìn lần ⇒ cái tốn nhất là <b>số lần đọc đĩa</b>.</p></li>
     </ul>
-    <div class="prob-viz">
-      <figure class="card viz st">
-        <div class="viz-head"><div class="viz-cap" data-cap>BST “cao lêu nghêu” <span>· 8 tầng</span></div><button class="btn sm" data-toggle>Co lại thành B-tree →</button></div>
-        <svg data-bst viewBox="0 0 640 400" role="img" aria-label="So sánh chiều cao BST và B-tree cùng 15 khóa"></svg>
-        <p class="viz-foot">1 tỷ khóa: BST ≥ <b>30</b> tầng · B-tree t = 1000 chỉ ≤ <b>3</b> tầng</p>
-      </figure>
-    </div>
-  </div>
-</section>
-
-<!-- ============================ 4. ĐỊNH NGHĨA ============================ -->
-<section class="slide" data-title="Định nghĩa B-tree bậc t" data-section="Ý tưởng" data-glyph="tree">
-  <h2 class="s-title st">Định nghĩa: B-tree <em>bậc tối thiểu t ≥ 2</em></h2>
-  <div class="s-body def">
-    <ol class="rules">
-      <li class="st"><b>Số khóa:</b> mỗi node (trừ gốc) có từ <code>t−1</code> đến <code>2t−1</code> khóa.</li>
-      <li class="st"><b>Số con:</b> node trong có <code>số khóa + 1</code> con.</li>
-      <li class="st"><b>Thứ tự:</b> khóa trong node tăng dần; khóa ở con thứ i nằm giữa <code>key[i−1]</code> và <code>key[i]</code>.</li>
-      <li class="st"><b>Cân bằng:</b> mọi lá có <b>cùng độ sâu</b>.</li>
-    </ol>
-    <figure class="card def-fig st" data-morph="trace-tree">
-      <div class="fig-head"><span class="pill">t = 2</span><span class="muted">mỗi node 1 … 3 khóa · 2 … 4 con · ⇔ “bậc m = 4” (Knuth, cây 2-3-4)</span></div>
-      <svg data-def viewBox="0 0 740 440" role="img" aria-label="Cây B-tree t bằng 2: gốc 10, 20; các lá 5 6 7, 12 17, 30"></svg>
+    <figure class="card p2-r st">
+      <p class="p2-cap">Tìm 1 khóa trong 1 tỷ khóa · mỗi ô = 1 lần đọc đĩa</p>
+      <div class="reads">
+        <h4>Cây nhị phân (BST) <small>1 khóa / node</small></h4>
+        <div class="sq-grid" aria-hidden="true"></div><div class="num">30<small>lần đọc</small></div>
+      </div>
+      <div class="reads">
+        <h4>B-tree <small>~1000 khóa / node</small></h4>
+        <div class="sq-grid blue" aria-hidden="true"></div><div class="num b">≤ 3<small>lần đọc</small></div>
+      </div>
+      <p class="p2-note">Mục tiêu của B-tree: <b>ít lần đọc đĩa nhất</b>.</p>
     </figure>
   </div>
 </section>
 
-<!-- ============================ 5. Ý TƯỞNG — slide là một B-tree node ============================ -->
-<section class="slide" data-title="Ý tưởng cốt lõi" data-section="Ý tưởng" data-ctrl="idea" data-glyph="idea" data-nodeco>
-  <h2 class="s-title t85 st">Ý tưởng cốt lõi: <em>node béo, cây thấp</em></h2>
-  <div class="s-body ic5">
-    <svg class="ic5-wire" viewBox="0 0 1408 690" preserveAspectRatio="none" aria-hidden="true"><path class="glow"/><path class="core"/><circle r="7"/></svg>
-    <div class="ic5-root" data-morph="trace-tree" role="tablist" aria-label="Ba ý tưởng">
-      <button class="ic5-key" role="tab" data-k="0"><i>01</i><b><em class="ck">✓</em>Node béo</b><span class="sm">1 page = hàng trăm khóa</span></button>
-      <button class="ic5-key" role="tab" data-k="1"><i>02</i><b><em class="ck">✓</em>Mọc từ gốc</b><span class="sm">luôn cân bằng</span></button>
-      <button class="ic5-key" role="tab" data-k="2"><i>03</i><b><em class="ck">✓</em>Tách chủ động</b><span class="sm">1 lượt, không quay lui</span></button>
-      <i class="ic5-dot" style="left:.9%"></i><i class="ic5-dot" style="left:33.33%"></i><i class="ic5-dot" style="left:66.67%"></i><i class="ic5-dot" style="left:99.1%"></i>
-    </div>
-    <div class="ic5-prog" aria-hidden="true"><i></i><i></i><i></i></div>
-
-    <div class="ic5-scene" data-sc="0">
-      <div class="ic5-text">
-        <span class="ey">Khóa 01 · Node béo</span>
-        <h3>Một lần đọc đĩa = cả một page 4–16 KB</h3>
-        <p>Nhét hàng trăm khóa vào một page ⇒ mỗi lần đọc đi được rất xa, cây rất thấp.</p>
-        <div class="ic5-wow"><span data-wow>30</span> → <span data-wow2>3</span><small>lần đọc đĩa cho 1 tỷ khóa</small></div>
+<section class="slide" data-title="Ý tưởng: một node = một trang đĩa" data-section="Ý tưởng" data-ctrl="idea" data-glyph="idea">
+  <h2 class="s-title st">Ý tưởng: <em>một node = một trang đĩa</em></h2>
+  <div class="s-body idea">
+    <div class="id-left">
+      <div class="id-prog st" role="tablist" aria-label="Ba bước của ý tưởng">
+        <button data-i="0" role="tab">1 · Trang</button><button data-i="1" role="tab">2 · Đầy</button><button data-i="2" role="tab">3 · Thấp</button>
       </div>
-      <div class="ic5-vis"><svg data-s1 viewBox="0 0 820 500" role="img" aria-label="BST cao 30 tầng so với B-tree 3 tầng, đầu đọc đĩa đếm số lần đọc"></svg></div>
-    </div>
-
-    <div class="ic5-scene" data-sc="1">
-      <div class="ic5-text">
-        <span class="ey">Khóa 02 · Mọc từ gốc</span>
-        <h3>Node đầy thì tách đôi, khóa giữa đi lên cha</h3>
-        <p>Cây không bao giờ mọc thêm lá sâu hơn — nó cao lên bằng cách sinh <b>gốc mới ở trên</b>.</p>
-        <div class="ic5-wow txt">Mọi lá luôn cùng độ sâu<small>⇒ cân bằng tuyệt đối, không cần xoay cây</small></div>
-      </div>
-      <div class="ic5-vis"><svg data-s2 viewBox="0 0 820 500" role="img" aria-label="Chèn lần lượt các khóa, node đầy tách đôi, cây cao thêm từ phía trên"></svg></div>
-    </div>
-
-    <div class="ic5-scene" data-sc="2">
-      <div class="ic5-text">
-        <span class="ey">Khóa 03 · Tách chủ động</span>
-        <h3>Gặp node đầy là tách ngay — chỉ một lượt gốc → lá</h3>
-        <p>Tách trước khi bước xuống nên khi tới lá luôn còn chỗ; không phải quay lại sửa cha.</p>
-        <div class="ic5-wow"><span data-wow3>0</span> lần quay lui<small>so với tách bị động phải đi ngược lên</small></div>
-      </div>
-      <div class="ic5-vis"><svg data-s3 viewBox="0 0 820 500" role="img" aria-label="So sánh tách bị động 6 bước và tách chủ động 3 bước khi chèn khóa 24"></svg></div>
-    </div>
-
-    <div class="ic5-scene ic5-final" data-sc="3">
-      <svg class="fo-tree" data-ftree viewBox="0 0 1408 322" role="img" aria-label="Cây fanout: số tầng và số node mỗi tầng"></svg>
-      <div class="fo-bar">
-        <div class="fo-sl">
-          <label class="fo-row" for="fo-fan"><span>Fanout</span><input id="fo-fan" type="range" min="0" max="6" step="1" value="3"><output data-fo-fan>100</output></label>
-          <label class="fo-row" for="fo-lv"><span>Số tầng</span><input id="fo-lv" type="range" min="1" max="4" step="1" value="3"><output data-fo-lv>3</output></label>
+      <div class="id-txt st">
+        <div class="id-t" data-t="0">
+          <span class="ey">Bước 1</span>
+          <h3>Đĩa đọc theo <em>trang</em>: 1 khóa hay cả trang đều tốn 1 lần đọc</h3>
+          <div class="big">BST bỏ 1 khóa vào mỗi trang ⇒ phí gần hết.</div>
         </div>
-        <div class="fo-out">
-          <div class="fo-res" data-fo-res aria-live="polite">1 triệu</div>
-          <button class="btn sm" data-fo-preset>Thử: 100 × 3</button>
-          <div class="fo-exact" data-fo-exact>100<sup>3</sup> = 1.000.000 khóa</div>
+        <div class="id-t" data-t="1">
+          <span class="ey">Bước 2</span>
+          <h3>Vậy nhét <em>nhiều khóa</em> vào mỗi trang: 1 node = 1 trang</h3>
+          <div class="big">Mỗi lần đọc loại được hàng trăm nhánh, không chỉ một nửa.</div>
+        </div>
+        <div class="id-t" data-t="2">
+          <span class="ey">Bước 3</span>
+          <h3>Node nhiều khóa ⇒ cây <em>thấp</em> ⇒ ít lần đọc</h3>
+          <p>Cùng 15 khóa: BST cao 4 tầng, B-tree chỉ 2 tầng.</p>
+          <div class="big">1 tỷ khóa: 30 tầng → 3 tầng.</div>
         </div>
       </div>
-      <p class="fo-cap">Fanout 100 × 3 tầng ≈ <b>1 triệu khóa</b> — thêm 1 tầng là <b>×100</b>.</p>
+    </div>
+    <div class="id-vis st">
+      <div class="id-sc" data-sc="0">
+        <div class="card pg-card">
+          <div class="pg-head"><b>1 trang đĩa</b><span data-pgn>BST: 1 khóa / trang</span></div>
+          <div class="pg" data-pg aria-hidden="true"></div>
+          <p class="pg-foot" data-pgf></p>
+        </div>
+      </div>
+      <div class="id-sc" data-sc="2">
+        <figure class="card cmp-card"><div class="cmp-head"><b>BST <small>15 khóa · 4 tầng</small></b><span class="cmp-reads">tìm 11: đọc <b data-r="0">0</b> node</span></div><svg class="tree-svg" data-bst viewBox="0 0 800 300" role="img" aria-label="BST 15 khóa cao 4 tầng"></svg></figure>
+        <figure class="card cmp-card bt"><div class="cmp-head"><b>B-tree <small>15 khóa · 2 tầng</small></b><span class="cmp-reads">tìm 11: đọc <b data-r="1">0</b> node</span></div><svg class="tree-svg" data-bt viewBox="0 0 800 230" role="img" aria-label="B-tree 15 khóa cao 2 tầng"></svg></figure>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ============================ 6. SEARCH ============================ -->
+<section class="slide" data-title="Định nghĩa B-tree bậc t" data-section="Ý tưởng" data-ctrl="defn" data-glyph="tree">
+  <h2 class="s-title st">B-tree <em>bậc t</em> = 3 luật</h2>
+  <div class="s-body panes">
+    <div class="pane def on" data-p="0">
+      <ol class="rules">
+        <li class="st"><b>Không quá đầy, không quá vơi:</b> mỗi node có <code>t − 1</code> … <code>2t − 1</code> khóa.<small>(gốc được ít hơn)</small></li>
+        <li class="st"><b>Xếp thứ tự:</b> khóa trong node tăng dần; <code>k</code> khóa ⇒ <code>k + 1</code> con.</li>
+        <li class="st"><b>Cân bằng:</b> mọi lá nằm <b>cùng độ sâu</b>.</li>
+      </ol>
+      <figure class="card def-fig st">
+        <div class="fig-head"><span class="pill">t = 2</span><span class="muted">mỗi node có 1 … 3 khóa</span></div>
+        <svg class="tree-svg" data-def viewBox="0 0 740 340" role="img" aria-label="Cây B-tree t bằng 2: gốc 10, 20; các lá 5 6 7, 12 17, 30"></svg>
+        <div class="legend"><span><i style="background:var(--red-t);border:2px solid var(--red)"></i>đầy: 2t − 1 = 3 khóa</span><span><i style="background:var(--coral-t);border:2px dashed var(--coral)"></i>tối thiểu: t − 1 = 1 khóa</span></div>
+      </figure>
+    </div>
+    <div class="pane lv-pane" data-p="1">
+      <div>
+        <h3>Vì sao cây rất thấp?</h3>
+        <p>Mỗi node có ≥ t con ⇒ <b>mỗi tầng nhiều gấp t lần</b> tầng trên.</p>
+        <div class="formula">h ≤ log<sub>t</sub>((n + 1) / 2)</div>
+      </div>
+      <div class="lvs">
+        <div class="lv st"><span>tầng 1</span><b>≥ 2 nghìn</b><small>khóa</small></div>
+        <div class="lv st"><span>tầng 2</span><b>≥ 2 triệu</b><small>khóa</small></div>
+        <div class="lv st hot"><span>tầng 3</span><b>≥ 2 tỷ</b><small>khóa</small></div>
+        <p class="concl">t = 1000: 1 tỷ khóa chỉ cần <b>≤ 3 tầng</b> = ≤ 3 lần đọc đĩa.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="slide" data-title="Search" data-section="Minh họa" data-ctrl="search" data-glyph="search">
   <h2 class="s-title st">Search: <em>một đường</em> từ gốc xuống lá</h2>
   <div class="s-body op">
@@ -934,78 +1206,33 @@ body.idle #toolbar{opacity:.18}
   </div>
 </section>
 
-<!-- ============================ 7. INSERT ============================ -->
-<section class="slide" data-title="Insert: tách node đầy" data-section="Minh họa" data-ctrl="insert" data-glyph="insert">
-  <h2 class="s-title st">Insert: <em>tách node đầy</em> trên đường xuống</h2>
-  <div class="s-body op">
-    <div class="op-text">
-      <ol class="algo">
-        <li class="st">Gốc đầy ⇒ tạo gốc mới rồi <code>split</code> ⇒ cây <b>cao thêm 1</b>.</li>
-        <li class="st">Đi xuống; gặp con đầy ⇒ <code>split_child</code> <b>trước</b> khi vào.</li>
-        <li class="st">Chèn khóa vào lá — lá luôn còn chỗ.</li>
-      </ol>
-      <div class="stat st"><span>Split</span><b>khóa giữa lên cha, hai nửa tách đôi</b></div>
-    </div>
-    <figure class="card tree-card st" data-morph="trace-tree">
-      <div class="tc-bar"><div class="seg" role="group" aria-label="Chọn ví dụ"><button class="btn sm" data-demo="child">Chèn 17 · tách con</button><button class="btn sm" data-demo="root">Chèn 6 · tách gốc</button></div><div class="tc-meter">Số lần tách <b data-splits>0</b></div></div>
-      <svg class="tree-svg" viewBox="0 0 860 460" role="img" aria-label="Minh họa chèn và tách node"></svg>
-      <p class="tc-status" data-status aria-live="polite">&nbsp;</p>
-    </figure>
-  </div>
+<section class="slide" data-title="Insert: tách trước, chèn sau" data-section="Minh họa" data-ctrl="insert" data-glyph="insert">
+  <h2 class="s-title st">Insert: <em>tách trước</em>, chèn sau</h2>
+  <div class="s-body walk walk-ins st" data-walk></div>
 </section>
 
-<!-- ============================ 8. DELETE ============================ -->
-<section class="slide" data-title="Delete: 3 trường hợp" data-section="Minh họa" data-ctrl="delete" data-glyph="delete">
-  <h2 class="s-title st">Delete: <em>3 trường hợp</em></h2>
-  <div class="s-body del3">
-    <article class="case st" data-case="0">
-      <header><span class="case-n">TH1</span><h3>Khóa ở lá</h3></header>
-      <p>Xóa trực tiếp — lá vẫn còn ≥ t−1 khóa.</p>
-      <svg class="mini-svg" viewBox="0 0 420 250" role="img" aria-label="Xóa khóa ở lá"></svg>
-      <p class="case-note" data-note>&nbsp;</p>
-    </article>
-    <article class="case st" data-case="1">
-      <header><span class="case-n">TH2</span><h3>Khóa ở node trong</h3></header>
-      <p>Thay bằng predecessor / successor; nếu cả hai con chỉ có t−1 khóa ⇒ gộp hai con.</p>
-      <svg class="mini-svg" viewBox="0 0 420 250" role="img" aria-label="Xóa khóa ở node trong"></svg>
-      <p class="case-note" data-note>&nbsp;</p>
-    </article>
-    <article class="case st" data-case="2">
-      <header><span class="case-n">TH3</span><h3>Con chỉ có t−1 khóa</h3></header>
-      <p>Trước khi đi xuống: mượn từ anh em (xoay qua cha) hoặc gộp với anh em + khóa của cha.</p>
-      <svg class="mini-svg" viewBox="0 0 420 250" role="img" aria-label="Mượn khóa từ anh em"></svg>
-      <p class="case-note" data-note>&nbsp;</p>
-    </article>
-  </div>
-</section>
-
-<!-- ============================ 9. TRACE CHÈN ============================ -->
-<section class="slide" data-title="Trace chèn 8 khóa" data-section="Minh họa" data-ctrl="traceIns" data-glyph="steps" data-dim=".6">
-  <h2 class="s-title st">Trace chèn <em>(t = 2, tối đa 3 khóa/node)</em></h2>
-  <div class="s-body trace">
-    <div class="tr-side">
-      <div class="seq st" data-seq></div>
-      <div class="tr-note card st"><span class="tr-step" data-stepno></span><p data-note></p></div>
-      <div class="tr-ctrl st"><button class="btn icon" data-prev aria-label="Bước trước"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><div class="tr-dots" data-dots></div><button class="btn primary icon" data-next aria-label="Bước sau"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button></div>
-    </div>
-    <figure class="card tree-card big st" data-morph="trace-tree"><svg class="tree-svg" viewBox="0 0 900 600" role="img" aria-label="Cây sau từng bước chèn"></svg></figure>
-  </div>
-</section>
-
-<!-- ============================ 10. TRACE XÓA ============================ -->
-<section class="slide" data-title="Trace xóa 6, 12, 30" data-section="Minh họa" data-ctrl="traceDel" data-glyph="steps" data-dim=".6">
-  <h2 class="s-title st">Trace xóa <em>trên cây vừa dựng</em></h2>
-  <div class="s-body trace rev">
-    <figure class="card tree-card big st" data-morph="trace-tree"><svg class="tree-svg" viewBox="0 0 900 600" role="img" aria-label="Cây sau từng bước xóa"></svg></figure>
-    <div class="tr-side">
-      <div class="seq st" data-seq></div>
-      <div class="tr-note card st"><span class="tr-step" data-stepno></span><p data-note></p></div>
-      <div class="tr-ctrl st"><button class="btn icon" data-prev aria-label="Bước trước"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><div class="tr-dots" data-dots></div><button class="btn primary icon" data-next aria-label="Bước sau"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button></div>
+<section class="slide" data-title="Delete: 7 trường hợp, 1 nguyên tắc" data-section="Minh họa" data-ctrl="dmap" data-glyph="delete">
+  <h2 class="s-title st">Delete: <em>7 trường hợp</em>, 1 nguyên tắc</h2>
+  <div class="s-body dmap">
+    <div class="dmap-rule st"><span class="big">≥ t</span><p><b>Trước khi xuống một node, bảo đảm nó có ≥ t khóa.</b> Như vậy xóa xong vẫn hợp lệ, không phải quay lên sửa.</p></div>
+    <div class="dgrid">
+      <button class="dc st" data-go="8" data-case="0"><div class="dc-h"><span class="dc-n">TH1</span><h3>Khóa ở lá</h3></div><dl><dt>Khi</dt><dd>khóa nằm ở lá, lá có ≥ t khóa</dd><dt>Làm</dt><dd>xóa thẳng</dd></dl><span class="go">xem ví dụ →</span></button>
+      <button class="dc g2 st" data-go="8" data-case="1"><div class="dc-h"><span class="dc-n">TH2a</span><h3>Mượn tiền nhiệm</h3></div><dl><dt>Khi</dt><dd>khóa ở node trong; con <b>trái</b> có ≥ t khóa</dd><dt>Làm</dt><dd>thế bằng khóa lớn nhất của con trái, rồi xóa khóa đó ở dưới</dd></dl><span class="go">xem ví dụ →</span></button>
+      <button class="dc g2 st" data-go="8" data-case="2"><div class="dc-h"><span class="dc-n">TH2b</span><h3>Mượn kế nhiệm</h3></div><dl><dt>Khi</dt><dd>con trái chỉ có t − 1; con <b>phải</b> có ≥ t</dd><dt>Làm</dt><dd>thế bằng khóa nhỏ nhất của con phải, rồi xóa khóa đó ở dưới</dd></dl><span class="go">xem ví dụ →</span></button>
+      <button class="dc g2 st" data-go="8" data-case="3"><div class="dc-h"><span class="dc-n">TH2c</span><h3>Gộp hai con</h3></div><dl><dt>Khi</dt><dd>cả hai con đều chỉ có t − 1 khóa</dd><dt>Làm</dt><dd>gộp con trái + khóa + con phải thành 1 node (2t − 1 khóa), rồi xóa trong đó</dd></dl><span class="go">xem ví dụ →</span></button>
+      <button class="dc g3 st" data-go="8" data-case="4"><div class="dc-h"><span class="dc-n">TH3a</span><h3>Xoay từ anh em</h3></div><dl><dt>Khi</dt><dd>khóa ở sâu hơn; con phải xuống chỉ có t − 1, anh em có ≥ t</dd><dt>Làm</dt><dd>khóa của cha xuống con, khóa của anh em lên cha</dd></dl><span class="go">xem ví dụ →</span></button>
+      <button class="dc g3 st" data-go="8" data-case="5"><div class="dc-h"><span class="dc-n">TH3b</span><h3>Gộp với anh em</h3></div><dl><dt>Khi</dt><dd>con xuống chỉ có t − 1 và anh em cũng t − 1</dd><dt>Làm</dt><dd>gộp con + khóa của cha + anh em thành 1 node</dd></dl><span class="go">xem ví dụ →</span></button>
+      <button class="dc g3 st" data-go="8" data-case="6"><div class="dc-h"><span class="dc-n">TH4</span><h3>Gốc rỗng</h3></div><dl><dt>Khi</dt><dd>phép gộp lấy mất khóa cuối cùng của gốc</dd><dt>Làm</dt><dd>bỏ gốc, con duy nhất thành gốc mới ⇒ cây thấp đi 1 tầng</dd></dl><span class="go">xem ví dụ →</span></button>
+      <div class="dc-mem st"><h4>Cách nhớ</h4><p><b>TH1–2:</b> khóa nằm ngay tại node này.<br><b>TH3–4:</b> khóa còn ở sâu hơn; làm đủ t khóa cho con rồi mới xuống.</p></div>
     </div>
   </div>
 </section>
 
-<!-- ============================ 11. VISUALIZER ============================ -->
+<section class="slide" data-title="Delete: các trường hợp qua ví dụ" data-section="Minh họa" data-ctrl="del" data-glyph="delete">
+  <h2 class="s-title st">Delete: <em>xem từng trường hợp</em></h2>
+  <div class="s-body walk st" data-walk></div>
+</section>
+
 <section class="slide" data-title="Visualizer tương tác" data-section="Minh họa" data-ctrl="viz" data-glyph="play" data-dim=".45">
   <h2 class="s-title st">Visualizer <em>tương tác</em></h2>
   <div class="s-body vz">
@@ -1045,7 +1272,6 @@ body.idle #toolbar{opacity:.18}
   </div>
 </section>
 
-<!-- ============================ 12. CODE PYTHON ============================ -->
 <section class="slide" data-title="Code Python" data-section="Code" data-ctrl="code" data-glyph="code" data-dim=".45">
   <h2 class="s-title st">Code Python: <em>search → insert → delete</em></h2>
   <div class="s-body code-l">
@@ -1054,20 +1280,12 @@ body.idle #toolbar{opacity:.18}
       <div class="cw-view"><div class="cw-inner"><pre class="cw-pre"><code data-code="btree"></code></pre></div></div>
     </figure>
     <aside class="code-side">
-      <div class="code-steps st" role="group" aria-label="Khối code">
-        <button class="btn" data-cs="0"><i>1</i>search</button>
-        <button class="btn" data-cs="1"><i>2</i>split_child</button>
-        <button class="btn" data-cs="2"><i>3</i>insert</button>
-        <button class="btn" data-cs="3"><i>4</i>delete</button>
-        <button class="btn" data-cs="4"><i>5</i>_fill · _merge</button>
-        <button class="btn" data-cs="5"><i>6</i>items · show</button>
-      </div>
+      <div class="code-steps st" role="group" aria-label="Khối code"><button class="btn" data-cs="0"><i>1</i>search</button><button class="btn" data-cs="1"><i>2</i>split_child · insert</button><button class="btn" data-cs="2"><i>3</i>delete · _fill · _merge</button><button class="btn" data-cs="3"><i>4</i>items · show</button></div>
       <div class="code-exp card st" data-exp></div>
     </aside>
   </div>
 </section>
 
-<!-- ============================ 13. CHẠY THỬ ============================ -->
 <section class="slide" data-title="Kết quả chạy thử" data-section="Code" data-ctrl="term" data-glyph="term">
   <h2 class="s-title st">Chạy thử: <em>python btree.py</em></h2>
   <div class="s-body term-l">
@@ -1086,9 +1304,8 @@ body.idle #toolbar{opacity:.18}
   </div>
 </section>
 
-<!-- ============================ 14. ĐỘ PHỨC TẠP THỜI GIAN ============================ -->
-<section class="slide" data-title="Độ phức tạp thời gian" data-section="Độ phức tạp" data-ctrl="cx" data-glyph="chart" data-dim=".6">
-  <h2 class="s-title st">Độ phức tạp <em>thời gian</em></h2>
+<section class="slide" data-title="Độ phức tạp thời gian và không gian" data-section="Độ phức tạp" data-ctrl="cx" data-glyph="chart" data-dim=".6">
+  <h2 class="s-title st">Độ phức tạp: <em>thời gian & không gian</em></h2>
   <div class="cx-top st">
     <div class="cx-formula"><span>Chiều cao</span><b>h ≤ log<sub>t</sub>((n + 1) / 2)</b><small>h = số cạnh gốc → lá ⇒ số tầng = số lần đọc đĩa ≤ h + 1<br>vì n ≥ 1 + 2(t−1)(1 + t + … + t<sup>h−1</sup>) = 2t<sup>h</sup> − 1</small></div>
     <div class="seg cx-sw" role="group" aria-label="Chế độ xem"><button class="btn sm on" data-cxv="0">Bảng</button><button class="btn sm" data-cxv="1">Biểu đồ</button></div>
@@ -1103,7 +1320,7 @@ body.idle #toolbar{opacity:.18}
           <tr><th>Delete</th><td><b>O(log n + t)</b><small>xóa ở lá còn dư khóa</small></td><td class="worst"><b>O(t·log<sub>t</sub> n)</b><small>merge/borrow trên cả đường đi; gốc rỗng ⇒ cây thấp đi 1</small></td><td><b>≈ tốt nhất</b><small>merge/borrow hiếm khi xảy ra</small></td></tr>
         </tbody>
       </table>
-      <p class="cx-note">Cả ba thao tác đọc ≤ <b>h + 1 = O(log<sub>t</sub> n)</b> node (mỗi tầng một node) — chính là số lần đọc đĩa.</p>
+      <p class="cx-note">Cả ba thao tác đọc ≤ <b>h + 1 = O(log<sub>t</sub> n)</b> node (mỗi tầng một node) — chính là số lần đọc đĩa.</p><div class="cx-space"><div><span>Không gian</span><p><b>O(n)</b>. Node đầy ≥ 50% ⇒ lãng phí tối đa ~2 lần.</p></div><div><span>Bộ nhớ phụ</span><p><b>O(h)</b> nếu đệ quy, <b>O(1)</b> nếu viết lặp.</p></div><div><span>RAM cần giữ</span><p>Chỉ ≈ <b>h page</b> trên đường gốc → lá.</p></div></div>
     </div>
     <div class="cx-chart-wrap cx-off" data-cxb>
       <div class="cx-sum">
@@ -1119,242 +1336,30 @@ body.idle #toolbar{opacity:.18}
   </div>
 </section>
 
-<!-- ============================ 15. KHÔNG GIAN ============================ -->
-<section class="slide" data-title="Độ phức tạp không gian" data-section="Độ phức tạp" data-ctrl="space" data-glyph="bars">
-  <h2 class="s-title st">Độ phức tạp <em>không gian</em></h2>
-  <div class="s-body space">
-    <ul class="facts">
-      <li class="st"><span class="tag">Tổng</span><p><b>O(n)</b>. Mỗi node (trừ gốc) đầy ≈ ≥ 50% ⇒ lãng phí tối đa khoảng <b>2 lần</b>.</p></li>
-      <li class="st"><span class="tag t-coral">Bộ nhớ phụ</span><p><b>O(h)</b> nếu viết đệ quy, <b>O(1)</b> nếu viết lặp.</p></li>
-      <li class="st"><span class="tag t-green">RAM</span><p>Chỉ cần giữ ≈ <b>h page</b> trên đường đi gốc → lá.</p></li>
-    </ul>
-    <figure class="card fill-fig st">
-      <figcaption>Độ đầy node <span>· t = 4: tối đa 2t−1 = 7 khóa, tối thiểu t−1 = 3</span></figcaption>
-      <div class="fill-rows" data-fill></div>
-      <div class="fill-legend"><span><i style="background:var(--blue)"></i>ô có khóa</span><span><i style="background:var(--blue-t);border:1px solid var(--blue-t2)"></i>ô trống</span><span><i style="background:transparent;border:2px dashed var(--coral)"></i>ngưỡng tối thiểu t−1 = 3 (≈ ½)</span></div>
-      <div class="ram"><span>RAM chỉ giữ:</span><span class="pg">gốc</span><span class="pg">tầng 2</span><span class="pg">lá</span><span class="muted">= h page · phần còn lại nằm trên đĩa</span></div>
-    </figure>
-  </div>
-</section>
-
-<!-- ============================ 16. HẠN CHẾ ============================ -->
-<section class="slide" data-title="Hạn chế của B-tree" data-section="Độ phức tạp" data-glyph="limit" data-ctrl="lim">
-  <h2 class="s-title st">Hạn chế: khi nào <em>không nên</em> dùng B-tree?</h2>
-  <div class="s-body lim st">
-    <div class="lim-stage" data-stage>
-
-      <article class="lim-scene" data-scene="0">
-        <div class="ls-text">
-          <span class="ls-no">Hạn chế 01 / 04<i><b style="width:25%"></b></i></span>
-          <h3>Ghi <em>nhiều hơn</em> đọc</h3>
-          <p>Log, IoT, số liệu đo: sửa vài byte cũng phải ghi lại <b>cả page 4–16 KB</b>; tách node rải các lần ghi ra nhiều chỗ ngẫu nhiên trên đĩa.</p>
-          <p class="ls-alt"><span>Thay bằng</span><b>LSM-tree</b> — RocksDB, Cassandra, LevelDB: gom ghi trong RAM rồi đổ xuống đĩa tuần tự.</p>
-        </div>
-        <div class="ls-vis"><svg viewBox="0 0 640 400" role="img" aria-label="Các lệnh ghi nhỏ bay vào một page 16 KB, page phải ghi lại toàn bộ">
-          <text class="lv-t h" x="20" y="34">Sửa vài byte…</text>
-          <g transform="translate(390 64)">
-            <text class="lv-t r" x="100" y="-14" text-anchor="middle">…ghi lại cả page!</text>
-            <rect class="lv-box" width="200" height="200" rx="14"/>
-            <line class="lv-line" x1="14" x2="186" y1="34" y2="34"/><line class="lv-line" x1="14" x2="186" y1="60" y2="60"/><line class="lv-line" x1="14" x2="186" y1="86" y2="86"/><line class="lv-line" x1="14" x2="186" y1="112" y2="112"/><line class="lv-line" x1="14" x2="186" y1="138" y2="138"/><line class="lv-line" x1="14" x2="186" y1="164" y2="164"/>
-            <rect class="lv-flash" width="200" height="200" rx="14"/>
-            <text class="lv-t b" x="100" y="226" text-anchor="middle">page 16 KB</text>
-          </g>
-          <g class="lv-w lv-chip" style="--y:74px;animation-delay:0s"><rect width="74" height="30" rx="8"/><text x="37" y="16" text-anchor="middle" dominant-baseline="central">+4 B</text></g>
-          <g class="lv-w lv-chip" style="--y:114px;animation-delay:-.8s"><rect width="74" height="30" rx="8"/><text x="37" y="16" text-anchor="middle" dominant-baseline="central">+1 row</text></g>
-          <g class="lv-w lv-chip" style="--y:154px;animation-delay:-1.6s"><rect width="74" height="30" rx="8"/><text x="37" y="16" text-anchor="middle" dominant-baseline="central">x = 7</text></g>
-          <g class="lv-w lv-chip" style="--y:194px;animation-delay:-2.4s"><rect width="74" height="30" rx="8"/><text x="37" y="16" text-anchor="middle" dominant-baseline="central">+8 B</text></g>
-          <g class="lv-w lv-chip" style="--y:234px;animation-delay:-3.2s"><rect width="74" height="30" rx="8"/><text x="37" y="16" text-anchor="middle" dominant-baseline="central">flag=1</text></g>
-          <g transform="translate(20 306)">
-            <rect class="lv-soft" width="170" height="60" rx="10"/>
-            <text class="lv-t m" x="85" y="31" text-anchor="middle" dominant-baseline="central">RAM · memtable</text>
-            <path class="lv-flow" d="M182,30 H318"/>
-            <rect class="lv-seg" x="330" y="10" width="46" height="40" rx="6" style="animation-delay:0s"/>
-            <rect class="lv-seg" x="384" y="10" width="46" height="40" rx="6" style="animation-delay:.25s"/>
-            <rect class="lv-seg" x="438" y="10" width="46" height="40" rx="6" style="animation-delay:.5s"/>
-            <rect class="lv-seg" x="492" y="10" width="46" height="40" rx="6" style="animation-delay:.75s"/>
-            <rect class="lv-seg" x="546" y="10" width="46" height="40" rx="6" style="animation-delay:1s"/>
-            <text class="lv-t g" x="330" y="76">LSM: ghi tuần tự, theo lô</text>
-          </g>
-        </svg></div>
-        <div class="ls-obj" style="left:7%;top:0"><span>log.txt</span></div>
-        <div class="ls-obj" style="left:44%;top:-4%"><span>IoT · 23,5°C</span></div>
-        <div class="ls-obj" style="right:9%;top:0"><span>UPDATE … SET</span></div>
-        <div class="ls-obj" style="left:32%;top:90%"><span>RocksDB</span></div>
-      </article>
-
-      <article class="lim-scene" data-scene="1">
-        <div class="ls-text">
-          <span class="ls-no">Hạn chế 02 / 04<i><b style="width:50%"></b></i></span>
-          <h3>Dữ liệu nằm <em>gọn trong RAM</em></h3>
-          <p>Không còn lần đọc đĩa nào để tiết kiệm; node béo khiến mỗi lần chèn/xóa phải dời tới <b>2t−1 khóa</b>, code cũng phức tạp hơn.</p>
-          <p class="ls-alt"><span>Thay bằng</span><b>Cây đỏ-đen / AVL</b> (std::map, TreeMap) hoặc <b>skip list</b> (Redis).</p>
-        </div>
-        <div class="ls-vis"><svg viewBox="0 0 640 400" role="img" aria-label="Chèn một khóa vào node béo phải dời nhiều khóa sang phải">
-          <g transform="translate(30 30)">
-            <rect class="lv-soft" width="170" height="84" rx="10"/>
-            <path class="lv-line" style="stroke-opacity:.6;stroke-width:3" d="M20,0 v-10 M50,0 v-10 M80,0 v-10 M110,0 v-10 M140,0 v-10 M20,84 v10 M50,84 v10 M80,84 v10 M110,84 v10 M140,84 v10"/>
-            <text class="lv-t h" x="85" y="44" text-anchor="middle" dominant-baseline="central">RAM</text>
-          </g>
-          <text class="lv-t h" x="236" y="62">Cả cây nằm trong RAM</text>
-          <text class="lv-t" x="236" y="92">⇒ 0 lần đọc đĩa để tiết kiệm</text>
-          <text class="lv-t m" x="40" y="178">node béo · tới 2t−1 khóa</text>
-          <g transform="translate(40 192)">
-            <rect class="lv-box" width="560" height="70" rx="12"/>
-            <path class="lv-line" d="M80,12 V58 M160,12 V58 M240,12 V58 M320,12 V58 M400,12 V58 M480,12 V58"/>
-            <text class="lv-k" x="40" y="36" text-anchor="middle" dominant-baseline="central">10</text>
-            <g class="lv-shift">
-              <text class="lv-k" x="120" y="36" text-anchor="middle" dominant-baseline="central">20</text>
-              <text class="lv-k" x="200" y="36" text-anchor="middle" dominant-baseline="central">30</text>
-              <text class="lv-k" x="280" y="36" text-anchor="middle" dominant-baseline="central">40</text>
-              <text class="lv-k" x="360" y="36" text-anchor="middle" dominant-baseline="central">50</text>
-              <text class="lv-k" x="440" y="36" text-anchor="middle" dominant-baseline="central">60</text>
-            </g>
-            <g class="lv-new"><rect x="86" y="8" width="68" height="54" rx="9" fill="var(--coral-t)" stroke="var(--coral)" stroke-width="2"/><text class="lv-k" x="120" y="36" text-anchor="middle" dominant-baseline="central">15</text></g>
-            <g class="lv-arrows"><text class="lv-t r" x="140" y="-10">→</text><text class="lv-t r" x="220" y="-10">→</text><text class="lv-t r" x="300" y="-10">→</text><text class="lv-t r" x="380" y="-10">→</text><text class="lv-t r" x="460" y="-10">→</text></g>
-          </g>
-          <text class="lv-t" x="40" y="318">Chèn 15 ⇒ dời 5 khóa sang phải</text>
-          <text class="lv-t g" x="40" y="350">Cây đỏ-đen trong RAM: chỉ đổi vài con trỏ</text>
-        </svg></div>
-        <div class="ls-obj" style="left:7%;top:6%"><span>std::map</span></div>
-        <div class="ls-obj" style="left:46%;top:-4%"><span>TreeMap</span></div>
-        <div class="ls-obj" style="right:9%;top:0"><span>Redis ZSET</span></div>
-        <div class="ls-obj" style="left:30%;top:91%"><span>L1 · L2 · RAM</span></div>
-      </article>
-
-      <article class="lim-scene" data-scene="2">
-        <div class="ls-text">
-          <span class="ls-no">Hạn chế 03 / 04<i><b style="width:75%"></b></i></span>
-          <h3>Chỉ tra cứu <em>bằng theo khóa</em></h3>
-          <p>Chỉ cần <code>get</code>/<code>put</code>, không cần thứ tự: B-tree tốn <b>O(log n)</b> trong khi bảng băm chỉ <b>O(1)</b> trung bình.</p>
-          <p class="ls-alt"><span>Thay bằng</span><b>Hash table</b> — nhưng hash <b>không</b> làm được range, ORDER BY, top-k.</p>
-        </div>
-        <div class="ls-vis"><svg viewBox="0 0 640 400" role="img" aria-label="Hash table tới đích sau 1 bước, B-tree đi nhiều bước từ gốc xuống lá">
-          <text class="lv-t h" x="20" y="34">Hash table</text>
-          <text class="lv-t g" x="20" y="60">1 bước · O(1)</text>
-          <g class="lv-chip" transform="translate(40 96)"><rect width="100" height="34" rx="9"/><text x="50" y="18" text-anchor="middle" dominant-baseline="central">get(k)</text></g>
-          <path class="lv-edge" style="stroke-dasharray:6 6" d="M140,113 C180,113 180,262 204,262"/>
-          <rect class="lv-slot" x="205" y="97" width="36" height="30"/><rect class="lv-slot" x="205" y="127" width="36" height="30"/><rect class="lv-slot" x="205" y="157" width="36" height="30"/><rect class="lv-slot" x="205" y="187" width="36" height="30"/><rect class="lv-slot" x="205" y="217" width="36" height="30"/><rect class="lv-slot hit" x="205" y="247" width="36" height="30"/><rect class="lv-slot" x="205" y="277" width="36" height="30"/><rect class="lv-slot" x="205" y="307" width="36" height="30"/>
-          <circle class="lv-dot lv-hd" r="9"/>
-          <line class="lv-line" x1="320" x2="320" y1="20" y2="350" style="stroke-dasharray:4 6"/>
-          <text class="lv-t h" x="344" y="34">B-tree</text>
-          <text class="lv-t b" x="344" y="60">h bước · O(log n)</text>
-          <path class="lv-edge" d="M482,130 L422,194 M482,130 L560,194 M422,230 L392,294 M422,230 L452,294 M560,230 L530,294 M560,230 L590,294"/>
-          <rect class="lv-box" x="437" y="94" width="90" height="36" rx="9"/>
-          <rect class="lv-box" x="387" y="194" width="70" height="36" rx="9"/><rect class="lv-box" x="525" y="194" width="70" height="36" rx="9"/>
-          <rect class="lv-box" x="367" y="294" width="50" height="36" rx="9"/><rect class="lv-box" x="427" y="294" width="50" height="36" rx="9"/><rect class="lv-box" x="505" y="294" width="50" height="36" rx="9"/><rect class="lv-box" x="565" y="294" width="50" height="36" rx="9"/>
-          <circle class="lv-dot lv-td" r="9"/>
-          <text class="lv-t r" x="20" y="384">Nhưng hash không giữ thứ tự ⇒ không range, không ORDER BY</text>
-        </svg></div>
-        <div class="ls-obj" style="left:7%;top:0"><span>get(k)</span></div>
-        <div class="ls-obj" style="left:44%;top:-4%"><span>put(k, v)</span></div>
-        <div class="ls-obj" style="right:9%;top:0"><span>HashMap</span></div>
-        <div class="ls-obj" style="left:31%;top:91%"><span>dict { }</span></div>
-      </article>
-
-      <article class="lim-scene" data-scene="3">
-        <div class="ls-text">
-          <span class="ls-no">Hạn chế 04 / 04<i><b style="width:100%"></b></i></span>
-          <h3>Cần <em>tiết kiệm chỗ</em></h3>
-          <p>Node chỉ bắt buộc đầy ≥ ½ ⇒ thực tế đầy <b>~50–70%</b>. Chèn khóa tăng dần (id tự tăng): nửa trái sau khi tách không bao giờ được lấp đầy lại.</p>
-          <p class="ls-alt"><span>Cải tiến</span><b>B* tree</b> (đầy ≥ ⅔), tách lệch khi chèn tăng dần (InnoDB), nạp hàng loạt (bulk-load).</p>
-        </div>
-        <div class="ls-vis"><svg viewBox="0 0 640 400" role="img" aria-label="Chèn khóa tăng dần: lá cuối liên tục đầy rồi tách, các lá trước chỉ đầy một nửa">
-          <text class="lv-t h" x="18" y="34">Khóa tăng dần: 1, 2, 3, …</text>
-          <rect class="lv-box" x="250" y="76" width="140" height="40" rx="10"/>
-          <text class="lv-k" x="320" y="97" text-anchor="middle" dominant-baseline="central" style="font-size:16px">⋯</text>
-          <path class="lv-edge" d="M262,116 C262,160 89,160 89,196 M300,116 C300,160 243,160 243,196 M340,116 C340,160 397,160 397,196 M378,116 C378,160 551,160 551,196"/>
-          <g transform="translate(18 196)"><rect class="lv-box" width="142" height="44" rx="10"/><rect class="lv-s on" x="6" y="8" width="20" height="28" rx="4"/><rect class="lv-s on" x="28" y="8" width="20" height="28" rx="4"/><rect class="lv-s on" x="50" y="8" width="20" height="28" rx="4"/><rect class="lv-s" x="72" y="8" width="20" height="28" rx="4"/><rect class="lv-s" x="94" y="8" width="20" height="28" rx="4"/><rect class="lv-s" x="116" y="8" width="20" height="28" rx="4"/><text class="lv-t b" x="71" y="72" text-anchor="middle">50%</text></g>
-          <g transform="translate(172 196)"><rect class="lv-box" width="142" height="44" rx="10"/><rect class="lv-s on" x="6" y="8" width="20" height="28" rx="4"/><rect class="lv-s on" x="28" y="8" width="20" height="28" rx="4"/><rect class="lv-s on" x="50" y="8" width="20" height="28" rx="4"/><rect class="lv-s" x="72" y="8" width="20" height="28" rx="4"/><rect class="lv-s" x="94" y="8" width="20" height="28" rx="4"/><rect class="lv-s" x="116" y="8" width="20" height="28" rx="4"/><text class="lv-t b" x="71" y="72" text-anchor="middle">50%</text></g>
-          <g transform="translate(326 196)"><rect class="lv-box" width="142" height="44" rx="10"/><rect class="lv-s on" x="6" y="8" width="20" height="28" rx="4"/><rect class="lv-s on" x="28" y="8" width="20" height="28" rx="4"/><rect class="lv-s on" x="50" y="8" width="20" height="28" rx="4"/><rect class="lv-s" x="72" y="8" width="20" height="28" rx="4"/><rect class="lv-s" x="94" y="8" width="20" height="28" rx="4"/><rect class="lv-s" x="116" y="8" width="20" height="28" rx="4"/><text class="lv-t b" x="71" y="72" text-anchor="middle">50%</text></g>
-          <g transform="translate(480 196)"><rect class="lv-leaf4" width="142" height="44" rx="10"/>
-            <rect class="lv-s" x="6" y="8" width="20" height="28" rx="4"/><rect class="lv-s" x="28" y="8" width="20" height="28" rx="4"/><rect class="lv-s" x="50" y="8" width="20" height="28" rx="4"/><rect class="lv-s" x="72" y="8" width="20" height="28" rx="4"/><rect class="lv-s" x="94" y="8" width="20" height="28" rx="4"/><rect class="lv-s" x="116" y="8" width="20" height="28" rx="4"/>
-            <rect class="lv-g lv-g0" x="6" y="8" width="20" height="28" rx="4"/><rect class="lv-g lv-g1" x="28" y="8" width="20" height="28" rx="4"/><rect class="lv-g lv-g2" x="50" y="8" width="20" height="28" rx="4"/><rect class="lv-g lv-g3" x="72" y="8" width="20" height="28" rx="4"/><rect class="lv-g lv-g4" x="94" y="8" width="20" height="28" rx="4"/><rect class="lv-g lv-g5" x="116" y="8" width="20" height="28" rx="4"/>
-            <text class="lv-t r lv-boom" x="71" y="72" text-anchor="middle">đầy → tách!</text>
-          </g>
-          <g class="lv-pulse"><g class="lv-chip" transform="translate(505 136)"><rect width="92" height="30" rx="8"/><text x="46" y="16" text-anchor="middle" dominant-baseline="central">id++ ↓</text></g></g>
-          <text class="lv-t" x="18" y="322">Tách xong, nửa trái chỉ đầy 50% — và không bao giờ</text>
-          <text class="lv-t" x="18" y="346">được chèn thêm vì id mới luôn lớn hơn.</text>
-          <text class="lv-t r" x="18" y="380">⇒ gần ½ dung lượng index bị bỏ trống</text>
-        </svg></div>
-        <div class="ls-obj" style="left:7%;top:6%"><span>AUTO_INCREMENT</span></div>
-        <div class="ls-obj" style="left:46%;top:-4%"><span>fill factor</span></div>
-        <div class="ls-obj" style="right:9%;top:0"><span>B*: ≥ 2/3</span></div>
-        <div class="ls-obj" style="left:31%;top:91%"><span>50% trống</span></div>
-      </article>
-
-      <article class="lim-scene lim-final" data-scene="4">
-        <div class="lf-wrap">
-          <h3>B-tree <em>mạnh nhất</em> khi…</h3>
-          <div class="lf-row">
-            <div class="lf-card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><circle cx="10" cy="12" r="4"/><path d="M17 16l-4-4"/></svg></span><b>Dữ liệu lớn hơn RAM</b><small>mỗi lần đọc đĩa đều quý ⇒ cây thấp thắng lớn</small></div>
-            <div class="lf-card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16M8 8l-4 4 4 4M16 8l4 4-4 4"/></svg></span><b>Cần thứ tự / range</b><small>ORDER BY, BETWEEN, top-k, prefix</small></div>
-            <div class="lf-card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></span><b>Đọc nhiều hơn ghi</b><small>index của hầu hết hệ quản trị CSDL</small></div>
-          </div>
-        </div>
-        <div class="ls-obj" style="left:7%;top:6%"><span>InnoDB</span></div>
-        <div class="ls-obj" style="right:3%;top:2%"><span>PostgreSQL</span></div>
-        <div class="ls-obj" style="left:6%;top:86%"><span>range [a, b]</span></div>
-        <div class="ls-obj" style="right:9%;top:0"><span>SQLite</span></div>
-      </article>
+<section class="slide" data-title="Vì sao dùng B-tree: được gì, mất gì" data-section="Độ phức tạp" data-glyph="limit">
+  <h2 class="s-title st">Vì sao dùng B-tree? <em>Được gì, mất gì</em></h2>
+  <div class="s-body to2">
+    <div class="to-col up st">
+      <h3><i>+</i>Được gì</h3>
+      <ul>
+        <li><b>Ít lần đọc đĩa</b><small>1 tỷ khóa chỉ ≤ 3 lần.</small></li>
+        <li><b>Luôn cân bằng</b><small>không cần xoay cây, xấu nhất vẫn tốt.</small></li>
+        <li><b>Có thứ tự</b><small>range query, ORDER BY, top-k.</small></li>
+        <li><b>Sửa tại chỗ</b><small>mỗi lần chèn/xóa chỉ chạm ~h trang.</small></li>
+      </ul>
     </div>
-    <div class="lim-foot">
-      <nav class="lim-rail" data-rail aria-label="Các hạn chế">
-        <button data-i="0"><i>01</i>Ghi nhiều</button><button data-i="1"><i>02</i>Vừa RAM</button><button data-i="2"><i>03</i>Chỉ get/put</button><button data-i="3"><i>04</i>Tốn chỗ</button><button data-i="4"><i>✓</i>Kết luận</button>
-      </nav>
-      <span class="lim-hint" data-hint><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="3" width="10" height="18" rx="5"/><path d="M12 7v4"/></svg>Cuộn hoặc nhấn → để đi tiếp</span>
+    <div class="to-col dn st">
+      <h3><i>−</i>Mất gì</h3>
+      <ul>
+        <li><b>Tốn chỗ</b><small>node chỉ đầy ~50–70%.</small></li>
+        <li><b>Ghi cả trang</b><small>sửa vài byte vẫn ghi lại 4–16 KB.</small></li>
+        <li><b>Vô ích nếu dữ liệu nằm trong RAM</b><small>dùng cây đỏ-đen / bảng băm.</small></li>
+        <li><b>Code phức tạp</b><small>tách, gộp, mượn: delete có 7 trường hợp.</small></li>
+      </ul>
     </div>
   </div>
 </section>
 
-<!-- ============================ 17. CẢI TIẾN ============================ -->
-<section class="slide" data-title="Các cải tiến của B-tree" data-section="Cải tiến &amp; Ứng dụng" data-particles="bplus" data-ctrl="improve" data-glyph="plus">
-  <h2 class="s-title st">Các <em>cải tiến</em> của B-tree</h2>
-  <div class="s-body imp">
-    <div class="imp-cards">
-      <button class="imp-card st" data-k="0"><b>B+ tree</b><small>range query</small><span>Dữ liệu chỉ ở lá; lá nối thành danh sách ⇒ range query nhanh, fanout cao hơn.</span></button>
-      <button class="imp-card st" data-k="1"><b>B* tree</b><small>≥ 2/3 đầy</small><span>Node đầy ≥ 2/3; dồn sang anh em trước, tách 2 node thành 3.</span></button>
-      <button class="imp-card st" data-k="2"><b>B-link tree</b><small>Lehman–Yao</small><span>Thêm con trỏ phải ⇒ nhiều tiến trình truy cập đồng thời, ít phải khóa.</span></button>
-      <button class="imp-card st" data-k="3"><b>Bε-tree / Fractal tree</b><small>ghi nhanh</small><span>Buffer ở node trong gom lệnh ghi, xả xuống theo lô.</span></button>
-    </div>
-    <figure class="imp-stage st" data-stage>
-      <div class="pt-anchor" style="left:60px;top:40px;right:60px;bottom:90px"></div>
-      <p class="imp-hint" data-hint>Chọn một thẻ (hoặc nhấn →) để xem minh họa</p>
-      <div class="imp-panel" data-panel="0"><h3>B+ tree <small>range query [12, 36]</small></h3><svg viewBox="0 0 760 470"></svg><p class="imp-cap" data-cap></p></div>
-      <div class="imp-panel" data-panel="1"><h3>B* tree <small>node đầy ≥ 2/3</small></h3><svg viewBox="0 0 760 470"></svg><p class="imp-cap" data-cap></p></div>
-      <div class="imp-panel" data-panel="2"><h3>B-link tree <small>Lehman–Yao, 1981</small></h3><svg viewBox="0 0 760 470"></svg><p class="imp-cap" data-cap></p></div>
-      <div class="imp-panel" data-panel="3"><h3>Bε-tree <small>buffer gom lệnh ghi</small></h3><svg viewBox="0 0 760 470"></svg><p class="imp-cap" data-cap></p></div>
-    </figure>
-  </div>
-</section>
-
-<!-- ============================ 18. ỨNG DỤNG ============================ -->
-<section class="slide" data-title="Ứng dụng thực tế" data-section="Cải tiến &amp; Ứng dụng" data-particles="db" data-glyph="db">
-  <h2 class="s-title st">Ứng dụng: B-tree <em>ở khắp nơi</em></h2>
-  <div class="pt-anchor" style="left:1110px;top:170px;width:390px;height:560px"></div>
-  <div class="s-body apps">
-    <div class="app-group">
-      <h3 class="st">Cơ sở dữ liệu</h3>
-      <div class="tiles">
-        <div class="tile st"><b>MySQL</b><span class="sub">InnoDB</span><small>clustered index là B+ tree</small></div>
-        <div class="tile st"><b>PostgreSQL</b><span class="sub">nbtree</span><small>index mặc định: B-tree kiểu Lehman–Yao</small></div>
-        <div class="tile st"><b>SQLite</b><span class="sub">1 file</span><small>bảng: B+ tree · index: B-tree</small></div>
-        <div class="tile st"><b>MongoDB</b><span class="sub">WiredTiger</span><small>collection &amp; index lưu bằng B-tree</small></div>
-      </div>
-    </div>
-    <div class="app-group">
-      <h3 class="st">Hệ thống tệp</h3>
-      <div class="tiles five">
-        <div class="tile fs st"><b>NTFS</b><span class="sub">Windows</span><small>chỉ mục thư mục: B+ tree</small></div>
-        <div class="tile fs st"><b>ext4</b><span class="sub">HTree</span><small>chỉ mục thư mục dạng cây băm</small></div>
-        <div class="tile fs st"><b>Btrfs</b><span class="sub">Linux</span><small>mọi thứ là B-tree copy-on-write</small></div>
-        <div class="tile fs st"><b>XFS</b><span class="sub">Linux</span><small>B+ tree cho extent &amp; thư mục</small></div>
-        <div class="tile fs st"><b>APFS</b><span class="sub">Apple</span><small>B-tree copy-on-write</small></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================ 19. LEADERBOARD ============================ -->
 <section class="slide" data-title="Ứng dụng: Leaderboard trong game" data-section="Leaderboard" data-ctrl="lb" data-glyph="trophy">
   <h2 class="s-title st">Ứng dụng: <em>Leaderboard trong game</em></h2>
   <div class="s-body lc lb">
@@ -1375,7 +1380,67 @@ body.idle #toolbar{opacity:.18}
   </div>
 </section>
 
-<!-- ============================ 20. CẢM ƠN ============================ -->
+<section class="slide" data-title="Hạn chế và ứng dụng thực tế" data-section="Mở rộng" data-glyph="limit">
+  <h2 class="s-title st">Hạn chế & <em>ứng dụng thực tế</em></h2>
+  <div class="s-body limapp">
+    <div class="hl-l"><h3 class="hl-h st">Không nên dùng khi…</h3><div class="hl-row st"><b class="n">1</b><div class="tx"><h4>Ghi nhiều hơn đọc</h4><p>Log, IoT: sửa vài byte cũng phải ghi lại <b>cả page 4–16 KB</b>.</p></div><div class="alt"><span>Thay bằng</span><b>LSM-tree</b><small>RocksDB, Cassandra</small></div></div><div class="hl-row st"><b class="n">2</b><div class="tx"><h4>Dữ liệu nằm gọn trong RAM</h4><p>Không còn đọc đĩa để tiết kiệm; node béo làm chèn/xóa dời tới <b>2t − 1</b> khóa.</p></div><div class="alt"><span>Thay bằng</span><b>Cây đỏ-đen · skip list</b><small>std::map, Redis</small></div></div><div class="hl-row st"><b class="n">3</b><div class="tx"><h4>Chỉ tra cứu theo khóa</h4><p>Chỉ cần <code>get</code>/<code>put</code>: B-tree <b>O(log n)</b>, hash <b>O(1)</b>.</p></div><div class="alt"><span>Thay bằng</span><b>Hash table</b><small>không làm được range, ORDER BY</small></div></div><div class="hl-row st"><b class="n">4</b><div class="tx"><h4>Cần tiết kiệm chỗ</h4><p>Node chỉ đầy <b>~50–70%</b>; chèn tăng dần để lại nửa node trống.</p></div><div class="alt"><span>Thay bằng</span><b>B* tree · bulk-load</b><small>đầy ≥ 2/3</small></div></div></div>
+    <div class="hl-r">
+      <div class="card hl-good st"><h3>Mạnh nhất khi…</h3><ul><li><b>Dữ liệu lớn hơn RAM</b><small>mỗi lần đọc đĩa đều quý</small></li><li><b>Cần thứ tự / range</b><small>ORDER BY, BETWEEN, top-k</small></li><li><b>Đọc nhiều hơn ghi</b><small>index của hầu hết CSDL</small></li></ul></div>
+      <div class="hl-use st"><h3>Ai đang dùng?</h3><h4>Cơ sở dữ liệu</h4><div class="hl-chips"><span>MySQL InnoDB</span><span>PostgreSQL</span><span>SQLite</span><span>MongoDB WiredTiger</span></div><h4>Hệ thống tệp</h4><div class="hl-chips fs"><span>NTFS</span><span>ext4</span><span>Btrfs</span><span>XFS</span><span>APFS</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="slide" data-title="Các cải tiến của B-tree" data-section="Mở rộng" data-particles="bplus" data-ctrl="improve" data-glyph="plus">
+  <h2 class="s-title st">Các <em>cải tiến</em> của B-tree</h2>
+  <div class="s-body imp">
+    <div class="imp-cards">
+      <button class="imp-card st" data-k="0"><b>B+ tree</b><small>range query</small><span>Dữ liệu chỉ ở lá; lá nối thành danh sách ⇒ range query nhanh, fanout cao hơn.</span></button>
+      <button class="imp-card st" data-k="1"><b>B* tree</b><small>≥ 2/3 đầy</small><span>Node đầy ≥ 2/3; dồn sang anh em trước, tách 2 node thành 3.</span></button>
+      <button class="imp-card st" data-k="2"><b>B-link tree</b><small>Lehman–Yao</small><span>Thêm con trỏ phải ⇒ nhiều tiến trình truy cập đồng thời, ít phải khóa.</span></button>
+      <button class="imp-card st" data-k="3"><b>Bε-tree / Fractal tree</b><small>ghi nhanh</small><span>Buffer ở node trong gom lệnh ghi, xả xuống theo lô.</span></button>
+    </div>
+    <figure class="imp-stage st" data-stage>
+      <div class="pt-anchor" style="left:60px;top:40px;right:60px;bottom:90px"></div>
+      <p class="imp-hint" data-hint>Bấm một thẻ để xem minh họa</p>
+      <div class="imp-panel" data-panel="0"><h3>B+ tree <small>range query [12, 36]</small></h3><svg viewBox="0 0 760 470"></svg><p class="imp-cap" data-cap></p></div>
+      <div class="imp-panel" data-panel="1"><h3>B* tree <small>node đầy ≥ 2/3</small></h3><svg viewBox="0 0 760 470"></svg><p class="imp-cap" data-cap></p></div>
+      <div class="imp-panel" data-panel="2"><h3>B-link tree <small>Lehman–Yao, 1981</small></h3><svg viewBox="0 0 760 470"></svg><p class="imp-cap" data-cap></p></div>
+      <div class="imp-panel" data-panel="3"><h3>Bε-tree <small>buffer gom lệnh ghi</small></h3><svg viewBox="0 0 760 470"></svg><p class="imp-cap" data-cap></p></div>
+    </figure>
+  </div>
+</section>
+
+<section class="slide" data-title="Tổng kết và hỏi đáp" data-section="Kết thúc" data-glyph="qa">
+  <h2 class="s-title st">Tổng kết &amp; <em>hỏi đáp</em></h2>
+  <div class="s-body fin">
+    <div>
+      <h3 class="st">Nhớ 4 ý</h3>
+      <ul class="takeaways">
+        <li class="st"><span class="ic">1</span><b>Node = trang đĩa</b><span>Hàng trăm khóa mỗi node ⇒ cây thấp: 1 tỷ khóa chỉ ≤ 3 lần đọc.</span></li>
+        <li class="st"><span class="ic">2</span><b>t − 1 … 2t − 1 khóa, mọi lá cùng độ sâu</b><span>Luôn cân bằng, không cần xoay cây.</span></li>
+        <li class="st"><span class="ic">3</span><b>Insert: tách trước · Delete: đủ t khóa trước</b><span>Một lượt gốc → lá; tách và gộp là hai phép ngược nhau.</span></li>
+        <li class="st"><span class="ic">4</span><b>O(log<sub>t</sub> n) đọc đĩa · O(n) không gian</b><span>Đổi lại: node đầy ~50–70% và ghi cả trang.</span></li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="st">Hỏi nhanh — đáp gọn <span class="muted" style="text-transform:none;letter-spacing:0;font-family:var(--font);font-weight:500">(bấm để mở)</span></h3>
+      <div class="qa st">
+        <details><summary>Vì sao không dùng BST/AVL cho dữ liệu trên đĩa?</summary><p>Mỗi node chỉ 1 khóa nên mỗi bước xuống là một lần đọc đĩa: 1 tỷ khóa ≈ 30 lần. B-tree gói ~1000 khóa vào một trang ⇒ ≤ 3 lần.</p></details>
+        <details><summary>t là gì, chọn t thế nào?</summary><p>t là số con tối thiểu của node trong. Chọn t sao cho 2t − 1 khóa (kèm con trỏ) vừa khít một trang đĩa.</p></details>
+        <details><summary>Vì sao insert “tách trước khi xuống”?</summary><p>Con đầy thì tách ngay khi còn đứng ở cha; cha chắc chắn còn chỗ nhận khóa giữa, nên đi một lượt gốc → lá, không quay lui.</p></details>
+        <details><summary>Vì sao delete phải bảo đảm ≥ t khóa trước khi xuống?</summary><p>Xóa ở dưới làm node mất tối đa 1 khóa. Có ≥ t khóa thì còn ≥ t − 1, vẫn hợp lệ; nếu không phải mượn hoặc gộp trước.</p></details>
+        <details><summary>Cây cao lên hoặc thấp đi khi nào?</summary><p>Chỉ ở gốc: gốc đầy bị tách ⇒ cao thêm 1; gốc rỗng sau khi gộp ⇒ thấp đi 1. Mọi lá luôn cùng độ sâu.</p></details>
+        <details><summary>B-tree khác B+ tree ở đâu?</summary><p>B+ tree chỉ lưu dữ liệu ở lá và nối các lá thành danh sách ⇒ range query nhanh; node trong nhỏ hơn nên fanout lớn hơn. Cơ sở dữ liệu thường dùng B+ tree.</p></details>
+      </div>
+    </div>
+    <div class="fin-foot st">
+      <div class="apps-row"><span class="chip">MySQL InnoDB</span><span class="chip">PostgreSQL</span><span class="chip">SQLite</span><span class="chip">MongoDB WiredTiger</span><span class="chip c-green">NTFS</span><span class="chip c-green">Btrfs</span><span class="chip c-green">XFS</span><span class="chip c-green">APFS</span></div>
+      <p class="refs" style="margin:0;text-align:right">Tài liệu: Cormen et al., <i>Introduction to Algorithms</i>, ch. 18 · Bayer &amp; McCreight (1972) · Comer, “The Ubiquitous B-Tree” (1979)</p>
+    </div>
+  </div>
+</section>
+
 <section class="slide" data-title="Cảm ơn" data-section="Kết thúc" data-particles="thanks" data-glyph="qa" data-nodeco>
   <h2 class="sr">Cảm ơn thầy cô và các bạn đã lắng nghe!</h2>
   <div class="pt-anchor" style="left:120px;top:170px;width:1360px;height:520px"></div>
@@ -1425,7 +1490,7 @@ body.idle #toolbar{opacity:.18}
         <dt><kbd>M</kbd></dt><dd>Bật / tắt âm thanh</dd>
         <dt><kbd>?</kbd> <kbd>Esc</kbd></dt><dd>Mở / đóng bảng này</dd>
       </dl></section>
-      <section><h3>Visualizer · slide 11</h3><dl>
+      <section><h3>Visualizer · slide 9</h3><dl>
         <dt><kbd>Enter</kbd> trong ô nhập</dt><dd>Insert</dd>
         <dt><kbd>P</kbd></dt><dd>Play / Pause</dd>
         <dt><kbd>N</kbd></dt><dd>Chạy 1 bước</dd>
@@ -3038,500 +3103,6 @@ function loadPrism() {
    12. CONTROLLER THEO SLIDE — {steps, step, init, enter, go, leave, onKey}
    ===================================================================== */
 
-/* --- Slide 3: BST cao lêu nghêu co lại thành B-tree thấp & rộng --- */
-CTRL.problem = {
-  steps: 2, step: 0, p: 0,
-  init(sl) {
-    this.sl = sl; this.clk = new Clock();
-    const svg = $('[data-bst]', sl);
-    this.cap = $('[data-cap]', sl); this.btn = $('[data-toggle]', sl);
-    // Vị trí BST: chèn theo thứ tự zigzag để cây cao 8 tầng
-    const order = [2, 13, 4, 11, 6, 9, 7, 8, 1, 3, 5, 10, 12, 14, 15], ch = {}, dep = {}, par = {};
-    order.forEach((v, n) => {
-      if (!n) { dep[v] = 0; return; }
-      let x = order[0];
-      for (;;) { const s = v < x ? 'l' : 'r'; ch[x] = ch[x] || {}; if (ch[x][s] == null) { ch[x][s] = v; par[v] = x; dep[v] = dep[x] + 1; break; } x = ch[x][s]; }
-    });
-    const A = {}, B = {};
-    for (let v = 1; v <= 15; v++) A[v] = {x: 56 + (v - 1) * 38, y: 30 + dep[v] * 46};
-    // Vị trí B-tree t = 2: gốc [4, 8, 12], 4 lá
-    const cw = 32, nh = 38, lw = 3 * cw + 6, gap = 26, tw = 4 * lw + 3 * gap, lx0 = (640 - tw) / 2, ly = 250, rx = (640 - lw) / 2, ry = 116;
-    [4, 8, 12].forEach((v, i) => { B[v] = {x: rx + 3 + i * cw + cw / 2, y: ry + nh / 2}; });
-    [[1, 2, 3], [5, 6, 7], [9, 10, 11], [13, 14, 15]].forEach((ks, j) => ks.forEach((v, i) => { B[v] = {x: lx0 + j * (lw + gap) + 3 + i * cw + cw / 2, y: ly + nh / 2}; }));
-    this.A = A; this.B = B;
-    this.gE = svgEl('g', null, svg);
-    for (let v = 1; v <= 15; v++) if (par[v]) svgEl('line', {class: 'bst-edge', x1: A[par[v]].x, y1: A[par[v]].y, x2: A[v].x, y2: A[v].y}, this.gE);
-    this.gB = svgEl('g', {opacity: 0}, svg);
-    const dots = [7, lw / 3, 2 * lw / 3, lw - 7];
-    for (let j = 0; j < 4; j++) {
-      const cx = lx0 + j * (lw + gap) + lw / 2, x1 = rx + dots[j], y1 = ry + nh, my = (ly - y1) / 2;
-      svgEl('path', {class: 'bst-bedge', d: `M${x1},${y1} C${x1},${y1 + my} ${cx},${ly - my} ${cx},${ly}`}, this.gB);
-    }
-    svgEl('rect', {class: 'bst-box', x: rx, y: ry, width: lw, height: nh, rx: 9}, this.gB);
-    for (let j = 0; j < 4; j++) svgEl('rect', {class: 'bst-box', x: lx0 + j * (lw + gap), y: ly, width: lw, height: nh, rx: 9}, this.gB);
-    this.keys = [];
-    for (let v = 1; v <= 15; v++) {
-      const g = svgEl('g', {class: 'bst-k'}, svg);
-      const r = svgEl('rect', {class: 'bst-cell', x: -15, y: -15, width: 30, height: 30, rx: 15}, g);
-      const t = svgEl('text', {x: 0, y: 1, 'text-anchor': 'middle', 'dominant-baseline': 'central'}, g);
-      t.textContent = v;
-      this.keys.push({v, g, r});
-    }
-    this.ru = svgEl('line', {class: 'bst-ruler', x1: 16, x2: 16}, svg);
-    this.ruT = svgEl('text', {class: 'bst-ruler-t', x: 24, 'dominant-baseline': 'central'}, svg);
-    this.ry0 = [15, 371]; this.ry1 = [ry, ly + nh];
-    this.btn.addEventListener('click', () => this.go(this.step ? 0 : 1, 1));
-    this.draw(0);
-  },
-  draw(p) {
-    this.p = p;
-    const e = easeInOut(p);
-    this.keys.forEach(k => {
-      const a = this.A[k.v], b = this.B[k.v];
-      k.g.setAttribute('transform', `translate(${(a.x + (b.x - a.x) * e).toFixed(1)},${(a.y + (b.y - a.y) * e).toFixed(1)})`);
-      k.r.setAttribute('rx', (15 - 9 * e).toFixed(1));
-      k.r.style.stroke = e > .5 ? 'transparent' : '';
-    });
-    this.gE.setAttribute('opacity', clamp(1 - e * 2, 0, 1).toFixed(3));
-    this.gB.setAttribute('opacity', clamp(e * 2 - 1, 0, 1).toFixed(3));
-    const y1 = this.ry0[0] + (this.ry1[0] - this.ry0[0]) * e, y2 = this.ry0[1] + (this.ry1[1] - this.ry0[1]) * e;
-    this.ru.setAttribute('y1', y1); this.ru.setAttribute('y2', y2);
-    this.ruT.setAttribute('y', (y1 + y2) / 2 - 20);
-    this.ruT.textContent = e < .5 ? '8 tầng' : '2 tầng';
-  },
-  set(step, anim) {
-    this.step = step;
-    this.cap.innerHTML = step ? 'B-tree t = 2 “thấp &amp; rộng” <span>· 2 tầng</span>' : 'BST “cao lêu nghêu” <span>· 8 tầng</span>';
-    this.btn.textContent = step ? '← Xem lại BST' : 'Co lại thành B-tree →';
-    this.clk.cancel();
-    const from = this.p, to = step;
-    if (!anim) { this.draw(to); return; }
-    SoundFX.play(step ? 'thud' : 'pop');
-    tween(1200, q => this.draw(from + (to - from) * q), this.clk);
-  },
-  enter(step) { this.set(step, false); },
-  go(step) { this.set(step, true); },
-  leave() { this.clk.cancel(); this.draw(this.step); }
-};
-
-/* --- Slide 4: cây định nghĩa t = 2 kèm chú thích --- */
-function initDefinition() {
-  const svg = $('[data-def]');
-  const tv = new TreeView(svg, {cell: 52, h: 50, level: 150, gap: 84, top: 30, bottom: 126, maxScale: 1.15, pad: 22});
-  tv.show(parseTree('R:10,20(A:5,6,7 B:12,17 C:30)'), {}, 0);
-  const g = svgEl('g', null, svg);
-  const R = tv.nodeBox('R'), A = tv.nodeBox('A'), Bn = tv.nodeBox('B'), C = tv.nodeBox('C');
-  const label = (x, y, txt, anchor = 'middle', bold) => { const t = svgEl('text', {class: 'ann-t' + (bold ? ' b' : ''), x, y, 'text-anchor': anchor, 'dominant-baseline': 'central'}, g); t.textContent = txt; return t; };
-  const lead = (x1, y1, x2, y2) => { svgEl('path', {class: 'ann-l', d: `M${x1},${y1} L${x2},${y2}`}, g); svgEl('circle', {class: 'ann-d', cx: x2, cy: y2, r: 4}, g); };
-  lead(R.x - 60, R.y + R.h / 2, R.x - 4, R.y + R.h / 2);
-  label(R.x - 66, R.y + R.h / 2 - 11, 'Gốc: 1 … 2t−1 khóa', 'end', true);
-  label(R.x - 66, R.y + R.h / 2 + 12, '(được phép ít hơn t−1)', 'end');
-  lead(R.x + R.w + 60, R.y + R.h, R.x + R.w - 6, R.y + R.h);
-  label(R.x + R.w + 66, R.y + R.h, '2 khóa ⇒ 3 con', 'start', true);
-  const below = (n, txt, sub) => { lead(n.x + n.w / 2, n.y + n.h + 34, n.x + n.w / 2, n.y + n.h + 4); label(n.x + n.w / 2, n.y + n.h + 48, txt, 'middle', true); if (sub) label(n.x + n.w / 2, n.y + n.h + 70, sub); };
-  below(A, 'đầy: 2t−1 = 3', 'hết chỗ chèn');
-  below(Bn, '10 < 12, 17 < 20', 'nằm giữa 2 khóa cha');
-  below(C, 'tối thiểu: t−1 = 1', 'không bớt được');
-  const yD = A.y + A.h / 2, x0 = A.x - 18, x1 = C.x + C.w + 18;
-  svgEl('path', {class: 'ann-depth', d: `M${x0},${yD} L${A.x - 4},${yD} M${A.x + A.w + 4},${yD} L${Bn.x - 4},${yD} M${Bn.x + Bn.w + 4},${yD} L${C.x - 4},${yD} M${C.x + C.w + 4},${yD} L${x1},${yD}`}, g);
-  const t = label((x0 + x1) / 2, A.y + A.h + 104, '- - -  mọi lá nằm cùng độ sâu  - - -', 'middle', true);
-  t.style.fill = 'var(--green-d)';
-}
-
-/* --- Slide 5: Ý tưởng cốt lõi — 3 ý tưởng là 3 khóa của một node gốc; mỗi cảnh là một "node con" --- */
-function countUp(el, from, to, dur, f, clk) {
-  return tween(dur, p => { const e = p >= 1 ? 1 : 1 - Math.pow(2, -10 * p); el.textContent = f(from + (to - from) * e); }, clk);
-}
-const bigVN = n => n >= 1e12 ? vn(n / 1e12, n % 1e12 ? 1 : 0).replace(/,0$/, '') + ' nghìn tỷ' : n >= 1e9 ? vn(n / 1e9, n % 1e9 ? 1 : 0).replace(/,0$/, '') + ' tỷ' : n >= 1e6 ? vn(n / 1e6, n % 1e6 ? 1 : 0).replace(/,0$/, '') + ' triệu' : n >= 1e3 ? vn(n / 1e3, n % 1e3 ? 1 : 0).replace(/,0$/, '') + ' nghìn' : String(Math.round(n));
-CTRL.idea = {
-  steps: 4, step: 0,
-  init(sl) {
-    this.sl = sl; this.clk = new Clock(); this.foClk = new Clock();
-    this.root = $('.ic5-root', sl); this.keys = $$('.ic5-key', sl); this.prog = $$('.ic5-prog i', sl);
-    this.scenes = $$('.ic5-scene', sl);
-    this.wire = $('.ic5-wire', sl); this.glow = $('.ic5-wire .glow', sl); this.core = $('.ic5-wire .core', sl); this.tip = $('.ic5-wire circle', sl);
-    // ở phần chốt: click ô = xem lại cảnh đó (phần chốt tan thành hạt, cảnh chạy lại)
-    this.keys.forEach((k, i) => k.addEventListener('click', () => { if (this.step === 3) this.show(i, 1, true); else if (i !== this.step) this.go(i, i > this.step ? 1 : -1); }));
-    this.wx = this.keyX(0); this.drawWire(this.wx);
-    this.s1init(); this.s2init(); this.s3init(); this.s4init();
-  },
-  keyX(i) { return 139 + 1130 * (i + .5) / 3; },
-  drawWire(x0) {
-    const y0 = 110, x1 = 1000, y1 = 186, d = `M${x0.toFixed(1)},${y0} C${x0.toFixed(1)},${y0 + 62} ${x1},${y1 - 56} ${x1},${y1}`;
-    this.glow.setAttribute('d', d); this.core.setAttribute('d', d);
-    this.tip.setAttribute('cx', x0); this.tip.setAttribute('cy', y0);
-  },
-  // Con trỏ Bézier trượt theo ô active
-  moveWire(i, anim) {
-    const from = this.wx, to = this.keyX(i);
-    this.wx = to;
-    if (!anim) { this.drawWire(to); return; }
-    tween(650, p => this.drawWire(from + (to - from) * easeInOut(p)));
-  },
-  // ============ Cảnh 1: BST 30 tầng vs B-tree 3 tầng ============
-  s1init() {
-    const svg = $('[data-s1]', this.sl);
-    const T = []; for (let i = 0; i < 30; i++) T.push({x: 170 + 18 * Math.sin(i * 1.25), y: 60 + i * 13.6});
-    const B = [{x: 600, y: 96}, {x: 600, y: 236}, {x: 600, y: 372}];
-    const lab = (x, y, t, c) => { const e = svgEl('text', {class: c, x, y, 'text-anchor': 'middle'}, svg); e.textContent = t; return e; };
-    T.forEach(p => svgEl('circle', {cx: p.x, cy: p.y, r: 6, fill: 'none', stroke: '#C9CFDD', 'stroke-width': 1.5}, svg));   // vòng node mờ cho tháp BST
-    lab(170, 488, 'BST · 30 tầng', 'i5-lab'); lab(600, 488, 'B-tree · 3 tầng', 'i5-lab');
-    this.s1 = {svg, vis: svg.parentNode, T, B,
-      cB: lab(320, 70, '0', 'i5-cnt'), cT: lab(760, 70, '0', 'i5-cnt'),
-      haloA: svgEl('circle', {class: 'i5-halo', r: 20}, svg), headA: svgEl('circle', {class: 'i5-head', r: 10}, svg),
-      haloB: svgEl('circle', {class: 'i5-halo', r: 20}, svg), headB: svgEl('circle', {class: 'i5-head', r: 10}, svg)};
-    lab(320, 96, 'lần đọc', 'i5-sub'); lab(760, 96, 'lần đọc', 'i5-sub');
-    const fit = (g, w, h) => { const s = Math.min(w / 820, h / 500); g.setTransform(s, 0, 0, s, (w - 820 * s) / 2, (h - 500 * s) / 2); g.fillStyle = g.strokeStyle = '#000'; };
-    const tower = g => T.forEach(p => { g.beginPath(); g.arc(p.x, p.y, 5.5, 0, 6.2832); g.fill(); });
-    this.s1.pageShape = (g, w, h) => { fit(g, w, h); tower(g); g.beginPath(); g.moveTo(480, 130); g.lineTo(690, 130); g.lineTo(725, 165); g.lineTo(725, 430); g.lineTo(480, 430); g.closePath(); g.fill(); };
-    this.s1.treeShape = (g, w, h) => {
-      fit(g, w, h); tower(g); g.lineWidth = 2.5;
-      const mids = [440, 520, 600, 680, 760];
-      g.fillRect(552, 84, 96, 24);
-      mids.forEach((mx, j) => {
-        g.beginPath(); g.moveTo(560 + j * 20, 108); g.lineTo(mx, 224); g.stroke();
-        g.fillRect(mx - 30, 224, 60, 18);
-        for (let q = 0; q < 5; q++) { const lx = 418 + (j * 5 + q) * 15; g.beginPath(); g.moveTo(mx - 24 + q * 12, 242); g.lineTo(lx, 360); g.stroke(); g.fillRect(lx - 5, 360, 10, 24); }
-      });
-    };
-    this.s1state(true);
-  },
-  s1place(which, p) { const s = this.s1; s['head' + which].setAttribute('cx', p.x); s['head' + which].setAttribute('cy', p.y); s['halo' + which].setAttribute('cx', p.x); s['halo' + which].setAttribute('cy', p.y); },
-  s1state(final) {
-    const s = this.s1;
-    this.s1place('A', final ? s.T[29] : s.T[0]); this.s1place('B', final ? s.B[2] : s.B[0]);
-    s.cB.textContent = final ? 30 : 0; s.cT.textContent = final ? 3 : 0;
-    s.cB.classList.toggle('done', false); s.cT.classList.toggle('done', !!final);
-    $('[data-wow]', this.sl).textContent = final ? 30 : 0; $('[data-wow2]', this.sl).textContent = 3;
-  },
-  async s1run(anim) {
-    const s = this.s1, clk = this.clk;
-    if (!anim) { ParticleEngine.morphTo(s.treeShape, s.vis); this.s1state(true); return; }
-    this.s1state(false);
-    ParticleEngine.pourInto(s.pageShape, s.vis);                 // hạt đổ vào page như cát
-    countUp($('[data-wow]', this.sl), 0, 30, 1800, v => Math.round(v), clk);
-    if (!await clk.wait(2100)) return;
-    ParticleEngine.morphTo(s.treeShape, s.vis);                  // page nở thành cây 3 tầng
-    SoundFX.play('pop');
-    if (!await clk.wait(1100)) return;
-    const hop = async (which, pts, gap, cnt, done) => {          // đầu đọc đĩa nhảy qua từng tầng
-      for (let i = 0; i < pts.length; i++) {
-        this.s1place(which, pts[i]); cnt.textContent = i + 1; SoundFX.play('tick');
-        if (!await clk.wait(gap)) return false;
-      }
-      cnt.classList.add('done'); if (done) SoundFX.play('chime');
-      return true;
-    };
-    hop('B', s.B, 380, s.cT, true);
-    await hop('A', s.T, 115, s.cB, false);
-  },
-  // ============ Cảnh 2: cây mọc từ gốc ============
-  s2init() {
-    const svg = $('[data-s2]', this.sl);
-    this.s2 = {svg, tv: new TreeView(svg, {cell: 44, h: 44, level: 116, gap: 22, top: 64, bottom: 40, maxScale: 1.6, pad: 14})};
-    const m = new BTreeModel(2), R = new Rec(m, true);
-    this.s2.empty = m.snap();
-    [5, 6, 7, 8, 9, 10, 11, 12, 13, 14].forEach(k => m.insert(k, R));
-    this.s2.steps = R.steps.filter(x => x.kind === 'start' || x.kind === 'ok' || x.kind === 'split').map(x => Object.assign({}, x, {msg: null}));
-    this.s2.final = m.snap();
-    const over = svgEl('g', null, svg);
-    this.s2.ruler = svgEl('g', {style: 'transition:transform .6s cubic-bezier(.22,1,.36,1)'}, over);
-    svgEl('line', {class: 'i5-ruler', x1: 10, x2: 810, y1: 0, y2: 0}, this.s2.ruler);
-    const rt = svgEl('text', {class: 'i5-ruler-t', x: 810, y: 26, 'text-anchor': 'end'}, this.s2.ruler); rt.textContent = 'cùng độ sâu ✓';
-    this.s2.crack = svgEl('path', {class: 'i5-crack', opacity: 0}, over);
-    this.s2show(this.s2.final, {}, 0);
-  },
-  s2show(tree, st, dur) {
-    const s = this.s2;
-    s.tv.show(tree, st, dur);
-    let leafY = 0;
-    s.tv.lay.forEach((n, id) => { if (n.leaf) { const b = s.tv.nodeBox(id); leafY = Math.max(leafY, b.y + b.h + 12); } });
-    s.ruler.style.transform = `translate(0px,${leafY.toFixed(1)}px)`;
-    // vết nứt SVG ở giữa node đầy
-    if (st.shake) {
-      const b = s.tv.nodeBox(st.shake), cx = b.x + b.w / 2, y = b.y - 4, h = b.h + 8;
-      s.crack.setAttribute('d', `M${cx},${y} l7,${h * .22} l-9,${h * .2} l8,${h * .22} l-6,${h * .18} l4,${h * .18}`);
-      s.crack.setAttribute('opacity', 1);
-      if (!REDUCED) s.crack.animate([{strokeDasharray: '0 200'}, {strokeDasharray: '200 0'}], {duration: 420, easing: 'ease-out'});
-    } else s.crack.setAttribute('opacity', 0);
-  },
-  async s2run(anim) {
-    const s = this.s2, clk = this.clk;
-    if (!anim) { this.s2show(s.final, {}, 0); return; }
-    this.s2show(s.empty, {}, 0);
-    ParticleEngine.pourInto((g, w, h) => { g.fillStyle = '#000'; g.fillRect(w * .3, h * .55, w * .4, h * .12); }, s.svg);
-    if (!await clk.wait(700)) return;
-    ParticleEngine.setShape(null);
-    for (const st of s.steps) {
-      if (!await clk.wait(st.kind === 'start' ? 330 : 620)) return;
-      this.s2show(st.tree, st, 480);
-      if (st.sound) SoundFX.play(st.sound);
-    }
-  },
-  // ============ Cảnh 3: tách bị động vs tách chủ động ============
-  s3init() {
-    const svg = $('[data-s3]', this.sl);
-    const lanes = [{oy: 0, cls: 'p', name: 'Tách bị động'}, {oy: 262, cls: 'a', name: 'Tách chủ động'}];
-    const pos = oy => ({root: {x: 230, y: 80 + oy}, mid: {x: 460, y: 145 + oy}, leaf: {x: 690, y: 210 + oy}});
-    const keys = {root: '40', mid: '10 20 30', leaf: '21 22 23'};
-    svgEl('line', {class: 'i5-div', x1: 0, x2: 820, y1: 250, y2: 250}, svg);
-    this.s3 = {svg, lanes: lanes.map(L => {
-      const P = pos(L.oy), g = svgEl('g', null, svg);
-      const t = svgEl('text', {class: 'i5-lane ' + L.cls, x: 6, y: 26 + L.oy}, g); t.textContent = L.name;
-      const chip = svgEl('g', {class: 'i5-chip', transform: `translate(6 ${44 + L.oy})`}, g);
-      svgEl('rect', {width: 108, height: 30, rx: 8}, chip);
-      const ct = svgEl('text', {x: 54, y: 16, 'text-anchor': 'middle', 'dominant-baseline': 'central'}, chip); ct.textContent = 'chèn 24';
-      svgEl('line', {class: 'i5-edge', x1: P.root.x, y1: P.root.y + 20, x2: P.mid.x, y2: P.mid.y - 20}, g);
-      svgEl('line', {class: 'i5-edge', x1: P.mid.x, y1: P.mid.y + 20, x2: P.leaf.x, y2: P.leaf.y - 20}, g);
-      const trails = svgEl('g', null, g);
-      const nodes = {};
-      Object.keys(P).forEach(k => {
-        const n = svgEl('g', {class: 'i5-n' + (k === 'root' ? '' : ' full'), transform: `translate(${P[k].x - 80} ${P[k].y - 20})`}, g);
-        svgEl('rect', {width: 160, height: 40, rx: 10}, n);
-        const tx = svgEl('text', {x: 80, y: 21, 'text-anchor': 'middle', 'dominant-baseline': 'central'}, n); tx.textContent = keys[k];
-        nodes[k] = n;
-      });
-      const halo = svgEl('circle', {class: 'i5-halo', r: 20}, g), head = svgEl('circle', {class: 'i5-head', r: 10}, g);
-      const steps = svgEl('text', {class: 'i5-steps', x: 814, y: 30 + L.oy, 'text-anchor': 'end'}, g);
-      return {P, nodes, trails, halo, head, steps, cls: L.cls};
-    })};
-    this.s3state(true);
-  },
-  s3at(L, p) { const x = p.x - 98, y = p.y; L.head.setAttribute('cx', x); L.head.setAttribute('cy', y); L.halo.setAttribute('cx', x); L.halo.setAttribute('cy', y); },   // đầu đọc đứng sát mép trái node, không che khóa
-  s3trail(L, a, b, up) { svgEl('path', {class: 'i5-trail' + (up ? ' up' : ''), d: `M${a.x - 98},${a.y} L${b.x - 98},${b.y}`}, L.trails); },
-  // Kịch bản: bị động = 3 bước xuống + tách lá + 2 lần đi NGƯỢC lên; chủ động = 3 bước, tách tại chỗ
-  PLAN: {p: [['root'], ['mid'], ['leaf'], ['leaf', 'hit'], ['mid', 'hit', 1], ['root', 'ok', 1]], a: [['root'], ['mid', 'hit'], ['leaf', 'ok']]},
-  s3apply(L, i) {
-    const plan = this.PLAN[L.cls], [to, fx, up] = plan[i], prev = i ? plan[i - 1][0] : null;
-    if (prev && prev !== to) this.s3trail(L, L.P[prev], L.P[to], up);
-    this.s3at(L, L.P[to]);
-    if (fx) L.nodes[to].setAttribute('class', 'i5-n ' + fx);
-    L.steps.textContent = `${i + 1} bước`;
-  },
-  s3state(final) {
-    this.s3.lanes.forEach(L => {
-      L.trails.textContent = '';
-      Object.keys(L.nodes).forEach(k => L.nodes[k].setAttribute('class', 'i5-n' + (k === 'root' ? '' : ' full')));
-      L.steps.textContent = '0 bước'; this.s3at(L, {x: L.P.root.x, y: L.P.root.y - 50});
-      if (final) this.PLAN[L.cls].forEach((_, i) => this.s3apply(L, i));
-    });
-    $('[data-wow3]', this.sl).textContent = 0;
-  },
-  async s3run(anim) {
-    const clk = this.clk;
-    if (!anim) { this.s3state(true); return; }
-    this.s3state(false);
-    ParticleEngine.pourInto((g, w, h) => { g.fillStyle = '#000'; g.fillRect(w * .15, h * .47, w * .7, h * .05); }, this.s3.svg);
-    if (!await clk.wait(700)) return;
-    ParticleEngine.setShape(null);
-    countUp($('[data-wow3]', this.sl), 6, 0, 2600, v => Math.round(v), clk);
-    for (let i = 0; i < 6; i++) {
-      this.s3.lanes.forEach(L => { if (i < this.PLAN[L.cls].length) this.s3apply(L, i); });
-      const fx = this.PLAN.p[i][1];
-      SoundFX.play(fx === 'hit' ? 'thud' : 'tick');
-      if (i === 2) SoundFX.play('found');                     // chủ động xong trước
-      if (!await clk.wait(720)) return;
-    }
-  },
-  // ============ Chốt: node tổng kết + cây fanout sống + máy tính ============
-  FANS: [10, 20, 50, 100, 200, 500, 1000],
-  RW: [118, 84, 62, 48], RH: [34, 28, 24, 20], RO: [1, .94, .85, .74],
-  s4init() {
-    const sc = this.scenes[3];
-    this.fo = {sc, svg: $('[data-ftree]', sc), fanEl: $('#fo-fan'), lvEl: $('#fo-lv'), oFan: $('[data-fo-fan]', sc), oLv: $('[data-fo-lv]', sc),
-      res: $('[data-fo-res]', sc), exact: $('[data-fo-exact]', sc), bar: $('.fo-bar', sc), cur: 0, L: 0, fan: 0, pos: new Map(), labs: [], flow: [], raf: 0};
-    const g = n => svgEl('g', null, this.fo.svg);
-    this.fo.gE = g(); this.fo.gF = g(); this.fo.gN = g(); this.fo.gT = g();
-    this.fo.head = svgEl('circle', {class: 'ft-head', r: 8, cx: 1172, cy: 0, opacity: 0}, this.fo.svg);
-    this.fo.fanEl.addEventListener('input', () => this.s4update(true));
-    this.fo.lvEl.addEventListener('input', () => this.s4update(true));
-    $('[data-fo-preset]', sc).addEventListener('click', () => { this.fo.fanEl.value = 3; this.fo.lvEl.value = 3; this.s4update(true); });
-  },
-  // Bố cục cây: tầng l có fanout^(l−1) node, hiện tối đa 9 (8 node + pill "… ×N")
-  s4layout(L, f) {
-    const rowGap = Math.min(90, 256 / L), rows = [];
-    for (let l = 1; l <= L; l++) {
-      const n = Math.pow(f, l - 1), w = this.RW[l - 1], h = this.RH[l - 1], y = 36 + (l - 1) * rowGap;
-      const shown = n <= 9 ? n : 8, pillW = n > 9 ? 110 : 0, gap = l === 1 ? 0 : 14;
-      const total = shown * w + (shown - 1) * gap + (pillW ? gap + pillW : 0);
-      let x = 704 - total / 2;
-      const items = [];
-      for (let i = 0; i < shown; i++) { items.push({k: l + ':' + i, x, y, w, h}); x += w + gap; }
-      rows.push({l, n, y, h, w, items, pill: pillW ? {x: x, y, w: pillW, h} : null});
-    }
-    return rows;
-  },
-  s4edges(rows) {
-    const E = [], dots = [232.6, 544, 864, 1175.4];
-    const r1 = rows[0].items[0];
-    dots.forEach(dx => E.push([dx, -16, r1.x + r1.w / 2, r1.y]));             // 4 con trỏ của node tổng kết
-    for (let j = 1; j < rows.length; j++) {
-      const P = rows[j - 1].items, C = rows[j].items.concat(rows[j].pill ? [rows[j].pill] : []);
-      C.forEach((c, i) => { const p = P[Math.min(P.length - 1, Math.floor(i * P.length / C.length))]; E.push([p.x + p.w / 2, p.y + p.h, c.x + c.w / 2, c.y]); });
-    }
-    return E.map(([x1, y1, x2, y2]) => { const my = (y2 - y1) / 2; return `M${x1.toFixed(1)},${y1.toFixed(1)} C${x1.toFixed(1)},${(y1 + my).toFixed(1)} ${x2.toFixed(1)},${(y2 - my).toFixed(1)} ${x2.toFixed(1)},${y2.toFixed(1)}`; });
-  },
-  s4build(anim) {
-    const fo = this.fo, L = fo.L, f = fo.fan, rows = this.s4layout(L, f), old = fo.pos, prevL = fo.drawnL || 0;
-    fo.gE.textContent = ''; fo.gN.textContent = ''; fo.gT.textContent = '';
-    this.s4edges(rows).forEach(d => svgEl('path', {class: 'ft-edge', d}, fo.gE));
-    const pos = new Map(), run = anim && !REDUCED;
-    rows.forEach((r, ri) => {
-      const rowG = svgEl('g', {'data-row': r.l, opacity: this.RO[ri]}, fo.gN);
-      const fresh = r.l > prevL;
-      r.items.forEach((it, i) => {
-        const g = svgEl('g', {class: 'ft-node', transform: `translate(${it.x.toFixed(1)} ${it.y.toFixed(1)})`}, rowG), inn = svgEl('g', {class: 'in'}, g);
-        svgEl('rect', {width: it.w, height: it.h, rx: 7}, inn);
-        for (let q = 1; q < 3; q++) svgEl('line', {x1: it.w * q / 3, x2: it.w * q / 3, y1: 5, y2: it.h - 5}, inn);
-        pos.set(it.k, it.x);
-        if (!run) return;
-        if (fresh) inn.animate([{transform: 'translateY(26px) scale(.2)', opacity: 0}, {transform: 'none', opacity: 1}], {duration: 460, delay: i * 30, easing: 'cubic-bezier(.34,1.56,.64,1)', fill: 'backwards'});
-        else if (old.has(it.k) && old.get(it.k) !== it.x) inn.animate([{transform: `translateX(${(old.get(it.k) - it.x).toFixed(1)}px)`}, {transform: 'none'}], {duration: 450, easing: 'cubic-bezier(.22,1,.36,1)'});
-        else if (!old.has(it.k)) inn.animate([{transform: 'scale(.3)', opacity: 0}, {transform: 'none', opacity: 1}], {duration: 380, delay: i * 30, easing: 'cubic-bezier(.34,1.56,.64,1)', fill: 'backwards'});
-      });
-      if (r.pill) {
-        const g = svgEl('g', {class: 'ft-pill', transform: `translate(${r.pill.x.toFixed(1)} ${r.pill.y.toFixed(1)})`}, rowG);
-        svgEl('rect', {width: r.pill.w, height: r.h, rx: r.h / 2}, g);
-        const t = svgEl('text', {x: r.pill.w / 2, y: r.h / 2 + 1, 'text-anchor': 'middle', 'dominant-baseline': 'central'}, g);
-        t.textContent = '… ×' + (r.n - 8).toLocaleString('vi-VN');
-      }
-      // nhãn tầng (trái) + "1 lần đọc" (phải)
-      const lab = svgEl('text', {class: 'ft-lab', x: 214, y: r.y + r.h / 2 + 1, 'text-anchor': 'end', 'dominant-baseline': 'central'}, fo.gT);
-      const prevN = fo.labs[ri] != null ? fo.labs[ri] : (run ? 0 : r.n);
-      const txt = v => `Tầng ${r.l} · ${Math.round(v).toLocaleString('vi-VN')} node`;
-      lab.textContent = txt(r.n);
-      if (run && prevN !== r.n) countUp(lab, prevN, r.n, 700, txt, this.foClk);
-      fo.labs[ri] = r.n;
-      const rd = svgEl('text', {class: 'ft-read', x: 1192, y: r.y + r.h / 2 + 1, 'dominant-baseline': 'central'}, fo.gT); rd.textContent = '1 lần đọc';
-    });
-    fo.labs.length = L;
-    const last = rows[rows.length - 1];
-    fo.tot = svgEl('text', {class: 'ft-tot', x: 1192, y: last.y + last.h + 30}, fo.gT);
-    fo.tot.textContent = `= ${L} lần đọc đĩa`;
-    fo.pos = pos; fo.rows = rows; fo.drawnL = L;
-    this.s4flow();
-  },
-  // Hạt chạy dọc cạnh từ gốc xuống lá — mật độ tăng theo fanout
-  s4flow() {
-    const fo = this.fo;
-    cancelAnimationFrame(fo.raf); fo.gF.textContent = ''; fo.flow = [];
-    if (REDUCED) return;
-    const paths = $$('.ft-edge', fo.gE), per = 1 + Math.floor(+fo.fanEl.value / 2);
-    paths.forEach(p => { const len = p.getTotalLength(); for (let q = 0; q < per; q++) fo.flow.push({p, len, t: Math.random(), v: .00035 + Math.random() * .00025, c: svgEl('circle', {class: 'ft-flow', r: 2.6}, fo.gF)}); });
-    fo.flow = fo.flow.slice(0, 110);
-    let last = 0;
-    const tick = now => {
-      const dt = last ? Math.min(50, now - last) : 16; last = now;
-      fo.flow.forEach(d => { d.t = (d.t + d.v * dt) % 1; const pt = d.p.getPointAtLength(d.t * d.len); d.c.setAttribute('cx', pt.x.toFixed(1)); d.c.setAttribute('cy', pt.y.toFixed(1)); d.c.setAttribute('opacity', (Math.sin(d.t * Math.PI) * .85).toFixed(2)); });
-      fo.raf = requestAnimationFrame(tick);
-    };
-    fo.raf = requestAnimationFrame(tick);
-  },
-  // Đầu đọc đĩa chạy từ gốc xuống lá, tick mỗi tầng
-  async s4head(anim) {
-    const fo = this.fo, clk = this.foClk, rows = fo.rows;
-    const at = r => { fo.head.setAttribute('cy', (r.y + r.h / 2).toFixed(1)); fo.head.setAttribute('opacity', 1); };
-    if (!anim || REDUCED) { at(rows[rows.length - 1]); return; }
-    fo.tot.setAttribute('opacity', 0);
-    for (const r of rows) { at(r); SoundFX.play('tick'); if (!await clk.wait(200)) return; }
-    fo.tot.setAttribute('opacity', 1);
-  },
-  s4update(anim) {
-    const fo = this.fo, f = this.FANS[+fo.fanEl.value], L = +fo.lvEl.value, n = Math.pow(f, L), from = fo.cur;
-    const prevL = fo.L, prevF = fo.fan;
-    fo.oFan.textContent = f; fo.oLv.textContent = L;
-    fo.exact.innerHTML = `${f}<sup>${L}</sup> = ${n.toLocaleString('vi-VN')} khóa`;
-    if (prevL === L && prevF === f && fo.drawnL) return;
-    this.foClk.cancel();
-    // bớt tầng: tầng dưới cùng tan thành hạt
-    if (anim && L < prevL) for (let l = L + 1; l <= prevL; l++) { const g = fo.gN.querySelector(`[data-row="${l}"]`); if (g) ParticleEngine.explodeTo(g, 260); }
-    fo.L = L; fo.fan = f; fo.cur = n;
-    this.s4build(anim);
-    if (anim && L > prevL && prevL) SoundFX.play('pop');
-    if (anim && L !== prevL) this.s4head(true); else this.s4head(false);
-    if (anim && !REDUCED) countUp(fo.res, from, n, 900, bigVN, this.foClk); else fo.res.textContent = bigVN(n);
-    if (anim && from < 1e6 && n >= 1e6) {                      // đạt ≥ 1 triệu khóa: nháy xanh + chime + confetti
-      fo.res.classList.remove('win'); void fo.res.offsetWidth; fo.res.classList.add('win');
-      SoundFX.play('chime');
-      const r = fo.res.getBoundingClientRect(); confetti(r.left + r.width / 2, r.top + r.height / 2);
-    }
-  },
-  // Chuyển vào phần chốt
-  enterFinal(anim) {
-    const fo = this.fo, run = anim && !REDUCED;
-    this.flipRoot(true, run);
-    if (run) this.keys.forEach((k, j) => {
-      $('.ck', k).animate([{transform: 'scale(2.4) rotate(-20deg)', opacity: 0}, {transform: 'none', opacity: 1}], {duration: 420, delay: 420 + j * 220, easing: 'cubic-bezier(.34,1.56,.64,1)', fill: 'backwards'});
-      this.clk.after(440 + j * 220, () => SoundFX.play('pop'));
-    });
-    fo.fanEl.value = 3; fo.lvEl.value = 3;                          // mặc định 100 × 3 ⇒ thấy ngay 1 triệu
-    fo.L = 0; fo.fan = 0; fo.drawnL = 0; fo.labs = []; fo.pos = new Map(); fo.cur = run ? 0 : 1e6;
-    if (!run) { this.s4update(false); return; }
-    fo.gE.textContent = ''; fo.gN.textContent = ''; fo.gT.textContent = ''; fo.gF.textContent = ''; fo.head.setAttribute('opacity', 0);
-    fo.bar.animate([{transform: 'translateY(120px)', opacity: 0}, {transform: 'translateY(-8px)', opacity: 1, offset: .7}, {transform: 'none'}], {duration: 800, delay: 250, easing: 'ease-out', fill: 'backwards'});
-    // hạt bay lên hội tụ thành cây rồi nhường chỗ cho cây SVG
-    const rows = this.s4layout(3, 100);
-    ParticleEngine.pourInto((g, w, h) => {
-      const s = Math.min(w / 1408, h / 322); g.setTransform(s, 0, 0, s, (w - 1408 * s) / 2, (h - 322 * s) / 2); g.fillStyle = '#000';
-      rows.forEach(r => { r.items.forEach(it => g.fillRect(it.x, it.y, it.w, it.h)); if (r.pill) g.fillRect(r.pill.x, r.pill.y, r.pill.w, r.h); });
-    }, fo.svg);
-    this.clk.after(1000, () => { ParticleEngine.setShape(null); this.s4update(true); });
-  },
-  exitFinal() {
-    const fo = this.fo;
-    cancelAnimationFrame(fo.raf); this.foClk.cancel();
-    this.flipRoot(false, !REDUCED);
-  },
-  flipRoot(toSum, anim) {
-    const a = this.root.getBoundingClientRect();
-    this.root.classList.toggle('recap', toSum);
-    if (!anim) return;
-    const b = this.root.getBoundingClientRect(), sc = Stage.scale || 1;
-    this.root.animate([{transform: `translate(${((a.left - b.left) / sc).toFixed(1)}px,${((a.top - b.top) / sc).toFixed(1)}px) scale(${(a.width / b.width).toFixed(4)},${(a.height / b.height).toFixed(4)})`}, {transform: 'none'}],
-      {duration: 760, easing: 'cubic-bezier(.65,.05,.25,1)'});
-  },
-  // ============ Điều phối cảnh ============
-  show(i, dir, anim) {
-    this.clk.cancel();
-    const prev = this.scenes[this.step], cur = this.scenes[i], wasFinal = this.step === 3;
-    if (anim && prev && prev !== cur) ParticleEngine.explodeTo($('.ic5-vis', prev) || prev, 650);   // nội dung cũ tan thành hạt
-    if (wasFinal && i !== 3) this.exitFinal();
-    this.step = i;
-    this.scenes.forEach(s => s.classList.toggle('on', s === cur));
-    this.keys.forEach((k, j) => { k.classList.toggle('on', j === i); k.setAttribute('aria-selected', String(j === i)); });
-    this.prog.forEach((d, j) => { d.classList.toggle('on', j === i); d.classList.toggle('done', j < i); });
-    $('.ic5-prog', this.sl).style.opacity = i === 3 ? 0 : 1;
-    this.wire.style.opacity = i === 3 ? 0 : 1;
-    if (i < 3) this.moveWire(i, anim);
-    const run = anim && !REDUCED;
-    if (run && i < 3) this.keys[i].animate([{transform: 'translateY(0)'}, {transform: 'translateY(-10px)', offset: .35}, {transform: 'translateY(2px)', offset: .7}, {transform: 'none'}], {duration: 520, easing: 'ease-out'});
-    if (run && i < 3) $$('.ic5-text > *', cur).forEach((el, j) => el.animate([{opacity: 0, transform: 'translateY(18px)'}, {opacity: 1, transform: 'none'}], {duration: 560, delay: 120 + j * 75, easing: 'cubic-bezier(.22,1,.36,1)', fill: 'backwards'}));
-    if (i === 0) this.s1run(run); else if (i === 1) this.s2run(run); else if (i === 2) this.s3run(run);
-    else if (!wasFinal) this.enterFinal(anim);
-  },
-  enter(step, dir, quick) {
-    const anim = !quick && !REDUCED;
-    this.step = -1;
-    if (anim && step < 3) {
-      // node gốc rơi xuống và bật nhẹ; 3 khóa lần lượt "chèn" vào ô
-      this.root.animate([{transform: 'translateY(-170px)', opacity: 0}, {transform: 'translateY(12px)', opacity: 1, offset: .55}, {transform: 'translateY(-5px)', offset: .78}, {transform: 'none'}], {duration: 900, easing: 'ease-out'});
-      this.keys.forEach((k, j) => {
-        $$('i, b', k).forEach(e => e.animate([{transform: 'translateY(-70px)', opacity: 0}, {transform: 'none', opacity: 1}], {duration: 520, delay: 520 + j * 230, easing: 'cubic-bezier(.34,1.56,.64,1)', fill: 'backwards'}));
-        this.clk.after(560 + j * 230, () => SoundFX.play('pop'));
-      });
-      this.scenes.forEach(s => s.classList.remove('on'));
-      this.keys.forEach(k => k.classList.remove('on'));
-      const g = this.clk.gen;
-      setTimeout(() => { if (this.clk.gen === g && SlideManager.ctrlOf(SlideManager.idx) === this) this.show(step, dir, true); }, 1350);
-      this.root.classList.remove('recap'); this.wire.style.opacity = 0;
-      return;
-    }
-    this.show(step, dir, false);
-  },
-  go(step, dir) { this.show(step, dir, !REDUCED && !(dir < 0)); if (dir < 0) SoundFX.play('whoosh', -1); },
-  leave() { this.clk.cancel(); this.foClk.cancel(); cancelAnimationFrame(this.fo.raf); }
-};
-
 /* --- Slide 6: Search với mũi tên đi từ gốc xuống --- */
 CTRL.search = {
   steps: 1, step: 0,
@@ -3570,160 +3141,7 @@ CTRL.search = {
   leave() { this.clk.cancel(); }
 };
 
-/* --- Slide 7: Insert — node đỏ rung, khóa giữa bay lên cha --- */
-CTRL.insert = {
-  steps: 1, step: 0,
-  DEMO: {child: {pre: [10, 20, 5, 6, 12, 30, 7], k: 17}, root: {pre: [10, 20, 5], k: 6}},
-  init(sl) {
-    this.sl = sl; this.clk = new Clock();
-    this.tv = new TreeView($('.tree-svg', sl), {cell: 50, h: 50, level: 120, top: 60, maxScale: 1.3});
-    this.status = $('[data-status]', sl); this.splits = $('[data-splits]', sl);
-    $$('[data-demo]', sl).forEach(b => b.addEventListener('click', () => this.run(b.dataset.demo)));
-    this.prep('child', 0);
-  },
-  prep(name, dur) {
-    const d = this.DEMO[name];
-    this.m = new BTreeModel(2); d.pre.forEach(k => this.m.insert(k));
-    this.tv.show(this.m.snap(), {refit: true}, dur);
-    this.splits.textContent = 0;
-    $$('[data-demo]', this.sl).forEach(b => b.classList.toggle('on', b.dataset.demo === name));
-    return d;
-  },
-  async run(name) {
-    this.clk.cancel();
-    const clk = this.clk, d = this.prep(name, 350), R = new Rec(this.m, true);
-    this.m.insert(d.k, R);
-    let sp = 0;
-    for (const s of R.steps) {
-      if (!await clk.wait(s.kind === 'start' ? 500 : 950)) return;
-      if (s.sound === 'thud') this.splits.textContent = ++sp;
-      this.tv.show(s.tree, s, 600);
-      this.status.textContent = s.msg;
-      this.status.className = 'tc-status' + (s.kind === 'ok' ? ' ok' : s.kind === 'split' ? ' err' : '');
-      if (s.sound) SoundFX.play(s.sound);
-    }
-  },
-  enter(step, dir, quick) {
-    this.clk.cancel(); this.prep('child', 0); this.status.innerHTML = '&nbsp;';
-    if (!quick) this.clk.after(1300, () => this.run('child'));
-  },
-  leave() { this.clk.cancel(); }
-};
-
-/* --- Slide 8: Delete — 3 mini-animation, mỗi trường hợp một cây --- */
-CTRL.delete = {
-  steps: 3, step: 0,
-  CASES: [
-    [{t: 'R:10(A:5,6,7 B:12,17)', note: 'Xóa 6'},
-     {t: 'R:10(A:5,6,7 B:12,17)', nodes: {A: 'visit'}, keys: [['A', 1, 'del']], note: 'Lá [5, 6, 7] có 3 khóa > t−1', sound: 'tick'},
-     {t: 'R:10(A:5,7 B:12,17)', nodes: {A: 'found'}, note: 'Xóa trực tiếp → [5, 7]', sound: 'pop'}],
-    [{t: 'R:10,20(A:5,7 B:12,17 C:25,30)', note: 'Xóa 20 (ở node trong)'},
-     {t: 'R:10,20(A:5,7 B:12,17 C:25,30)', nodes: {R: 'visit', B: 'borrow'}, keys: [['R', 1, 'del']], note: 'Con trái [12, 17] có ≥ t khóa', sound: 'tick'},
-     {t: 'R:10,20(A:5,7 B:12,17 C:25,30)', nodes: {B: 'borrow'}, keys: [['R', 1, 'del'], ['B', 1, 'cmp']], note: 'Predecessor của 20 là 17', sound: 'tick'},
-     {t: 'R:10,17(A:5,7 B:12,17 C:25,30)', keys: [['R', 1, 'moved'], ['B', 1, 'ghost']], note: '17 lên thay chỗ 20', sound: 'borrow'},
-     {t: 'R:10,17(A:5,7 B:12 C:25,30)', nodes: {R: 'found'}, note: 'Xóa 17 cũ ở lá → xong', sound: 'pop'}],
-    [{t: 'R:10(A:5 B:12,17,20)', note: 'Xóa 5: con [5] chỉ có t−1 khóa'},
-     {t: 'R:10(A:5 B:12,17,20)', nodes: {A: 'warn', B: 'borrow'}, note: 'Anh em phải [12, 17, 20] dư khóa', sound: 'tick'},
-     {t: 'R:12(A:5,10 B:17,20)', nodes: {A: 'borrow', B: 'borrow'}, keys: [['A', 1, 'moved'], ['R', 0, 'moved']], note: 'Xoay qua cha: 10 xuống, 12 lên', sound: 'borrow'},
-     {t: 'R:12(A:10 B:17,20)', nodes: {A: 'found'}, note: 'Giờ xóa 5 an toàn → [10]', sound: 'pop'}]
-  ],
-  init(sl) {
-    this.sl = sl; this.clk = new Clock();
-    this.cards = $$('.case', sl);
-    this.cases = this.CASES.map((frames, i) => {
-      const card = this.cards[i], tv = new TreeView($('.mini-svg', card), {cell: 42, h: 42, level: 100, gap: 20, maxScale: 1.5, pad: 14});
-      const fr = frames.map(f => Object.assign({}, f, {tree: parseTree(f.t)}));
-      tv.show(fr[0].tree, {}, 0);
-      $('[data-note]', card).textContent = fr[0].note;
-      card.addEventListener('click', () => this.go(i));
-      return {tv, fr, note: $('[data-note]', card)};
-    });
-  },
-  go(step) {
-    this.step = step; this.clk.cancel();
-    this.cards.forEach((c, i) => c.classList.toggle('act', i === step));
-    this.cases.forEach((c, i) => { if (i !== step) { c.tv.show(c.fr[0].tree, {}, 300); c.note.textContent = c.fr[0].note; } });
-    this.loop(step);
-  },
-  async loop(i) {
-    const clk = this.clk, c = this.cases[i];
-    for (;;) {
-      for (let j = 0; j < c.fr.length; j++) {
-        const f = c.fr[j];
-        c.tv.show(f.tree, f, j ? 650 : 300);
-        c.note.textContent = f.note;
-        if (f.sound) SoundFX.play(f.sound);
-        if (!await clk.wait(j === c.fr.length - 1 ? 2600 : 1500)) return;
-      }
-    }
-  },
-  enter(step) { this.go(step); },
-  leave() { this.clk.cancel(); }
-};
-
-/* --- Slide 9–10: trace từng bước với nút ◀ ▶ --- */
-function makeTrace(label, seq, frames) {
-  return {
-    steps: frames.length, step: 0,
-    init(sl) {
-      this.sl = sl;
-      this.tv = new TreeView($('.tree-svg', sl), {cell: 52, h: 52, level: 124, gap: 30, top: 62, maxScale: 1.4});
-      this.fr = frames.map(f => Object.assign({}, f, {tree: parseTree(f.t)}));
-      $('[data-seq]', sl).innerHTML = `<span class="sq-l">${label}</span>` + seq.map(k => `<span class="sq">${k}</span>`).join('');
-      this.chips = $$('.sq', sl);
-      $('[data-dots]', sl).innerHTML = frames.map(() => '<i></i>').join('');
-      this.dots = $$('[data-dots] i', sl);
-      this.note = $('[data-note]', sl); this.no = $('[data-stepno]', sl);
-      this.prevB = $('[data-prev]', sl); this.nextB = $('[data-next]', sl);
-      this.prevB.addEventListener('click', () => { if (this.step > 0) this.go(this.step - 1, -1); });
-      this.nextB.addEventListener('click', () => { if (this.step < this.steps - 1) this.go(this.step + 1, 1); });
-      this.render(0, 0, 0);
-    },
-    render(i, dur, dir) {
-      this.step = i = clamp(i, 0, this.steps - 1);
-      const f = this.fr[i];
-      this.tv.show(f.tree, f, dur);
-      this.note.innerHTML = f.note;
-      this.no.textContent = `Bước ${i + 1} / ${this.steps}`;
-      this.chips.forEach((c, j) => { c.classList.toggle('done', j < f.seq); c.classList.toggle('cur', j === f.seq); });
-      this.dots.forEach((d, j) => { d.classList.toggle('on', j < i); d.classList.toggle('cur', j === i); });
-      this.prevB.disabled = i === 0; this.nextB.disabled = i === this.steps - 1;
-      if (dur && dir > 0) SoundFX.play(f.sound || ((f.keys || []).some(k => k[2] === 'new') ? 'pop' : 'step'));
-      else if (dur) SoundFX.play('click');
-    },
-    enter(step) { this.render(step, 0, 0); },
-    go(step, dir) { this.render(step, 680, dir); }
-  };
-}
 const FULL = 'R:10,20(A:5,6,7 B:12,17 C:30)';
-CTRL.traceIns = makeTrace('Chèn', [10, 20, 5, 6, 12, 30, 7, 17], [
-  {t: 'A:', seq: -1, note: 'Bắt đầu với cây rỗng. t = 2 ⇒ mỗi node chứa tối đa <b>2t−1 = 3</b> khóa, tối thiểu <b>t−1 = 1</b> khóa (trừ gốc).'},
-  {t: 'A:10', seq: 0, keys: [['A', 0, 'new']], note: 'Chèn <b>10</b>: cây rỗng → gốc là một lá <code>[10]</code>.'},
-  {t: 'A:10,20', seq: 1, keys: [['A', 1, 'new']], note: 'Chèn <b>20</b> → <code>[10, 20]</code>.'},
-  {t: 'A:5,10,20', seq: 2, keys: [['A', 0, 'new']], nodes: {A: 'full'}, note: 'Chèn <b>5</b> → <code>[5, 10, 20]</code>: gốc đã <b>đầy</b> (3 khóa).'},
-  {t: 'A:5,10,20', seq: 3, nodes: {A: 'full'}, shake: 'A', probe: {v: 6, node: 'A'}, sound: 'thud', note: 'Chèn <b>6</b>: gốc đầy ⇒ phải <b>tách gốc</b> trước khi đi xuống.'},
-  {t: 'R:10(A:5 B:20)', seq: 3, nodes: {R: 'split'}, keys: [['R', 0, 'moved']], probe: {v: 6, node: 'R'}, sound: 'pop', note: 'Khóa giữa <b>10</b> lên làm gốc mới → gốc <code>[10]</code>, con <code>[5]</code> và <code>[20]</code>. Cây <b>cao thêm 1</b>.'},
-  {t: 'R:10(A:5,6 B:20)', seq: 3, keys: [['A', 1, 'new']], arrow: {from: 'R', i: 0}, note: '6 &lt; 10 → xuống con trái, chèn vào lá → <code>[5, 6]</code>.'},
-  {t: 'R:10(A:5,6 B:12,20)', seq: 4, keys: [['B', 0, 'new']], arrow: {from: 'R', i: 1}, note: 'Chèn <b>12</b>: 12 &gt; 10 → con phải → <code>[12, 20]</code>.'},
-  {t: 'R:10(A:5,6 B:12,20,30)', seq: 5, keys: [['B', 2, 'new']], arrow: {from: 'R', i: 1}, note: 'Chèn <b>30</b> → <code>[12, 20, 30]</code> (đầy).'},
-  {t: 'R:10(A:5,6,7 B:12,20,30)', seq: 6, keys: [['A', 2, 'new']], arrow: {from: 'R', i: 0}, note: 'Chèn <b>7</b> → <code>[5, 6, 7]</code>. Giờ gốc <code>[10]</code> có con <code>[5, 6, 7]</code> và <code>[12, 20, 30]</code>.'},
-  {t: 'R:10(A:5,6,7 B:12,20,30)', seq: 7, nodes: {B: 'full'}, shake: 'B', probe: {v: 17, node: 'R'}, arrow: {from: 'R', i: 1}, sound: 'thud', note: 'Chèn <b>17</b>: đi xuống gặp con <code>[12, 20, 30]</code> <b>đầy</b> ⇒ tách trước.'},
-  {t: 'R:10,20(A:5,6,7 B:12 C:30)', seq: 7, nodes: {R: 'split'}, keys: [['R', 1, 'moved']], probe: {v: 17, node: 'R', pos: 1}, sound: 'pop', note: '<b>20</b> lên cha → gốc <code>[10, 20]</code>; các con <code>[5, 6, 7]</code>, <code>[12]</code>, <code>[30]</code>.'},
-  {t: FULL, seq: 7, keys: [['B', 1, 'new']], arrow: {from: 'R', i: 1}, note: '10 &lt; 17 &lt; 20 → vào <code>[12]</code> → <code>[12, 17]</code>.'},
-  {t: FULL, seq: 8, nodes: {R: 'found', A: 'found', B: 'found', C: 'found'}, sound: 'found', note: '<b>Kết quả:</b> gốc <code>[10, 20]</code>; lá <code>[5, 6, 7]</code>, <code>[12, 17]</code>, <code>[30]</code> — mọi lá cùng độ sâu ✓'}
-]);
-CTRL.traceDel = makeTrace('Xóa', [6, 12, 30], [
-  {t: FULL, seq: -1, note: 'Cây vừa dựng (t = 2). Lần lượt xóa <b>6</b>, <b>12</b>, <b>30</b>; mọi node (trừ gốc) phải giữ ≥ <b>t−1 = 1</b> khóa.'},
-  {t: FULL, seq: 0, nodes: {A: 'visit'}, keys: [['A', 1, 'del']], arrow: {from: 'R', i: 0}, sound: 'tick', note: 'Xóa <b>6</b>: 6 &lt; 10 → con <code>[5, 6, 7]</code> có 3 khóa ≥ t ⇒ đi xuống an toàn.'},
-  {t: 'R:10,20(A:5,7 B:12,17 C:30)', seq: 0, nodes: {A: 'found'}, sound: 'pop', note: '6 nằm ở lá, lá còn đủ khóa ⇒ xóa trực tiếp (TH1) → <code>[5, 7]</code>.'},
-  {t: 'R:10,20(A:5,7 B:12,17 C:30)', seq: 1, nodes: {B: 'visit'}, keys: [['B', 0, 'del']], arrow: {from: 'R', i: 1}, sound: 'tick', note: 'Xóa <b>12</b>: 10 &lt; 12 &lt; 20 → con <code>[12, 17]</code> có 2 khóa = t ⇒ vẫn đủ.'},
-  {t: 'R:10,20(A:5,7 B:17 C:30)', seq: 1, nodes: {B: 'found'}, sound: 'pop', note: 'Xóa 12 khỏi lá → <code>[17]</code>.'},
-  {t: 'R:10,20(A:5,7 B:17 C:30)', seq: 2, nodes: {C: 'warn', B: 'warn'}, keys: [['C', 0, 'del']], arrow: {from: 'R', i: 2}, sound: 'thud', note: 'Xóa <b>30</b>: con <code>[30]</code> chỉ có t−1 = 1 khóa; anh em <code>[17]</code> cũng chỉ 1 khóa ⇒ không mượn được.'},
-  {t: 'R:10(A:5,7 B:17,20,30)', seq: 2, nodes: {B: 'merge'}, keys: [['B', 1, 'moved'], ['B', 2, 'del']], sound: 'merge', note: 'Gộp <code>[17]</code> + <b>20</b> (từ cha) + <code>[30]</code> → <code>[17, 20, 30]</code>; gốc còn <code>[10]</code> (TH3b).'},
-  {t: 'R:10(A:5,7 B:17,20)', seq: 2, nodes: {B: 'found'}, sound: 'pop', note: '30 giờ nằm trong lá đủ khóa ⇒ xóa → <code>[17, 20]</code>.'},
-  {t: 'R:10(A:5,7 B:17,20)', seq: 3, nodes: {R: 'found', A: 'found', B: 'found'}, sound: 'found', note: '<b>Kết quả:</b> gốc <code>[10]</code>; lá <code>[5, 7]</code>, <code>[17, 20]</code> ✓'}
-]);
-
 /* --- Slide 11: BTreeVisualizer — insert/search/delete theo CLRS, từng bước --- */
 CTRL.viz = {
   steps: 1, step: 0,
@@ -3869,20 +3287,18 @@ CTRL.viz = {
 
 /* --- Slide 12: code Python, highlight từng khối --- */
 CTRL.code = {
-  steps: 6, step: 0,
+  steps: 4, step: 0,
   EXP: [
-    {h: 'search(k)', p: '<code>bisect_left</code> tìm nhị phân vị trí <code>i</code> trong node. Nếu <code>keys[i] == k</code> ⇒ trả về <code>(x, i)</code>; nếu x là lá ⇒ <code>None</code>; ngược lại đệ quy xuống con i.', c: ['O(log t) mỗi node', 'h lần đọc đĩa']},
-    {h: 'split_child(x, i)', p: 'Con <code>y</code> đang đầy (2t−1 khóa). Khóa giữa <code>y.keys[t-1]</code> được chèn lên cha; node mới <code>z</code> nhận t−1 khóa bên phải; nếu y không phải lá thì chia luôn các con trỏ.', c: ['O(t)', 'khóa giữa lên cha']},
-    {h: 'insert(k)', p: 'Khóa đã có ⇒ bỏ qua (không lưu trùng). Gốc đầy ⇒ tạo gốc mới <code>s</code> rồi tách: cây <b>cao thêm 1</b> — cách duy nhất để B-tree tăng chiều cao. <code>_insert_nonfull</code> tách con đầy <b>trước</b> khi bước vào, nên chỉ đi một lượt.', c: ['O(t·logₜ n)', '1 lượt gốc → lá']},
-    {h: 'delete(k)', p: 'Đi <b>một lượt</b> từ gốc xuống. Khóa ở lá ⇒ xóa luôn (TH1). Ở node trong ⇒ thay bằng predecessor/successor (TH2a/b) hoặc gộp hai con (TH2c). Trước khi xuống một con chỉ có t−1 khóa ⇒ <code>_fill</code> (TH3). Gốc rỗng ⇒ cây <b>thấp đi 1</b>.', c: ['O(t·logₜ n)', 'TH1 · TH2 · TH3 như slide 8']},
-    {h: '_fill(x, i) · _merge(x, i)', p: 'Con i chỉ có t−1 khóa ⇒ <b>TH3a</b>: mượn anh em trái/phải (khóa của cha xuống, khóa của anh em lên cha); không mượn được ⇒ <b>TH3b</b>: <code>_merge</code> gộp con i + khóa cha + con i+1. <code>_max/_min</code> tìm predecessor/successor.', c: ['O(t)', 'mọi node giữ ≥ t−1 khóa']},
-    {h: 'items() · show()', p: '<code>items()</code> duyệt in-order bằng generator ⇒ khóa ra theo thứ tự <b>tăng dần</b>, dừng lúc nào cũng được — dùng cho <code>top(k)</code> ở Leaderboard. <code>show()</code> in cây theo tầng, mỗi tầng thụt 3 dấu cách.', c: ['O(log n + k) cho k khóa đầu', 'dùng ở slide 19']}
+    {h: 'search(k)', p: '<code>bisect_left</code> tìm nhị phân vị trí <code>i</code> trong node. <code>keys[i] == k</code> ⇒ trả về <code>(x, i)</code>; x là lá ⇒ <code>None</code>; ngược lại đệ quy xuống con i.', c: ['O(log t) mỗi node', 'h lần đọc đĩa']},
+    {h: 'split_child · insert', p: '<code>split_child</code>: con đầy (2t−1 khóa) tách đôi, khóa giữa lên cha. <code>insert</code>: gốc đầy ⇒ tạo gốc mới (cây <b>cao thêm 1</b>); <code>_insert_nonfull</code> tách con đầy <b>trước</b> khi xuống nên chỉ đi một lượt.', c: ['O(t·logₜ n)', '1 lượt gốc → lá']},
+    {h: 'delete · _fill · _merge', p: 'Đi <b>một lượt</b> từ gốc xuống. Khóa ở lá ⇒ xóa (TH1); ở node trong ⇒ TH2a/b/c. Con chỉ có t−1 khóa ⇒ <code>_fill</code>: mượn anh em (TH3a) hoặc <code>_merge</code> (TH3b). Gốc rỗng ⇒ cây <b>thấp đi 1</b> (TH4).', c: ['O(t·logₜ n)', 'mọi node giữ ≥ t−1 khóa']},
+    {h: 'items · show', p: '<code>items()</code> duyệt in-order bằng generator ⇒ khóa ra <b>tăng dần</b>, dừng lúc nào cũng được — dùng cho <code>top(k)</code> ở Leaderboard. <code>show()</code> in cây theo tầng.', c: ['O(log n + k) cho k khóa đầu']}
   ],
   init(sl) {
     this.sl = sl; this.view = $('.cw-view', sl); this.inner = $('.cw-inner', sl); this.exp = $('[data-exp]', sl);
     this.src = $('#src-btree').textContent;
     const lines = this.src.split('\n');
-    const st = ['def search', 'def split_child', 'def insert', 'def delete', 'def _fill', 'def items'].map(s => lines.findIndex(l => l.includes(s)) + 1);
+    const st = ['def search', 'def split_child', 'def delete', 'def items'].map(s => lines.findIndex(l => l.includes(s)) + 1);
     this.ranges = st.map((s, j) => [s, j < st.length - 1 ? st[j + 1] - 2 : lines.length]);
     CodeView.mount($('[data-code="btree"]', sl), this.src, true, () => this.apply(false));
     $$('[data-cs]', sl).forEach(b => b.addEventListener('click', () => this.go(+b.dataset.cs)));
@@ -3974,7 +3390,7 @@ CTRL.term = {
 
 /* --- Slide 14: bảng độ phức tạp morph thành biểu đồ đường động --- */
 CTRL.cx = {
-  steps: 2, step: 0,
+  steps: 1, step: 0,
   X0: 76, X1: 740, Y0: 34, Y1: 414,
   SERIES: [
     // Số tầng (= số node đọc trên đường gốc → lá). BST: ít nhất ⌊log₂n⌋ + 1; B-tree: nhiều nhất ⌊logₜ((n+1)/2)⌋ + 1
@@ -4180,7 +3596,7 @@ CTRL.lim = {
 
 /* --- Slide 17: 4 cải tiến, bấm thẻ nào mở animation thẻ đó --- */
 CTRL.improve = {
-  steps: 5, step: 0,
+  steps: 1, step: 0,
   init(sl) {
     this.sl = sl; this.clk = new Clock();
     this.cards = $$('.imp-card', sl); this.panels = $$('.imp-panel', sl);
@@ -4317,9 +3733,9 @@ CTRL.improve = {
 
 /* --- Slide 19: Leaderboard trong game (B-tree làm ordered set) --- */
 CTRL.lb = {
-  steps: 5, step: 0,
+  steps: 3, step: 0,
   INIT: [['batau', 250], ['blablabla', 210], ['william', 180], ['miguel', 120], ['lil boi', 90]],
-  OPS: [['miguel', 310], ['Phú', 200], ['william', 250], ['top', 3]],
+  OPS: [['miguel', 310], ['top', 3]],
   RH: 52, MAX: 330,
   init(sl) {
     this.sl = sl; this.clk = new Clock();
@@ -4456,13 +3872,299 @@ CTRL.lb = {
 
 
 /* =====================================================================
+   Controller của các slide mới: bìa · bài toán · ý tưởng · định nghĩa ·
+   walkthrough (insert / delete) · bản đồ delete · đánh đổi
+   ===================================================================== */
+const nb = t => t.replace(/ ([−≥≤⇒]) /g, '\u00a0$1 ');
+const ICON_PREV = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>';
+const ICON_NEXT = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>';
+
+/* --- 2. Bài toán: ô vuông = số lần đọc đĩa --- */
+CTRL.problem = {
+  steps: 1, step: 0,
+  init(sl) {
+    const fill = (el, n) => { for (let i = 0; i < n; i++) { const e = document.createElement('i'); e.style.setProperty('--i', i); el.appendChild(e); } };
+    fill($('.sq-grid:not(.blue)', sl), 30);
+    fill($('.sq-grid.blue', sl), 3);
+  },
+  enter() {}, leave() {}
+};
+
+/* --- Controller nhiều "pane" (định nghĩa, đánh đổi) --- */
+function paneCtrl(n, hooks = {}) {
+  return {
+    steps: n, step: 0,
+    init(sl) { this.sl = sl; this.P = $$('.pane', sl); if (hooks.init) hooks.init.call(this, sl); },
+    show(s) { this.step = s; this.P.forEach((p, i) => p.classList.toggle('on', i === s)); if (hooks.show) hooks.show.call(this, s); },
+    enter(step) { this.show(step); },
+    go(s) { this.show(s); SoundFX.play('click'); },
+    leave() {}
+  };
+}
+
+/* --- 4. Định nghĩa: cây t = 2 có chú thích, rồi bảng chiều cao --- */
+CTRL.defn = paneCtrl(2, {
+  init(sl) {
+    this.tv = new TreeView($('[data-def]', sl), {cell: 58, h: 52, level: 124, gap: 30, pad: 14, maxScale: 1.3, top: 50, bottom: 58});
+    this.tree = parseTree('R:10,20(A:5,6,7 B:12,17 C:30)');
+    this.st = {
+      nodes: {A: 'full', C: 'warn'},
+      tags: [
+        {id: 't1', node: 'R', text: '2 khóa ⇒ 3 con', cls: 'rd'},
+        {id: 't2', node: 'A', text: '3 khóa', below: true, cls: 'rd'},
+        {id: 't3', node: 'B', text: '2 khóa', below: true, cls: 'rd'},
+        {id: 't4', node: 'C', text: '1 khóa', below: true, cls: 'rd'}
+      ]
+    };
+    this.tv.show(this.tree, this.st, 0);
+  }
+});
+
+/* --- 3. Ý tưởng: 4 bước --- */
+CTRL.idea = {
+  steps: 3, step: 0, scMap: [0, 0, 2],
+  BST: 'n8:8(n4:4(n2:2(n1:1 n3:3) n6:6(n5:5 n7:7)) n12:12(n10:10(n9:9 n11:11) n14:14(n13:13 n15:15)))',
+  BT: 'R:4,8,12(A:1,2,3 B:5,6,7 C:9,10,11 D:13,14,15)',
+  init(sl) {
+    this.sl = sl; this.clk = new Clock();
+    this.btns = $$('.id-prog button', sl); this.T = $$('.id-t', sl);
+    this.sc = {}; $$('.id-sc', sl).forEach(e => { this.sc[e.dataset.sc] = e; });
+    this.pg = $('[data-pg]', sl); this.pgn = $('[data-pgn]', sl); this.pgf = $('[data-pgf]', sl);
+    for (let i = 0; i < 336; i++) {
+      const c = document.createElement('i'), col = i % 24, row = (i / 24) | 0;
+      c.style.transitionDelay = ((col + row) * 14) + 'ms';
+      if (col % 2) c.className = 'alt';
+      this.pg.appendChild(c);
+    }
+    this.tvB = new TreeView($('[data-bst]', sl), {cell: 42, h: 36, level: 62, gap: 10, pad: 12, maxScale: 1.3});
+    this.tvT = new TreeView($('[data-bt]', sl), {cell: 52, h: 40, level: 96, gap: 22, pad: 12, maxScale: 1.3});
+    this.tB = parseTree(this.BST); this.tT = parseTree(this.BT);
+    this.rd = [$('[data-r="0"]', sl), $('[data-r="1"]', sl)];
+    this.tvB.show(this.tB, {}, 0); this.tvT.show(this.tT, {}, 0);
+    this.btns.forEach(b => b.addEventListener('click', () => this.go(+b.dataset.i, 1)));
+  },
+  paint(s) {
+    const sc = this.scMap[s];
+    Object.keys(this.sc).forEach(k => this.sc[k].classList.toggle('on', +k === sc));
+    this.T.forEach((e, i) => e.classList.toggle('on', i === s));
+    this.btns.forEach((b, i) => { b.classList.toggle('on', i === s); b.classList.toggle('done', i < s); });
+    const first = this.pg.firstChild;
+    if (s === 0) {
+      this.pg.classList.remove('full'); first.classList.add('use');
+      this.pgn.textContent = 'BST: 1 khóa / trang';
+      this.pgf.innerHTML = 'Chỉ dùng <em>1 ô</em> (màu cam). Phần còn lại của trang bị bỏ phí.';
+    } else if (s === 1) {
+      this.pg.classList.add('full'); first.classList.remove('use');
+      this.pgn.textContent = 'B-tree: cả trang là khóa';
+      this.pgf.innerHTML = 'Cũng 1 lần đọc, nhưng được <em class="b">cả trang khóa</em> đã xếp sẵn.';
+    }
+    if (s === 2) this.race(); else { this.clk.cancel(); }
+  },
+  async race() {
+    this.clk = new Clock(); const clk = this.clk;
+    const bst = ['n8', 'n12', 'n10', 'n11'], bt = ['R', 'C'];
+    this.rd[0].textContent = 0; this.rd[1].textContent = 0;
+    this.tvB.show(this.tB, {}, 200); this.tvT.show(this.tT, {}, 200);
+    if (!await clk.wait(900)) return;
+    for (let i = 0; i < 4; i++) {
+      const nB = {}, nT = {};
+      for (let j = 0; j <= i; j++) nB[bst[j]] = j === i ? (i === 3 ? 'found' : 'visit') : 'path';
+      this.tvB.show(this.tB, {nodes: nB, keys: i === 3 ? [['n11', 0, 'found']] : []}, 350);
+      this.rd[0].textContent = i + 1;
+      if (i < bt.length) {
+        for (let j = 0; j <= i; j++) nT[bt[j]] = j === i ? (i === 1 ? 'found' : 'visit') : 'path';
+        this.tvT.show(this.tT, {nodes: nT, keys: i === 1 ? [['C', 2, 'found']] : []}, 350);
+        this.rd[1].textContent = i + 1;
+      }
+      SoundFX.play(i === 3 ? 'found' : 'step');
+      if (!await clk.wait(850)) return;
+    }
+  },
+  enter(step) { this.clk.cancel(); this.step = step; this.paint(step); },
+  go(s) { this.step = s; this.paint(s); SoundFX.play('click'); },
+  leave() { this.clk.cancel(); }
+};
+
+/* --- Walkthrough: mỗi bước là một trạng thái cây + một câu giải thích --- */
+function makeWalk(cfg) {
+  return {
+    steps: 1, step: 0, ci: -1, startCase: null,
+    init(sl) {
+      this.sl = sl;
+      const host = $('[data-walk]', sl);
+      const multi = cfg.cases.length > 1;
+      host.innerHTML = `
+        <div class="walk-l">
+          ${multi ? `<div class="walk-tabs" role="tablist" aria-label="Chọn trường hợp">${cfg.cases.map((c, i) => `<button role="tab" data-ci="${i}">${c.tag}</button>`).join('')}</div>` : ''}
+          ${cfg.seq ? `<div class="seq"><span class="sq-l">Chèn lần lượt</span>${cfg.seq.map(k => `<span class="sq">${k}</span>`).join('')}</div>` : ''}
+          <div class="rule card">
+            <div class="rule-h"><span class="tag" data-rtag></span><h3 data-rname></h3></div>
+            <dl><dt>Khi nào</dt><dd data-rwhen></dd><dt>Làm gì</dt><dd data-rdo></dd><dt>Vì sao</dt><dd data-rwhy></dd></dl>
+          </div>
+          <div class="walk-ctrl"><button class="btn icon" data-prev aria-label="Bước trước">${ICON_PREV}</button><div class="walk-dots"></div><button class="btn icon" data-next aria-label="Bước sau">${ICON_NEXT}</button></div>
+        </div>
+        <figure class="card tree-card walk-r" data-morph="trace-tree">
+          <div class="walk-step"><span data-stepno></span><span data-stepname></span></div>
+          <svg class="tree-svg" viewBox="0 0 816 500" role="img" aria-label="${cfg.label}"></svg>
+          <p class="walk-msg" data-msg aria-live="polite"></p>
+        </figure>`;
+      this.tv = new TreeView($('.tree-svg', host), Object.assign({cell: 64, h: 58, level: 150, gap: 34, pad: 18, maxScale: 1.6, top: 20, bottom: 8}, cfg.tv || {}));
+      this.flat = []; this.start = [];
+      cfg.cases.forEach((c, ci) => {
+        this.start.push(this.flat.length);
+        c.trees = c.frames.map(f => parseTree(f.t));
+        c.frames.forEach((f, fi) => this.flat.push([ci, fi]));
+      });
+      this.steps = this.flat.length;
+      this.el = {
+        rtag: $('[data-rtag]', host), rname: $('[data-rname]', host), rwhen: $('[data-rwhen]', host), rdo: $('[data-rdo]', host), rwhy: $('[data-rwhy]', host),
+        dots: $('.walk-dots', host), msg: $('[data-msg]', host), no: $('[data-stepno]', host), name: $('[data-stepname]', host),
+        tabs: $$('.walk-tabs button', host), sq: $$('.seq .sq', host), prev: $('[data-prev]', host), next: $('[data-next]', host)
+      };
+      this.el.prev.addEventListener('click', () => SlideManager.prev());
+      this.el.next.addEventListener('click', () => SlideManager.next());
+      this.el.tabs.forEach(b => b.addEventListener('click', () => this.go(this.start[+b.dataset.ci], 1)));
+    },
+    setCase(ci) {
+      const c = cfg.cases[ci], e = this.el;
+      this.ci = ci;
+      e.rtag.textContent = c.tag; e.rname.textContent = c.name;
+      e.rwhen.innerHTML = nb(c.when); e.rdo.innerHTML = nb(c.does); e.rwhy.innerHTML = nb(c.why);
+      e.tabs.forEach((b, i) => { b.classList.toggle('on', i === ci); b.setAttribute('aria-selected', String(i === ci)); });
+      e.dots.innerHTML = c.frames.map(() => '<i></i>').join('');
+    },
+    render(s, dur) {
+      const [ci, fi] = this.flat[s], c = cfg.cases[ci], f = c.frames[fi], e = this.el;
+      const switched = ci !== this.ci;
+      if (switched) this.setCase(ci);
+      $$('i', e.dots).forEach((d, i) => { d.className = i < fi ? 'done' : i === fi ? 'cur' : ''; });
+      e.msg.innerHTML = '<span>' + nb(f.msg) + '</span>';
+      e.no.textContent = `Bước ${fi + 1} / ${c.frames.length}`;
+      e.name.textContent = c.tag + ' · ' + c.name;
+      e.prev.disabled = s === 0 && SlideManager.idx === 0;
+      if (cfg.seq) e.sq.forEach((q, i) => { q.className = 'sq' + (i < (f.d || 0) ? ' done' : '') + (i === f.c ? ' cur' : ''); });
+      this.tv.show(c.trees[fi], Object.assign({}, f.st || {}, switched ? {refit: true} : {}), dur);
+      return f;
+    },
+    go(s, dir) {
+      this.step = s;
+      const f = this.render(s, 560);
+      SoundFX.play(f.sfx || 'click');
+    },
+    enter(step) {
+      if (this.startCase != null) { step = this.start[this.startCase]; this.startCase = null; }
+      this.step = step; this.ci = -1;
+      this.render(step, 0);
+    },
+    leave() {}
+  };
+}
+
+/* --- 6. Insert: 6 bước (đã kiểm chứng với code Python) --- */
+CTRL.insert = makeWalk({
+  label: 'Cây B-tree sau từng bước chèn 10, 20, 5, 6, 12, 30, 7, 17',
+  seq: [10, 20, 5, 6, 12, 30, 7, 17],
+  cases: [{
+    tag: 'Luật', name: 'Tách node đầy trên đường xuống',
+    when: 'Node sắp bước vào đang <b>đầy</b> (tối đa 2t − 1 khóa).',
+    does: '<b>Tách</b> nó làm hai; khóa giữa đi lên cha.',
+    why: 'Xuống tới lá luôn còn chỗ, không phải quay lại sửa.',
+    frames: [
+      {t: 'A:', d: 0, c: -1, msg: 'Cây rỗng. Với t = 2, mỗi node chứa tối đa <b>3</b> khóa.'},
+      {t: 'A:5,10,20', d: 3, c: 3, sfx: 'thud', st: {nodes: {A: 'full'}, shake: 'A'}, msg: 'Chèn 10, 20, 5: node <b>đầy</b>. Chèn 6: <span class="r">tách trước</span>.'},
+      {t: 'R:10(A:5 B:20)', d: 3, c: 3, sfx: 'thud', st: {nodes: {R: 'visit'}, keys: [['R', 0, 'moved']]}, msg: '<b>Tách</b>: khóa giữa 10 lên làm gốc mới. Cây cao thêm 1 tầng.'},
+      {t: 'R:10(A:5,6,7 B:12,20,30)', d: 7, c: -1, sfx: 'pop', st: {keys: [['A', 1, 'new'], ['A', 2, 'new'], ['B', 0, 'new'], ['B', 2, 'new']]}, msg: 'Chèn 6, 7, 12, 30 vào hai lá. Hai lá lại đầy.'},
+      {t: 'R:10(A:5,6,7 B:12,20,30)', d: 7, c: 7, sfx: 'thud', st: {nodes: {B: 'full'}, shake: 'B'}, msg: 'Chèn 17: nhánh phải đầy ⇒ <span class="r">tách trước khi xuống</span>.'},
+      {t: 'R:10,20(A:5,6,7 B:12,17 C:30)', d: 8, c: -1, sfx: 'found', st: {keys: [['R', 1, 'moved'], ['B', 1, 'new']]}, msg: '20 lên gốc, rồi chèn 17 vào {12}. <span class="g">Xong, không phải quay lại sửa.</span>'}
+    ]
+  }]
+});
+
+/* --- 8. Delete: 7 trường hợp, mỗi trường hợp 2 bước (trước → sau) --- */
+const DEL_BASE = 'R:10,20(A:5,6,7 B:12,17 C:30,40)';
+CTRL.del = makeWalk({
+  label: 'Cây B-tree trước và sau khi xóa một khóa',
+  cases: [
+    {tag: 'TH1', name: 'Khóa ở lá',
+      when: 'Khóa nằm ở <b>lá</b>, lá có <b>≥ t</b> khóa.',
+      does: 'Xóa thẳng.',
+      why: 'Lá còn ≥ t − 1 khóa nên vẫn hợp lệ.',
+      frames: [
+        {t: DEL_BASE, st: {nodes: {B: 'visit'}, keys: [['B', 1, 'del']]}, msg: 'Xóa 17 (nằm ở lá B). B có 2 khóa ≥ t ⇒ được phép.'},
+        {t: 'R:10,20(A:5,6,7 B:12 C:30,40)', sfx: 'miss', st: {nodes: {B: 'found'}}, msg: 'Xóa thẳng. B còn 1 khóa = t − 1, vẫn hợp lệ. <span class="g">Xong.</span>'}
+      ]},
+    {tag: 'TH2a', name: 'Mượn tiền nhiệm',
+      when: 'Khóa ở <b>node trong</b>; con <b>trái</b> có <b>≥ t</b> khóa.',
+      does: 'Lấy <b>khóa lớn nhất</b> của con trái thế vào, rồi xóa nó ở dưới.',
+      why: 'Đó là khóa liền trước nên thứ tự vẫn đúng.',
+      frames: [
+        {t: DEL_BASE, st: {nodes: {A: 'visit'}, keys: [['R', 0, 'del'], ['A', 2, 'cmp']]}, msg: 'Xóa 10 (node trong). Con trái A có 3 khóa ≥ t ⇒ lấy khóa lớn nhất của A: <b>7</b>.'},
+        {t: 'R:7,20(A:5,6 B:12,17 C:30,40)', sfx: 'borrow', st: {nodes: {A: 'found'}, keys: [['R', 0, 'moved']]}, msg: '7 lên thay 10, rồi xóa 7 cũ ở lá A. <span class="g">Xong.</span>'}
+      ]},
+    {tag: 'TH2b', name: 'Mượn kế nhiệm',
+      when: 'Con trái chỉ có <b>t − 1</b>; con <b>phải</b> có <b>≥ t</b>.',
+      does: 'Lấy <b>khóa nhỏ nhất</b> của con phải thế vào, rồi xóa nó ở dưới.',
+      why: 'Đối xứng với TH2a.',
+      frames: [
+        {t: 'R:10,20(A:5 B:12,17 C:30,40)', st: {nodes: {A: 'warn', B: 'visit'}, keys: [['R', 0, 'del'], ['B', 0, 'cmp']]}, msg: 'Xóa 10. Con trái A chỉ có t − 1, không cho mượn. Con phải B có 2 ⇒ lấy khóa nhỏ nhất: <b>12</b>.'},
+        {t: 'R:12,20(A:5 B:17 C:30,40)', sfx: 'borrow', st: {nodes: {B: 'found'}, keys: [['R', 0, 'moved']]}, msg: '12 lên thay 10, rồi xóa 12 cũ ở lá B. <span class="g">Xong.</span>'}
+      ]},
+    {tag: 'TH2c', name: 'Gộp hai con',
+      when: '<b>Cả hai con</b> đều chỉ có <b>t − 1</b> khóa.',
+      does: '<b>Gộp</b> hai con + khóa cần xóa thành 1 node, rồi xóa trong đó.',
+      why: 'Không con nào dư để mượn.',
+      frames: [
+        {t: 'R:10,20(A:5 B:12 C:30,40)', st: {nodes: {A: 'warn', B: 'warn'}, keys: [['R', 0, 'del']]}, msg: 'Xóa 10. Cả A và B đều chỉ có t − 1 = 1 khóa, không ai cho mượn.'},
+        {t: 'R:20(A:5,12 C:30,40)', sfx: 'merge', st: {nodes: {A: 'merge'}}, msg: '<span class="r">Gộp</span> A + 10 + B thành 1 node, rồi xóa 10 ở lá. <span class="g">Xong.</span>'}
+      ]},
+    {tag: 'TH3a', name: 'Xoay từ anh em',
+      when: 'Con cần xuống chỉ có <b>t − 1</b>; một <b>anh em có ≥ t</b>.',
+      does: '<b>Xoay</b>: khóa của cha xuống con, khóa của anh em lên cha.',
+      why: 'Con có đủ t khóa để xuống an toàn.',
+      frames: [
+        {t: 'R:10,20(A:5,6,7 B:12 C:30,40)', st: {nodes: {B: 'warn', A: 'visit'}, keys: [['B', 0, 'del']]}, msg: 'Xóa 12 ⇒ phải xuống B, nhưng B chỉ có t − 1 khóa. <b>Bổ sung B trước.</b> Anh em A có 3 khóa.'},
+        {t: 'R:7,20(A:5,6 B:10 C:30,40)', sfx: 'borrow', st: {nodes: {A: 'borrow', B: 'found'}, keys: [['R', 0, 'moved']]}, msg: '<b>Xoay</b>: 10 từ cha xuống B, 7 từ A lên cha; rồi xóa 12 ở lá. <span class="g">Xong.</span>'}
+      ]},
+    {tag: 'TH3b', name: 'Gộp với anh em',
+      when: 'Con cần xuống và anh em <b>đều chỉ có t − 1</b>.',
+      does: '<b>Gộp</b> con + khóa của cha + anh em thành 1 node.',
+      why: 'Gộp là phép ngược của tách.',
+      frames: [
+        {t: 'R:10,20(A:5 B:12 C:30,40)', st: {nodes: {A: 'warn', B: 'warn'}, keys: [['A', 0, 'del']]}, msg: 'Xóa 5 ⇒ xuống A (chỉ t − 1 khóa). Anh em B cũng chỉ có t − 1.'},
+        {t: 'R:20(A:10,12 C:30,40)', sfx: 'merge', st: {nodes: {A: 'merge'}}, msg: '<span class="r">Gộp</span> A + 10 (từ cha) + B, rồi xóa 5 ở lá. <span class="g">Xong.</span>'}
+      ]},
+    {tag: 'TH4', name: 'Gốc rỗng ⇒ cây thấp đi',
+      when: 'Phép gộp lấy mất <b>khóa cuối cùng của gốc</b>.',
+      does: 'Bỏ gốc rỗng, <b>con duy nhất</b> làm gốc mới.',
+      why: 'Đây là cách duy nhất cây thấp đi 1 tầng.',
+      frames: [
+        {t: 'R:10(A:5 B:12)', st: {nodes: {R: 'visit', A: 'warn', B: 'warn'}, keys: [['A', 0, 'del']]}, msg: 'Xóa 5: A, B đều chỉ có t − 1; gốc chỉ có 1 khóa.'},
+        {t: 'A:10,12', sfx: 'thud', st: {nodes: {A: 'found'}}, msg: '<span class="r">Gộp</span> A + 10 + B ⇒ gốc rỗng, bỏ gốc ⇒ <b>cây thấp đi 1 tầng</b>. Xóa 5. <span class="g">Xong.</span>'}
+      ]}
+  ]
+});
+
+/* --- 7. Bản đồ delete: bấm thẻ → nhảy tới đúng trường hợp --- */
+CTRL.dmap = {
+  steps: 1, step: 0,
+  init(sl) {
+    $$('.dc', sl).forEach(b => b.addEventListener('click', () => {
+      const tgt = +b.dataset.go - 1, c = SlideManager.ctrlOf(tgt);
+      if (c) c.startCase = +b.dataset.case;
+      SlideManager.go(tgt);
+    }));
+  },
+  enter() {}, leave() {}
+};
+
+
+/* =====================================================================
    13. KHỞI ĐỘNG
    ===================================================================== */
 function boot() {
   document.documentElement.lang = 'vi';
   Stage.fit();
   SlideManager.init();
-  initDefinition();
   Timeline.init();
   DepthScroll.build(SlideManager.slides.length);
   initInput();
