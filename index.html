@@ -1067,6 +1067,10 @@ body.idle #toolbar{opacity:.18}
 .cx-space span{display:block;font:700 12px var(--font);letter-spacing:.08em;text-transform:uppercase;color:var(--coral-d,#C4492A);margin-bottom:4px}
 .cx-space p{margin:0;font:400 18px/1.4 var(--font);color:var(--ink)}
 
+/* code: font nhỏ hơn để mỗi khối nằm trọn khung */
+.cw-pre{font:400 14.5px/1.5 var(--mono)}
+.cw-line .ln{font-size:12.5px}
+
 /* ---------- Slide cuối: cảm ơn + Q&A ---------- */
 .thx-qa{position:absolute;left:0;right:0;top:600px;display:flex;flex-direction:column;align-items:center;gap:18px}
 .thx-node{position:relative;display:inline-grid;grid-template-columns:repeat(3,64px);height:56px;border:2.5px solid var(--blue);border-radius:14px;background:#fff;box-shadow:var(--shadow)}
@@ -1288,7 +1292,7 @@ body.idle #toolbar{opacity:.18}
       <div class="cw-view"><div class="cw-inner"><pre class="cw-pre"><code data-code="btree"></code></pre></div></div>
     </figure>
     <aside class="code-side">
-      <div class="code-steps st" role="group" aria-label="Khối code"><button class="btn" data-cs="0"><i>1</i>search</button><button class="btn" data-cs="1"><i>2</i>split_child · insert</button><button class="btn" data-cs="2"><i>3</i>delete · _fill · _merge</button><button class="btn" data-cs="3"><i>4</i>items · show</button></div>
+      <div class="code-steps st" role="group" aria-label="Khối code"><button class="btn" data-cs="0"><i>1</i>class · search</button><button class="btn" data-cs="1"><i>2</i>split_child · insert</button><button class="btn" data-cs="2"><i>3</i>delete</button><button class="btn" data-cs="3"><i>4</i>_fill · _merge</button><button class="btn" data-cs="4"><i>5</i>items · show</button></div>
       <div class="code-exp card st" data-exp></div>
     </aside>
   </div>
@@ -3269,18 +3273,19 @@ CTRL.viz = {
 
 /* --- Slide 12: code Python, highlight từng khối --- */
 CTRL.code = {
-  steps: 4, step: 0,
+  steps: 5, step: 0,
   EXP: [
-    {h: 'search(k)', p: '<code>bisect_left</code> tìm nhị phân vị trí <code>i</code> trong node. <code>keys[i] == k</code> ⇒ trả về <code>(x, i)</code>; x là lá ⇒ <code>None</code>; ngược lại đệ quy xuống con i.', c: ['O(log t) mỗi node', 'h lần đọc đĩa']},
+    {h: 'class Node · __init__ · search', p: '<code>Node</code> giữ <code>keys</code>, <code>children</code>, <code>leaf</code>. <code>BTree(t)</code> khởi tạo gốc là một lá rỗng. <code>search</code>: <code>bisect_left</code> tìm vị trí <code>i</code>; khớp ⇒ trả <code>(x, i)</code>; là lá ⇒ <code>None</code>; ngược lại xuống con i.', c: ['search: O(log t) mỗi node', 'h lần đọc đĩa']},
     {h: 'split_child · insert', p: '<code>split_child</code>: con đầy (2t−1 khóa) tách đôi, khóa giữa lên cha. <code>insert</code>: gốc đầy ⇒ tạo gốc mới (cây <b>cao thêm 1</b>); <code>_insert_nonfull</code> tách con đầy <b>trước</b> khi xuống nên chỉ đi một lượt.', c: ['O(t·logₜ n)', '1 lượt gốc → lá']},
-    {h: 'delete · _fill · _merge', p: 'Đi <b>một lượt</b> từ gốc xuống. Khóa ở lá ⇒ xóa (TH1); ở node trong ⇒ TH2a/b/c. Con chỉ có t−1 khóa ⇒ <code>_fill</code>: mượn anh em (TH3a) hoặc <code>_merge</code> (TH3b). Gốc rỗng ⇒ cây <b>thấp đi 1</b> (TH4).', c: ['O(t·logₜ n)', 'mọi node giữ ≥ t−1 khóa']},
+    {h: 'delete', p: 'Đi <b>một lượt</b> từ gốc xuống. Khóa ở lá ⇒ xóa (TH1); ở node trong ⇒ TH2a/b/c. Con xuống chỉ có t−1 khóa ⇒ gọi <code>_fill</code> (TH3). Gốc rỗng ⇒ cây <b>thấp đi 1</b> (TH4).', c: ['O(t·logₜ n)', '1 lượt gốc → lá']},
+    {h: '_fill · _merge', p: 'Con i chỉ có t−1 khóa ⇒ <b>TH3a</b>: mượn anh em (khóa cha xuống, khóa anh em lên); không mượn được ⇒ <b>TH3b</b>: <code>_merge</code> gộp con i + khóa cha + con i+1. <code>_max/_min</code> tìm predecessor/successor.', c: ['O(t)', 'mọi node giữ ≥ t−1 khóa']},
     {h: 'items · show', p: '<code>items()</code> duyệt in-order bằng generator ⇒ khóa ra <b>tăng dần</b>, dừng lúc nào cũng được — dùng cho <code>top(k)</code> ở Leaderboard. <code>show()</code> in cây theo tầng.', c: ['O(log n + k) cho k khóa đầu']}
   ],
   init(sl) {
     this.sl = sl; this.view = $('.cw-view', sl); this.inner = $('.cw-inner', sl); this.exp = $('[data-exp]', sl);
     this.src = $('#src-btree').textContent;
     const lines = this.src.split('\n');
-    const st = ['def search', 'def split_child', 'def delete', 'def items'].map(s => lines.findIndex(l => l.includes(s)) + 1);
+    const st = ['from bisect', 'def split_child', 'def delete', 'def _fill', 'def items'].map(s => lines.findIndex(l => l.includes(s)) + 1);
     this.ranges = st.map((s, j) => [s, j < st.length - 1 ? st[j + 1] - 2 : lines.length]);
     CodeView.mount($('[data-code="btree"]', sl), this.src, true, () => this.apply(false));
     $$('[data-cs]', sl).forEach(b => b.addEventListener('click', () => this.go(+b.dataset.cs)));
@@ -3308,7 +3313,7 @@ CTRL.code = {
     $$('[data-cs]', this.sl).forEach(el => el.classList.toggle('on', +el.dataset.cs === this.step));
     const first = $('.cw-line', this.sl), lh = first ? first.offsetHeight : 26;
     const max = Math.max(0, this.inner.scrollHeight - this.view.clientHeight);
-    const y = clamp((a - 3) * lh, 0, max);
+    const y = clamp((a - 1.6) * lh + 8, 0, max);
     if (!anim) this.inner.style.transition = 'none';
     this.inner.style.transform = `translateY(${-y}px)`;
     if (!anim) { void this.inner.offsetHeight; this.inner.style.transition = ''; }
