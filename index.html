@@ -1067,6 +1067,14 @@ body.idle #toolbar{opacity:.18}
 .cx-space span{display:block;font:700 12px var(--font);letter-spacing:.08em;text-transform:uppercase;color:var(--coral-d,#C4492A);margin-bottom:4px}
 .cx-space p{margin:0;font:400 18px/1.4 var(--font);color:var(--ink)}
 
+/* ---------- Slide cuối: cảm ơn + Q&A ---------- */
+.thx-qa{position:absolute;left:0;right:0;top:600px;display:flex;flex-direction:column;align-items:center;gap:18px}
+.thx-node{position:relative;display:inline-grid;grid-template-columns:repeat(3,64px);height:56px;border:2.5px solid var(--blue);border-radius:14px;background:#fff;box-shadow:var(--shadow)}
+.thx-node span{display:grid;place-items:center;font:800 26px var(--mono);color:var(--ink)}
+.thx-node span + span{border-left:1.5px solid var(--blue-t2)}
+.thx-node .amp{color:var(--coral)}
+.thx-node i{position:absolute;bottom:-6px;width:10px;height:10px;margin-left:-5px;border-radius:50%;background:var(--blue);border:2px solid #fff}
+.thx-qa p{margin:0;font-size:20px;font-weight:500;letter-spacing:.02em;color:var(--muted)}
 </style>
 </head>
 <body>
@@ -1411,39 +1419,13 @@ body.idle #toolbar{opacity:.18}
   </div>
 </section>
 
-<section class="slide" data-title="Tổng kết và hỏi đáp" data-section="Kết thúc" data-glyph="qa">
-  <h2 class="s-title st">Tổng kết &amp; <em>hỏi đáp</em></h2>
-  <div class="s-body fin">
-    <div>
-      <h3 class="st">Nhớ 4 ý</h3>
-      <ul class="takeaways">
-        <li class="st"><span class="ic">1</span><b>Node = trang đĩa</b><span>Hàng trăm khóa mỗi node ⇒ cây thấp: 1 tỷ khóa chỉ ≤ 3 lần đọc.</span></li>
-        <li class="st"><span class="ic">2</span><b>t − 1 … 2t − 1 khóa, mọi lá cùng độ sâu</b><span>Luôn cân bằng, không cần xoay cây.</span></li>
-        <li class="st"><span class="ic">3</span><b>Insert: tách trước · Delete: đủ t khóa trước</b><span>Một lượt gốc → lá; tách và gộp là hai phép ngược nhau.</span></li>
-        <li class="st"><span class="ic">4</span><b>O(log<sub>t</sub> n) đọc đĩa · O(n) không gian</b><span>Đổi lại: node đầy ~50–70% và ghi cả trang.</span></li>
-      </ul>
-    </div>
-    <div>
-      <h3 class="st">Hỏi nhanh — đáp gọn <span class="muted" style="text-transform:none;letter-spacing:0;font-family:var(--font);font-weight:500">(bấm để mở)</span></h3>
-      <div class="qa st">
-        <details><summary>Vì sao không dùng BST/AVL cho dữ liệu trên đĩa?</summary><p>Mỗi node chỉ 1 khóa nên mỗi bước xuống là một lần đọc đĩa: 1 tỷ khóa ≈ 30 lần. B-tree gói ~1000 khóa vào một trang ⇒ ≤ 3 lần.</p></details>
-        <details><summary>t là gì, chọn t thế nào?</summary><p>t là số con tối thiểu của node trong. Chọn t sao cho 2t − 1 khóa (kèm con trỏ) vừa khít một trang đĩa.</p></details>
-        <details><summary>Vì sao insert “tách trước khi xuống”?</summary><p>Con đầy thì tách ngay khi còn đứng ở cha; cha chắc chắn còn chỗ nhận khóa giữa, nên đi một lượt gốc → lá, không quay lui.</p></details>
-        <details><summary>Vì sao delete phải bảo đảm ≥ t khóa trước khi xuống?</summary><p>Xóa ở dưới làm node mất tối đa 1 khóa. Có ≥ t khóa thì còn ≥ t − 1, vẫn hợp lệ; nếu không phải mượn hoặc gộp trước.</p></details>
-        <details><summary>Cây cao lên hoặc thấp đi khi nào?</summary><p>Chỉ ở gốc: gốc đầy bị tách ⇒ cao thêm 1; gốc rỗng sau khi gộp ⇒ thấp đi 1. Mọi lá luôn cùng độ sâu.</p></details>
-        <details><summary>B-tree khác B+ tree ở đâu?</summary><p>B+ tree chỉ lưu dữ liệu ở lá và nối các lá thành danh sách ⇒ range query nhanh; node trong nhỏ hơn nên fanout lớn hơn. Cơ sở dữ liệu thường dùng B+ tree.</p></details>
-      </div>
-    </div>
-    <div class="fin-foot st">
-      <div class="apps-row"><span class="chip">MySQL InnoDB</span><span class="chip">PostgreSQL</span><span class="chip">SQLite</span><span class="chip">MongoDB WiredTiger</span><span class="chip c-green">NTFS</span><span class="chip c-green">Btrfs</span><span class="chip c-green">XFS</span><span class="chip c-green">APFS</span></div>
-      <p class="refs" style="margin:0;text-align:right">Tài liệu: Cormen et al., <i>Introduction to Algorithms</i>, ch. 18 · Bayer &amp; McCreight (1972) · Comer, “The Ubiquitous B-Tree” (1979)</p>
-    </div>
-  </div>
-</section>
-
-<section class="slide" data-title="Cảm ơn" data-section="Kết thúc" data-particles="thanks" data-glyph="qa" data-nodeco>
+<section class="slide thx" data-title="Cảm ơn" data-section="Kết thúc" data-particles="thanks" data-glyph="qa" data-nodeco>
   <h2 class="sr">Cảm ơn thầy cô và các bạn đã lắng nghe!</h2>
-  <div class="pt-anchor" style="left:120px;top:170px;width:1360px;height:520px"></div>
+  <div class="pt-anchor" style="left:170px;top:120px;width:1260px;height:430px"></div>
+  <div class="thx-qa">
+    <div class="thx-node st" aria-label="Q&amp;A"><span>Q</span><span class="amp">&amp;</span><span>A</span><i style="left:8px"></i><i style="left:33.3%"></i><i style="left:66.7%"></i><i style="right:2px;left:auto"></i></div>
+    <p class="st">Mời thầy cô và các bạn đặt câu hỏi</p>
+  </div>
 </section>
 
   </main>
