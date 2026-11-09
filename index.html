@@ -621,38 +621,54 @@ kbd{display:inline-block;min-width:26px;padding:2px 7px;border-radius:7px;border
 .lv-pulse{animation:lvpulse 1.2s ease-in-out infinite}
 @keyframes lvpulse{50%{transform:translateX(8px)}}
 
-/* ---------- Slide 19: Leaderboard ---------- */
+/* ---------- Slide 14–15: Ứng dụng - leaderboard.db trên đĩa ---------- */
 .lc{display:grid;grid-template-columns:640px 1fr;gap:40px}
 .lc-left{display:flex;flex-direction:column;gap:18px;justify-content:center}
 .lc-left p{margin:0;font-size:22px;line-height:1.55;color:var(--ink-2)}
 .lc-left .tag{margin-right:8px;vertical-align:2px}
 .code-sm{margin:0;padding:16px 20px;background:#fff}
 .code-sm pre{margin:0;font:400 17px/1.6 var(--mono);color:#2A3040;white-space:pre}
-.lb .code-sm pre{font-size:15.5px}
 .lc-right{display:flex;flex-direction:column;gap:16px;justify-content:center}
 .lc-call{min-height:62px;padding:14px 18px;border-radius:14px;background:#fff;border:1px solid var(--line);font:500 17px/1.6 var(--mono);color:var(--ink-2)}
-.lb .lc-call{min-height:112px}
 .lc-call .t{color:var(--green-d);font-weight:700}.lc-call .f{color:var(--red-d);font-weight:700}
-.lb-board{margin:0;padding:14px 18px 16px}
-.lb-head,.lb-row{display:grid;grid-template-columns:44px 124px 58px 1fr 214px;align-items:center;gap:12px}
-.lb-head span:nth-child(3){text-align:right}
-.lb-head{padding:0 10px 8px;font:700 12.5px var(--font);letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
-.lb-rows{position:relative}
-.lb-row{position:absolute;left:0;right:0;top:0;height:46px;padding:0 10px;border-radius:12px;border:1.5px solid transparent;background:rgba(26,29,41,.025);transition:transform .6s var(--ease),opacity .45s,background .3s,border-color .3s}
-.lb-row.notr,.lb-row.notr *{transition:none!important}
-.lb-rank{width:32px;height:32px;border-radius:9px;display:grid;place-items:center;font:700 15px var(--mono);background:rgba(26,29,41,.06);color:var(--muted)}
-.lb-name{font-size:19px;font-weight:700;color:var(--ink)}
-.lb-bar{height:10px;border-radius:5px;background:rgba(26,29,41,.06);overflow:hidden}
-.lb-bar i{display:block;height:100%;border-radius:5px;background:var(--blue);opacity:.55;transition:width .6s var(--ease)}
-.lb-pts{font:700 18px var(--mono);text-align:right;color:var(--ink-2)}
-.lb-key{justify-self:end;padding:3px 8px;border-radius:7px;font:500 14.5px var(--mono);color:var(--muted);background:#fff;border:1px solid var(--line);transition:color .3s,background .3s,border-color .3s}
-.lb-key.del{color:var(--red-d);background:var(--red-t);border-color:var(--red);text-decoration:line-through}
-.lb-key.ins{color:var(--green-d);background:var(--green-t);border-color:var(--green)}
-.lb-row.hot{z-index:2;background:#fff;border-color:var(--coral);box-shadow:var(--shadow)}
-.lb-row.hot .lb-bar i{background:var(--coral);opacity:.8}
-.lb-row.top{background:var(--blue-t);border-color:var(--blue)}
-.lb-row.top .lb-rank{background:var(--blue);color:#fff}
-.lb-row.dim{opacity:.35!important}
+.dbx .lc-left{gap:14px}
+.dbx .lc-left p{font-size:20px}
+.dbx .code-sm{padding:12px 18px}
+.dbx .code-sm pre{font-size:13px;line-height:1.45}
+.dbx .lc-right{gap:14px}
+.dbx .term-out{height:auto;padding:14px 20px;font-size:14.5px;line-height:1.45;min-height:372px}
+.dbx .lc-left p code,.dbx-ex code{font-size:.9em}
+.dbx .lc-right{padding-bottom:36px}
+.cl-lab{font-size:16.5px;color:var(--ink-2)}
+.cl-lab code{font-size:.92em}
+.cells{display:flex;gap:4px}
+.cl{flex:1 1 0;min-width:0;display:flex;flex-direction:column;align-items:center;gap:1px;padding:6px 2px;border-radius:10px;border:1.5px solid var(--line-2);background:#fff}
+.cl b{font:700 17px var(--mono)}.cl small{font-size:12.5px;color:var(--muted);white-space:nowrap}
+.cl.k-n{background:var(--blue-t);border-color:var(--blue-t2)}.cl.k-n b{color:var(--blue-d)}
+.cl.k-sc{background:var(--coral-t);border-color:#F6C9B3}.cl.k-sc b{color:var(--coral-d)}
+.cl.k-uid{background:var(--green-t);border-color:#BFE3CC}.cl.k-uid b{color:var(--green-d)}
+.cl.k-ch{background:#fff;border-color:var(--blue)}.cl.k-ch b{color:var(--blue-d)}
+.cl.k-pad{background:transparent;border-style:dashed}.cl.k-pad b{color:var(--muted)}
+.pgl{display:flex;flex-direction:column;gap:8px}
+.pgl-row{display:grid;grid-template-columns:.8fr .8fr 1.5fr 1.5fr 1.8fr;gap:6px}
+.pc{display:flex;flex-direction:column;align-items:center;gap:1px;padding:9px 6px;border-radius:12px;border:1.5px solid var(--line-2);background:#fff}
+.pc b{font:700 18px var(--mono)}.pc small{font-size:14px;color:var(--muted)}
+.pc.p0,.pc.p1{background:var(--blue-t);border-color:var(--blue-t2)}.pc.p0 b,.pc.p1 b{color:var(--blue-d)}
+.pc.p2{background:#FFF1EA;border-color:#F6C9B3}.pc.p2 b{color:var(--coral-d)}
+.pc.p3{background:#EAF7EF;border-color:#BFE3CC}.pc.p3 b{color:var(--green-d)}
+.pc.p4{background:#fff;border-color:var(--blue)}.pc.p4 b{color:var(--blue-d)}
+.pgl-cap{margin:0;font-size:16.5px!important;line-height:1.5;color:var(--muted)!important}
+.dbx-ex{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.dbx-ex li{display:grid;grid-template-columns:230px 1fr;gap:12px;align-items:baseline;font-size:17px;line-height:1.4;color:var(--ink-2)}
+.dbx-ex li>code{font:600 15.5px var(--mono);color:var(--blue-d);background:var(--blue-t);padding:3px 8px;border-radius:8px;white-space:nowrap}
+.dbx-ex li span code{font-size:15px}
+.pathbar{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.pb{display:flex;flex-direction:column;gap:2px;padding:10px 14px;border-radius:14px;background:#fff;border:1.5px solid var(--line-2);opacity:.4;transition:opacity .35s,border-color .35s,box-shadow .35s}
+.pb b{font:700 17px var(--mono);color:var(--blue-d)}
+.pb small{font-size:14.5px;color:var(--muted)}
+.pb.on{opacity:1;border-color:var(--coral);box-shadow:var(--shadow)}
+.pb.on b{color:var(--coral-d)}
+.dbx-chips{display:flex;flex-wrap:wrap;gap:8px}
 .lb-note{margin:0;font-size:16px;line-height:1.5;color:var(--muted)}
 
 @keyframes shakeX{0%,100%{transform:translateX(0)}20%{transform:translateX(-8px)}40%{transform:translateX(7px)}60%{transform:translateX(-5px)}80%{transform:translateX(3px)}}
@@ -1372,22 +1388,64 @@ body.idle #toolbar{opacity:.18}
   </div>
 </section>
 
-<section class="slide" data-title="Ứng dụng: Leaderboard trong game" data-section="Leaderboard" data-ctrl="lb" data-glyph="trophy">
-  <h2 class="s-title st">Ứng dụng: <em>Leaderboard trong game</em></h2>
-  <div class="s-body lc lb">
+<section class="slide" data-title="Ứng dụng: file leaderboard.db" data-section="Ứng dụng" data-ctrl="dbfile" data-glyph="db">
+  <h2 class="s-title st">Ứng dụng: <em>B-tree nằm trên đĩa</em></h2>
+  <div class="s-body lc dbx">
     <div class="lc-left">
-      <p class="st"><span class="tag">Đề</span>Hàng triệu người chơi, điểm đổi sau mỗi trận. Cần <code>update(tên, điểm)</code> và <code>top(k)</code> bất cứ lúc nào.</p>
-      <p class="st"><span class="tag t-green">Ý tưởng</span>Khóa B-tree = <code>(−điểm, tên)</code> ⇒ khóa tăng dần = <b>điểm giảm dần</b>. Đổi điểm = <b>delete</b> khóa cũ + <b>insert</b> khóa mới.</p>
-      <figure class="card code-sm st"><pre><code data-code="lb"></code></pre></figure>
+      <p class="st"><span class="tag">Đề</span>Bảng xếp hạng game <code>leaderboard.db</code>: <b>1 tỉ người chơi</b>, 11 GB, lớn hơn RAM. Khóa là <code>(−điểm, uid)</code>: điểm cao xếp trước, hòa điểm thì theo uid.</p>
+      <p class="st"><span class="tag t-green">Ý tưởng</span>Mỗi node nằm trong <b>1 page 4096 byte</b>: một dãy số nguyên, mỗi số 4 byte. Page <code>p</code> nằm ở byte <code>p × 4096</code> nên <code>seek</code> thẳng tới được.</p>
+      <div class="pgl st" aria-label="Hai ví dụ page">
+        <div class="cl-lab">Node lá, 2 khóa: <code>(−5, 7)</code> và <code>(−4, 9)</code></div>
+        <div class="cells">
+          <span class="cl k-n"><b>1</b><small>lá?</small></span><span class="cl k-n"><b>2</b><small>n</small></span>
+          <span class="cl k-sc"><b>-5</b><small>điểm</small></span><span class="cl k-sc"><b>-4</b><small>điểm</small></span>
+          <span class="cl k-uid"><b>7</b><small>uid</small></span><span class="cl k-uid"><b>9</b><small>uid</small></span>
+          <span class="cl k-pad"><b>0</b><small>đệm</small></span><span class="cl k-pad"><b>0</b><small>đệm</small></span><span class="cl k-pad"><b>⋯</b><small>đến 1024</small></span>
+        </div>
+        <div class="cl-lab">Node trong, 2 khóa, 3 con ở page 11, 12, 13</div>
+        <div class="cells">
+          <span class="cl k-n"><b>0</b><small>lá?</small></span><span class="cl k-n"><b>2</b><small>n</small></span>
+          <span class="cl k-sc"><b>-5</b><small>điểm</small></span><span class="cl k-sc"><b>-2</b><small>điểm</small></span>
+          <span class="cl k-uid"><b>7</b><small>uid</small></span><span class="cl k-uid"><b>3</b><small>uid</small></span>
+          <span class="cl k-ch"><b>11</b><small>con 0</small></span><span class="cl k-ch"><b>12</b><small>con 1</small></span><span class="cl k-ch"><b>13</b><small>con 2</small></span>
+          <span class="cl k-pad"><b>⋯</b><small>đệm</small></span>
+        </div>
+        <p class="pgl-cap">n khóa chia thành <b>n+1 khoảng</b> nên có n+1 con. Mỗi con chỉ là <b>số page</b> của node con. Lá không có con.</p>
+      </div>
     </div>
     <div class="lc-right">
-      <figure class="card lb-board st">
-        <div class="lb-head"><span>#</span><span>Người chơi</span><span>Điểm</span><span></span><span>Khóa trong B-tree</span></div>
-        <div class="lb-rows" data-rows></div>
-      </figure>
-      <div class="lc-call st" data-call aria-live="polite"></div>
-      <div class="tr-ctrl st"><button class="btn icon" data-prev aria-label="Thao tác trước"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button><div class="tr-dots" data-dots></div><button class="btn primary icon" data-next aria-label="Thao tác tiếp theo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button><button class="btn" data-all>Chạy tất cả</button></div>
-      <p class="lb-note st">Thực tế: bảng <code>players</code> + <code>INDEX(score)</code> trong MySQL/PostgreSQL ⇒ <code>ORDER BY score DESC LIMIT 10</code> đọc thẳng trên B+ tree.</p>
+      <figure class="card code-sm st"><pre><code data-code="lbA"></code></pre></figure>
+      <ul class="dbx-ex st">
+        <li><code>open(path, "rb")</code><span>mở file để đọc byte (<b>r</b>ead <b>b</b>inary).</span></li>
+        <li><code>f.seek(pid * PAGE)</code><span>nhảy tới byte <code>pid × 4096</code>.</span></li>
+        <li><code>array("i")</code><span>dãy số nguyên 4 byte; nạp 4096 byte thành 1024 số.</span></li>
+        <li><code>a[2 : 2 + n]</code><span>cắt một đoạn của <code>a</code>, đúng như hình bên trái.</span></li>
+        <li><code>zip(scores, uids)</code><span>ghép cặp: <code>[-5,-4]</code> + <code>[7,9]</code> thành <code>[(-5,7), (-4,9)]</code>.</span></li>
+        <li><code>Node(...)</code><span>dùng lại <code>Node</code> của <code>btree.py</code>; con chỉ là số page.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+<section class="slide" data-title="Ứng dụng: top 10 bảng xếp hạng game" data-section="Ứng dụng" data-ctrl="dbidx" data-glyph="db">
+  <h2 class="s-title st">Ứng dụng: <em>top 10 trong 1 tỉ người chơi</em></h2>
+  <div class="s-body lc dbx">
+    <div class="lc-left">
+      <p class="st"><span class="tag">Code</span><code>items()</code>, <code>top()</code> <b>y hệt</b> <code>btree.py</code>, chỉ đổi <code>x.children[i]</code> thành <code>self.read(...)</code>.</p>
+      <figure class="card code-sm st"><pre><code data-code="lbB"></code></pre></figure>
+      <figure class="card code-sm st"><pre><code data-code="lbC"></code></pre></figure>
+      <p class="st"><span class="tag t-green">Tên</span>Khóa chỉ giữ <code>uid</code>. <code>name(uid)</code> tra tên người chơi, có sẵn trong DB nên không cần viết.</p>
+      <p class="st"><span class="tag t-green">4 page</span><code>top(10)</code> dừng sau 10 khóa nên các page còn lại không bao giờ bị đọc.</p>
+    </div>
+    <div class="lc-right">
+      <figure class="term st"><div class="term-bar"><span class="dots"><i></i><i></i><i></i></span><span>leaderboard - terminal</span><button data-replay>Chạy lại</button></div><pre class="term-out" data-term aria-live="polite"></pre></figure>
+      <div class="pathbar st" aria-label="4 page đã đọc, từ gốc xuống lá">
+        <div class="pb"><b>page 1</b><small>gốc · 25 khóa</small></div>
+        <div class="pb"><b>page 2</b><small>tầng 2 · 330 khóa</small></div>
+        <div class="pb"><b>page 3</b><small>tầng 3 · 340 khóa</small></div>
+        <div class="pb"><b>page 4</b><small>lá · 340 khóa</small></div>
+      </div>
+      <div class="dbx-chips st"><span class="chip c-green">4 page ≈ 16 KB</span><span class="chip">quét cả file: 2.943.280 page</span><span class="chip c-coral">RAM đỉnh 13 MB</span></div>
+      <p class="lb-note st">Muốn lấy <b>hạng 500.000.000</b>, <code>items()</code> phải đi qua nửa file vì node không biết mỗi nhánh có bao nhiêu khóa. Nhảy thẳng cần thêm số khóa vào node: đó là cải tiến, không thuộc B-tree cơ bản.</p>
     </div>
   </div>
 </section>
@@ -1603,23 +1661,45 @@ print("search(99):", bt.search(99))
 for k in [6, 12, 30]: bt.delete(k)
 print("sau khi xóa 6, 12, 30:")
 bt.show()</script>
-<script type="text/plain" id="src-lb">class Leaderboard:
-    def __init__(self):
-        self.bt = BTree(t=3)
-        self.score = {}                        # tên -> điểm
+<script type="text/plain" id="src-lbA">from array import array
+from itertools import islice
+from btree import Node
 
-    def update(self, name, pts):               # O(log n)
-        if name in self.score:
-            self.bt.delete((-self.score[name], name))
-        self.score[name] = pts
-        self.bt.insert((-pts, name))
+PAGE = 4096                                   # 1 node = 1 page = 4096 byte
 
-    def top(self, k):                          # O(log n + k)
-        res = []
-        for s, n in self.bt.items():  # khóa tăng dần
-            if len(res) == k: break   # đủ k thì dừng
-            res.append((n, -s))
-        return res</script>
+class DiskBTree:
+    def __init__(self, path):
+        self.f, self.reads = open(path, "rb"), 0
+        self.root = array("i", self.f.read(4))[0]      # page 0: gốc nằm ở page nào
+
+    def read(self, pid):                      # đọc 1 node từ đĩa
+        self.reads += 1
+        self.f.seek(pid * PAGE)               # nhảy tới byte pid * 4096
+        a = array("i")                        # dãy số nguyên 4 byte
+        a.frombytes(self.f.read(PAGE))        # 4096 byte -> 1024 số
+        leaf, n = a[0], a[1]
+        scores   = a[2 : 2 + n]               # n điểm
+        uids     = a[2 + n : 2 + 2 * n]       # n uid
+        children = a[2 + 2 * n : 3 + 3 * n]   # n+1 số page con
+        x = Node(leaf=bool(leaf))
+        x.keys = list(zip(scores, uids))      # ghép thành khóa (-điểm, uid)
+        x.children = [] if leaf else list(children)
+        return x</script>
+<script type="text/plain" id="src-lbB">    def items(self, x=None):                  # y hệt BTree.items
+        x = x or self.read(self.root)
+        for i, k in enumerate(x.keys):
+            if not x.leaf: yield from self.items(self.read(x.children[i]))
+            yield k
+        if not x.leaf: yield from self.items(self.read(x.children[-1]))
+
+    def top(self, k):                         # k khóa đầu = k hạng đầu
+        return [(uid, -s) for s, uid in islice(self.items(), k)]</script>
+<script type="text/plain" id="src-lbC">from players import name                  # tên người chơi: có sẵn trong DB
+
+db = DiskBTree("leaderboard.db")              # mở file, chưa đọc gì
+for rank, (uid, score) in enumerate(db.top(10), 1):
+    print(f"#{rank} {name(uid)} - {score} điểm")
+print(f"đã đọc {db.reads} page")</script>
 
 <script>
 /* =====================================================================
@@ -2706,7 +2786,7 @@ const DepthScroll = {
 
 /* ---------------- 8. SlideManager: điều hướng, bước (step) trong slide, chuyển cảnh ---------------- */
 const CTRL = {};                           // controller theo data-ctrl (điền ở phần 10)
-const SECTION_NO = {'Bài toán': '01', 'Ý tưởng': '02', 'Minh họa': '03', 'Code': '04', 'Độ phức tạp': '05', 'Cải tiến & Ứng dụng': '06', 'Leaderboard': '07', 'Kết thúc': '08'};
+const SECTION_NO = {'Bài toán': '01', 'Ý tưởng': '02', 'Minh họa': '03', 'Code': '04', 'Độ phức tạp': '05', 'Cải tiến & Ứng dụng': '06', 'Ứng dụng': '07', 'Kết thúc': '08'};
 const SlideManager = {
   slides: [], idx: -1, newAnims: [], oldAnims: [], cleanT: 0,
   init() {
@@ -3718,143 +3798,57 @@ CTRL.improve = {
   leave() { this.clk.cancel(); }
 };
 
-/* --- Slide 19: Leaderboard trong game (B-tree làm ordered set) --- */
-CTRL.lb = {
-  steps: 3, step: 0,
-  INIT: [['batau', 250], ['blablabla', 210], ['william', 180], ['miguel', 120], ['lil boi', 90]],
-  OPS: [['miguel', 310], ['top', 3]],
-  RH: 52, MAX: 330,
+/* --- Slide 19–20: leaderboard.db 1 tỉ user (output lấy từ lần chạy thật leaderboard_db.py) --- */
+CTRL.dbfile = {
+  steps: 1, step: 0,
+  init(sl) { CodeView.mount($('[data-code="lbA"]', sl), $('#src-lbA').textContent, false); },
+  enter() {}, leave() {}
+};
+CTRL.dbidx = {
+  steps: 1, step: 0,
+  OUT: ["#1 blablabla#1 - 333333333 điểm", "#2 Phú#333333335 - 333333333 điểm", "#3 Minh#666666669 - 333333333 điểm", "#4 lil boi#999984 - 333333332 điểm", "#5 cá voi#334333318 - 333333332 điểm", "#6 william#667666652 - 333333332 điểm", "#7 kiwi#1999967 - 333333331 điểm", "#8 blablabla#335333301 - 333333331 điểm", "#9 Phú#668666635 - 333333331 điểm", "#10 batau#2999950 - 333333330 điểm", "đã đọc 4 page"],
   init(sl) {
-    this.sl = sl; this.clk = new Clock();
-    CodeView.mount($('[data-code="lb"]', sl), $('#src-lb').textContent, false);
-    // Mô phỏng trước: thứ tự = khóa (−điểm, tên) tăng dần, giống hệt Python
-    const cmp = (a, b) => b[1] - a[1] || (a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : 0);
-    const sc = new Map(this.INIT);
-    const snap = op => ({sc: new Map(sc), order: [...sc].sort(cmp).map(p => p[0]), op});
-    this.states = [snap(null)];
-    this.OPS.forEach(([n, v]) => {
-      if (n === 'top') { this.states.push(snap({top: v})); return; }
-      const before = snap(null).order, old = sc.has(n) ? sc.get(n) : null;
-      sc.set(n, v);
-      const st = snap({name: n, old, pts: v, from: old == null ? null : before.indexOf(n) + 1});
-      st.op.to = st.order.indexOf(n) + 1;
-      this.states.push(st);
-    });
-    this.list = $('[data-rows]', sl);
-    this.rows = new Map();
-    const names = [...new Set(this.states.flatMap(s => s.order))];
-    names.forEach(n => {
-      const r = document.createElement('div');
-      r.className = 'lb-row';
-      r.innerHTML = '<span class="lb-rank"></span><span class="lb-name"></span><span class="lb-pts"></span><span class="lb-bar"><i></i></span><code class="lb-key"></code>';
-      $('.lb-name', r).textContent = n;
-      this.list.appendChild(r);
-      this.rows.set(n, r);
-    });
-    this.list.style.height = (names.length * this.RH - (this.RH - 46)) + 'px';
-    this.call = $('[data-call]', sl);
-    $('[data-dots]', sl).innerHTML = '<i></i>'.repeat(this.steps);
-    this.dots = $$('[data-dots] i', sl);
-    this.prevB = $('[data-prev]', sl); this.nextB = $('[data-next]', sl);
-    this.prevB.addEventListener('click', () => { if (this.step > 0) this.go(this.step - 1, -1); });
-    this.nextB.addEventListener('click', () => { if (this.step < this.steps - 1) this.go(this.step + 1, 1); });
-    $('[data-all]', sl).addEventListener('click', () => this.runAll());
-    this.render(0);
+    this.sl = sl; this.clk = new Clock(); this.out = $('[data-term]', sl); this.cells = $$('.pb', sl);
+    CodeView.mount($('[data-code="lbB"]', sl), $('#src-lbB').textContent, false);
+    CodeView.mount($('[data-code="lbC"]', sl), $('#src-lbC').textContent, false);
+    $('[data-replay]', sl).addEventListener('click', () => this.play());
+    this.final();
   },
-  key(n, v) { return `(-${v}, "${n}")`; },
-  q(s) { return `"${s}"`; },
-  fill(r, n, v, rank) {
-    $('.lb-rank', r).textContent = rank;
-    $('.lb-pts', r).textContent = v;
-    $('.lb-bar i', r).style.width = (v / this.MAX * 100).toFixed(1) + '%';
-    const k = $('.lb-key', r); k.className = 'lb-key'; k.textContent = this.key(n, v);
+  sp(cls, text) { const s = document.createElement('span'); s.className = cls; s.textContent = text; return s; },
+  cls(l) { return 'o' + (/^đã đọc/.test(l) ? ' hl' : ''); },
+  final() {
+    const o = this.out; o.textContent = '';
+    o.append(this.sp('pr', '~/lb $ '), this.sp('cm', 'python leaderboard_db.py'), '\n');
+    this.OUT.forEach(l => o.append(this.sp(this.cls(l), l), '\n'));
+    o.append(this.sp('pr', '~/lb $ '), this.sp('cur', ''));
+    this.cells.forEach(c => c.classList.add('on'));
   },
-  pos(r, i) { r.style.transform = `translateY(${i * this.RH}px)`; },
-  callText(k, done) {
-    const s = this.states[k], op = s.op;
-    if (!op) return `Bảng đang có ${s.order.length} người chơi, mỗi người là 1 khóa trong B-tree.<br>Nhấn → để gọi <b>update(${this.q(this.OPS[0][0])}, ${this.OPS[0][1]})</b>`;
-    if (op.top) {
-      let h = `<b>top(${op.top})</b><br>items() duyệt in-order từ khóa nhỏ nhất, dừng sau ${op.top} khóa`;
-      if (done) h += `<br>⇒ <span class="t">[${s.order.slice(0, op.top).map(n => `(${this.q(n)}, ${s.sc.get(n)})`).join(', ')}]</span>`;
-      return h;
-    }
-    let h = `<b>update(${this.q(op.name)}, ${op.pts})</b><br>`;
-    h += op.old != null ? `<span class="f">bt.delete(${this.key(op.name, op.old)})</span> · <span class="t">bt.insert(${this.key(op.name, op.pts)})</span>`
-                        : `${this.q(op.name)} chưa có ⇒ chỉ <span class="t">bt.insert(${this.key(op.name, op.pts)})</span>`;
-    if (done) {
-      h += op.from ? `<br>⇒ ${op.name}: hạng ${op.from} → <b>${op.to}</b>` : `<br>⇒ ${op.name} vào hạng <b>${op.to}</b>`;
-      const prev = this.states[k].order[op.to - 2];
-      if (prev && this.states[k].sc.get(prev) === op.pts) h += ` (hòa ${op.pts} với ${prev} ⇒ so tên)`;
-      h += ' · O(log n)';
-    }
-    return h;
-  },
-  render(k) {                               // vẽ ngay trạng thái sau k thao tác
+  async play() {
     this.clk.cancel();
-    this.step = k;
-    const s = this.states[k];
-    this.rows.forEach((r, n) => {
-      r.classList.add('notr');
-      r.classList.remove('hot', 'top', 'dim');
-      const i = s.order.indexOf(n);
-      if (i < 0) {
-        const fut = this.states.find(x => x.order.includes(n));
-        this.fill(r, n, fut.sc.get(n), fut.order.indexOf(n) + 1);
-        this.pos(r, fut.order.indexOf(n)); r.style.opacity = 0;
-      } else { this.fill(r, n, s.sc.get(n), i + 1); this.pos(r, i); r.style.opacity = 1; }
-    });
-    if (s.op && s.op.top) s.order.forEach((n, i) => this.rows.get(n).classList.add(i < s.op.top ? 'top' : 'dim'));
-    void this.list.offsetHeight;
-    this.rows.forEach(r => r.classList.remove('notr'));
-    this.call.innerHTML = this.callText(k, k > 0);
-    this.ui();
-  },
-  ui() {
-    this.dots.forEach((d, j) => { d.classList.toggle('on', j < this.step); d.classList.toggle('cur', j === this.step); });
-    this.prevB.disabled = this.step === 0; this.nextB.disabled = this.step === this.steps - 1;
-  },
-  async animate(k) {                        // thao tác thứ k (1-based); trả về false nếu bị ngắt
-    this.render(k - 1);
-    this.step = k; this.ui();
-    const clk = this.clk, s = this.states[k], op = s.op;
-    this.call.innerHTML = this.callText(k, false);
-    if (op.top) {
-      if (!await clk.wait(500)) return false;
-      s.order.forEach((n, i) => this.rows.get(n).classList.add(i < op.top ? 'top' : 'dim'));
-      SoundFX.play('found');
-      this.call.innerHTML = this.callText(k, true);
-      return true;
+    const clk = this.clk, o = this.out;
+    o.textContent = ''; this.cells.forEach(c => c.classList.remove('on'));
+    const cm = this.sp('cm', ''), cur = this.sp('cur', '');
+    o.append(this.sp('pr', '~/lb $ '), cm, cur);
+    if (!await clk.wait(500)) return;
+    for (const ch of 'python leaderboard_db.py') {
+      cm.textContent += ch; SoundFX.play('key');
+      if (!await clk.wait(50 + Math.random() * 50)) return;
     }
-    const r = this.rows.get(op.name), key = $('.lb-key', r), pts = $('.lb-pts', r);
-    r.classList.add('hot');
-    if (op.old != null) {
-      key.classList.add('del');
-      SoundFX.play('tick');
-      if (!await clk.wait(900)) return false;
-    } else {
-      r.classList.add('notr'); this.pos(r, op.to - 1); void r.offsetHeight; r.classList.remove('notr');
+    if (!await clk.wait(350)) return;
+    cur.remove(); o.append('\n');
+    for (const c of this.cells) {                 // đi từ gốc xuống lá: mỗi tầng 1 lần đọc page
+      c.classList.add('on'); SoundFX.play('step');
+      if (!await clk.wait(420)) return;
     }
-    key.className = 'lb-key ins'; key.textContent = this.key(op.name, op.pts);
-    s.order.forEach((n, i) => { const row = this.rows.get(n); this.pos(row, i); row.style.opacity = 1; $('.lb-rank', row).textContent = i + 1; });
-    $('.lb-bar i', r).style.width = (op.pts / this.MAX * 100).toFixed(1) + '%';
-    SoundFX.play('pop');
-    const from = op.old != null ? op.old : 0;
-    if (!await tween(600, p => { pts.textContent = Math.round(from + (op.pts - from) * easeInOut(p)); }, clk)) return false;
-    if (!await clk.wait(350)) return false;
-    this.call.innerHTML = this.callText(k, true);
-    if (!await clk.wait(900)) return false;
-    r.classList.remove('hot');
-    return true;
-  },
-  async runAll() {
-    if (this.step >= this.steps - 1) this.render(0);
-    for (let k = this.step + 1; k < this.steps; k++) {
-      if (!await this.animate(k) || !await this.clk.wait(700)) return;   // bị ngắt (bấm ←/→) thì dừng
+    for (const l of this.OUT) {
+      o.append(this.sp(this.cls(l), l), '\n'); SoundFX.play('tick');
+      if (!await clk.wait(l.startsWith('#') ? 110 : 260)) return;
     }
+    o.append(this.sp('pr', '~/lb $ '), this.sp('cur', ''));
+    SoundFX.play('found');
   },
-  enter(step) { this.render(step); },
-  go(step, dir) { if (dir > 0 && step === this.step + 1 && !REDUCED) this.animate(step); else this.render(step); },
-  leave() { this.clk.cancel(); this.render(this.step); }
+  enter(step, dir, quick) { if (quick) this.final(); else this.play(); },
+  leave() { this.clk.cancel(); this.final(); }
 };
 
 
